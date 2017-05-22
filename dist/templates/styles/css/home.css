@@ -1,0 +1,560 @@
+.top-casinos-container {
+  width: 100%; }
+  .top-casinos-container .tab-content {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    display: none; }
+    .top-casinos-container .tab-content img {
+      width: 100%;
+      filter: brightness(50%); }
+    .top-casinos-container .tab-content .content {
+      position: absolute;
+      color: white;
+      z-index: 2;
+      top: 50px;
+      width: 90%;
+      left: 0px;
+      right: 0px;
+      margin-left: auto;
+      margin-right: auto; }
+      .top-casinos-container .tab-content .content h1 {
+        font-family: 'Lato', sans-serif;
+        font-size: 22px;
+        font-weight: bold;
+        text-shadow: 5px 5px 5px black; }
+      .top-casinos-container .tab-content .content p {
+        text-shadow: 5px 5px 5px black; }
+      .top-casinos-container .tab-content .content .play-button {
+        display: inline-block;
+        width: 150px;
+        height: 50px;
+        background-color: #4ec65f;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        font-size: 16px;
+        margin-top: 20px;
+        margin-right: 10px;
+        box-sizing: border-box; }
+        .top-casinos-container .tab-content .content .play-button:hover {
+          text-decoration: none;
+          -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+          -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); }
+      .top-casinos-container .tab-content .content .review-button {
+        display: inline-block;
+        width: 150px;
+        height: 50px;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        font-size: 16px;
+        margin-top: 20px;
+        border: 1px solid white;
+        box-sizing: border-box;
+        vertical-align: top; }
+        .top-casinos-container .tab-content .content .review-button:hover {
+          background-color: white;
+          color: #222;
+          text-decoration: none;
+          transition: background-color .3s; }
+  .top-casinos-container .selectedContent {
+    position: relative !important;
+    display: block !important; }
+  .top-casinos-container .tabs-container {
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+    background-color: black; }
+    .top-casinos-container .tabs-container .tab {
+      color: white;
+      line-height: 50px;
+      text-align: center;
+      font-size: 16px;
+      font-family: 'Lato', sans-serif;
+      background-color: #111;
+      border-right: 1px solid #333; }
+      .top-casinos-container .tabs-container .tab:hover {
+        cursor: pointer; }
+      .top-casinos-container .tabs-container .tab:last-child {
+        border-right: none; }
+    .top-casinos-container .tabs-container .selected {
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff0000+0,cc0000+45,cc0000+100   background-image: linear-gradient(#111 50%, #df0e14 50%); */
+      background-image: linear-gradient(#111 50%, #ff0000 10%, #cc0000 15%, #cc0000 25%);
+      background-size: 100% 200%;
+      background-position: 0 -100%;
+      animation: fade-in .5s; }
+      .top-casinos-container .tabs-container .selected:after, .top-casinos-container .tabs-container .selected:before {
+        bottom: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none; }
+      .top-casinos-container .tabs-container .selected:after {
+        border-color: rgba(136, 183, 213, 0);
+        border-bottom-color: #cc0000;
+        border-width: 20px;
+        margin-left: -20px; }
+
+.sidebar {
+  padding: 0 !important; }
+
+.sidebar-container {
+  display: inline-block;
+  width: 100%; }
+  .sidebar-container .title {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    font-family: 'Lato', sans-serif;
+    font-size: 22px;
+    text-align: center;
+    background-color: #222;
+    border-bottom: 1px solid #333;
+    color: white; }
+    .sidebar-container .title:after, .sidebar-container .title:before {
+      z-index: 99;
+      top: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none; }
+    .sidebar-container .title:after {
+      border-color: rgba(136, 183, 213, 0);
+      border-top-color: #222;
+      border-width: 15px;
+      margin-left: -15px; }
+  .sidebar-container .casino {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background-color: #444;
+    border-bottom: 1px solid #333; }
+    .sidebar-container .casino .casino-img {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      border-radius: 50px; }
+    .sidebar-container .casino .casino-name {
+      height: 60px;
+      line-height: 60px;
+      position: absolute;
+      left: 60px;
+      color: white;
+      font-size: 14px;
+      font-family: 'Lato', sans-serif; }
+    .sidebar-container .casino .play-button {
+      display: block;
+      height: 25px;
+      width: 50px;
+      background-color: #4ec65f;
+      line-height: 25px;
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      position: absolute;
+      top: 17.5px;
+      right: 10px; }
+      .sidebar-container .casino .play-button:hover {
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); }
+  .sidebar-container .loader {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    background-color: #222;
+    border-bottom: 1px solid #333;
+    color: white; }
+    .sidebar-container .loader:after, .sidebar-container .loader:before {
+      bottom: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none; }
+    .sidebar-container .loader:after {
+      border-color: rgba(136, 183, 213, 0);
+      border-bottom-color: #222;
+      border-width: 10px;
+      margin-left: -10px; }
+
+.games-container {
+  width: 100%;
+  height: 140px;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.7); }
+  .games-container .game {
+    text-align: center; }
+    .games-container .game:hover > .svg {
+      fill: #df0e14; }
+    .games-container .game:hover {
+      color: #df0e14;
+      cursor: pointer; }
+    .games-container .game .svg {
+      fill: #333;
+      width: 50px;
+      height: 50px;
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      transition: all .5s ease; }
+    .games-container .game .img-title {
+      position: relative;
+      font-family: 'Lato', sans-serif;
+      font-size: 18px; }
+
+.latest-articles-container .articles {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-top: 20px; }
+  .latest-articles-container .articles .first-article {
+    background-color: #333;
+    height: 450px;
+    transition: all .5s ease; }
+    .latest-articles-container .articles .first-article:hover {
+      transform: scale(0.9); }
+    .latest-articles-container .articles .first-article:before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0.4;
+      background-image: url("http://telebidder.com/media/article_detailed/articles/headline-article-about-online-casino-en.jpeg");
+      background-repeat: no-repeat;
+      background-position: center;
+      -ms-background-size: cover;
+      -o-background-size: cover;
+      -moz-background-size: cover;
+      -webkit-background-size: cover;
+      background-size: cover; }
+    .latest-articles-container .articles .first-article .content {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 90%;
+      opacity: 1 !important;
+      z-index: 2;
+      display: table; }
+      .latest-articles-container .articles .first-article .content .date {
+        color: #df0e14;
+        opacity: .7; }
+      .latest-articles-container .articles .first-article .content h3 {
+        color: white;
+        font-size: 26px;
+        font-weight: bold; }
+      .latest-articles-container .articles .first-article .content .bar {
+        width: 100px;
+        height: 2px;
+        background-color: white;
+        opacity: .4;
+        border-radius: 15px;
+        margin-top: 30px;
+        margin-bottom: 30px; }
+      .latest-articles-container .articles .first-article .content p {
+        color: white;
+        font-size: 18px;
+        font-weight: bold; }
+  .latest-articles-container .articles .article-tab {
+    margin-bottom: 7.5px; }
+  .latest-articles-container .articles .article {
+    background-color: #333;
+    height: 145px;
+    transition: all .5s ease; }
+    .latest-articles-container .articles .article:hover {
+      transform: scale(0.9); }
+    .latest-articles-container .articles .article:before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0.4;
+      background-image: url("http://telebidder.com/media/article_detailed/articles/headline-article-about-online-casino-en.jpeg");
+      background-repeat: no-repeat;
+      background-position: center;
+      -ms-background-size: cover;
+      -o-background-size: cover;
+      -moz-background-size: cover;
+      -webkit-background-size: cover;
+      background-size: cover; }
+    .latest-articles-container .articles .article:last-child {
+      margin-bottom: 0px !important; }
+    .latest-articles-container .articles .article .content {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 90%;
+      opacity: 1 !important;
+      z-index: 2;
+      display: table; }
+      .latest-articles-container .articles .article .content .date {
+        color: #df0e14;
+        opacity: .7; }
+      .latest-articles-container .articles .article .content h3 {
+        color: white;
+        font-size: 16px;
+        font-weight: bold; }
+      .latest-articles-container .articles .article .content .bar {
+        width: 100px;
+        height: 2px;
+        background-color: white;
+        opacity: .4;
+        border-radius: 15px;
+        margin-top: 30px;
+        margin-bottom: 30px; }
+      .latest-articles-container .articles .article .content p {
+        color: white;
+        font-size: 18px;
+        font-weight: bold; }
+
+.listing {
+  width: 100%;
+  vertical-align: top;
+  display: inline-block;
+  margin-top: 15px; }
+  .listing h3 {
+    margin-top: 0px !important; }
+  .listing .thumbnail {
+    width: 170px;
+    height: 120px;
+    display: inline-block; }
+  .listing .info {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px; }
+    .listing .info .stars {
+      font-size: 18px;
+      color: #df0e14 !important; }
+    .listing .info h3 {
+      display: inline-block;
+      top: 0px;
+      position: relative;
+      vertical-align: top;
+      margin-top: 0 !important;
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 10px !important;
+      color: #337ab7 !important;
+      margin-bottom: 3px !important; }
+      .listing .info h3:hover {
+        color: #df0e14 !important; }
+    .listing .info .countries {
+      margin-top: 2px;
+      margin-bottom: 5px; }
+      .listing .info .countries .country {
+        width: 27px;
+        height: 18.86px; }
+    .listing .info p {
+      font-size: 16px;
+      font-family: 'Lato', sans-serif;
+      margin-bottom: 0px !important;
+      font-weight: bold; }
+      .listing .info p span {
+        color: #df0e14; }
+  .listing .buttons-container .button {
+    display: block;
+    color: white;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+    width: 100%;
+    height: 50px;
+    background-color: #4ec65f;
+    text-align: center;
+    line-height: 50px;
+    margin-top: 10px;
+    transition: all .3s ease; }
+    .listing .buttons-container .button:hover {
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); }
+  .listing .buttons-container .top-button {
+    background-color: #333; }
+
+.section-title {
+  height: 70px;
+  line-height: 70px;
+  width: 100%;
+  color: #222;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.7); }
+  .section-title .link {
+    font-size: 16px;
+    float: right;
+    opacity: .7;
+    text-decoration: none;
+    color: #222; }
+    .section-title .link span {
+      margin-right: 5px; }
+    .section-title .link .glyphicon {
+      top: 2px; }
+
+.new-games-container {
+  display: inline-block;
+  margin-top: 30px;
+  width: 100%; }
+  .new-games-container .game {
+    width: 200px;
+    height: 135px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto; }
+    .new-games-container .game img {
+      width: 200px;
+      height: 135px; }
+    .new-games-container .game h3 {
+      width: 100%;
+      font-size: 18px;
+      color: #337ab7 !important;
+      margin-top: 10px !important;
+      font-weight: bold; }
+      .new-games-container .game h3 span {
+        float: right;
+        color: #df0e14;
+        vertical-align: top;
+        top: -5px;
+        font-size: 22px; }
+        .new-games-container .game h3 span:hover {
+          cursor: pointer; }
+  .new-games-container .free-slots-button {
+    width: 100%;
+    position: relative;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    margin-top: 10px;
+    background: #4ec65f;
+    font-size: 22px;
+    color: white;
+    transition: all .3s ease; }
+    .new-games-container .free-slots-button:hover {
+      cursor: pointer;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); }
+
+.stories-container {
+  position: relative;
+  display: inline-block; }
+  .stories-container .story {
+    height: 340px;
+    display: inline-block;
+    margin-bottom: 10px; }
+    .stories-container .story article {
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-sizing: border-box; }
+      .stories-container .story article .story-content {
+        width: 100%;
+        height: 100%;
+        padding: 5%; }
+        .stories-container .story article .story-content .article-img {
+          max-width: 100%;
+          height: 130px;
+          position: relative;
+          display: block;
+          background-image: url("https://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/t/570e42e986db43323108bd36/1460552441480/?format=1500w");
+          background-repeat: no-repeat;
+          background-position: center;
+          -ms-background-size: cover;
+          -o-background-size: cover;
+          -moz-background-size: cover;
+          -webkit-background-size: cover;
+          background-size: cover; }
+        .stories-container .story article .story-content h4 {
+          font-weight: bold;
+          text-align: center;
+          font-size: 16px;
+          height: 51px;
+          overflow: hidden; }
+        .stories-container .story article .story-content .divider {
+          width: 95%;
+          height: 1px;
+          background-color: rgba(0, 0, 0, 0.2); }
+        .stories-container .story article .story-content p {
+          margin-top: 5px;
+          font-size: 12px;
+          height: 100px;
+          overflow: hidden; }
+
+.subscription-container {
+  background-image: radial-gradient(ellipse at center, #ff0000 0%, #cc0000 78%, #cc0000 100%); }
+  .subscription-container .subscription-header {
+    color: white;
+    text-align: center; }
+    .subscription-container .subscription-header h2 {
+      margin-top: 20px !important; }
+  .subscription-container .mail-icon {
+    height: 75px;
+    font-size: 50px;
+    color: white;
+    text-align: center; }
+    .subscription-container .mail-icon span {
+      line-height: 75px;
+      float: right; }
+  .subscription-container .subscription {
+    height: 75px;
+    margin-bottom: 20px; }
+    .subscription-container .subscription .column {
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+      padding: 0 !important;
+      display: table-cell !important;
+      vertical-align: middle !important;
+      height: 100%; }
+      .subscription-container .subscription .column input {
+        width: 100%;
+        height: 50px;
+        margin-top: 12.5px;
+        font-size: 20px;
+        padding-left: 20px; }
+    .subscription-container .subscription .subscribe-button {
+      height: 50px !important;
+      margin-top: 12.5px;
+      background-color: #4ec65f;
+      color: white;
+      font-size: 20px;
+      line-height: 50px;
+      text-align: center; }
+
+@keyframes fade-in {
+  from {
+    background-position: 0 0%; }
+  to {
+    background-position: 0 -100%; } }
+
+/*# sourceMappingURL=home.css.map */

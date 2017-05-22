@@ -1,0 +1,63 @@
+angular
+    .module('app')
+    .directive('casinoGames', function() {
+        return {
+            controller: function ($scope, $http, casinos) {
+                
+            },
+            controllerAs: "$ctrl",
+            template: `               
+                <div class="games-container">
+                    <div class="col-sm-2 game">
+                        <img class="svg" src="/assets/SVG/VideoSlots.svg">
+                        <div class="img-title">Video Slots</div>
+                    </div>
+                    <div class="col-sm-2 game">
+                        <img class="svg" src="/assets/SVG/Roulette.svg">
+                        <div class="img-title">Roulette</div>
+                    </div>
+                    <div class="col-sm-2 game">
+                        <img class="svg" src="/assets/SVG/Blackjack.svg">
+                        <div class="img-title">Blackjack</div>
+                    </div>
+                    <div class="col-sm-2 game">
+                        <img class="svg" src="/assets/SVG/Poker.svg">
+                        <div class="img-title">Video Poker</div>
+                    </div>
+                    <div class="col-sm-2 game">
+                        <img class="svg" src="/assets/SVG/Jackpot.svg">
+                        <div class="img-title">Jackpots</div>
+                    </div>
+                    <div class="col-sm-2 game">
+                        <img class="svg" src="/assets/SVG/3DSlots.svg">
+                        <div class="img-title">3D Slots</div>
+                    </div>
+                </div>
+            `,
+            link: function() {
+                $(document).ready(function() {
+                    $('img[src$=".svg"]').each(function() {
+                        var $img = jQuery(this);
+                        var imgURL = $img.attr('src');
+                        var attributes = $img.prop("attributes");
+
+                        $.get(imgURL, function(data) {
+                            // Get the SVG tag, ignore the rest
+                            var $svg = jQuery(data).find('svg');
+
+                            // Remove any invalid XML tags
+                            $svg = $svg.removeAttr('xmlns:a');
+
+                            // Loop through IMG attributes and apply on SVG
+                            $.each(attributes, function() {
+                                $svg.attr(this.name, this.value);
+                            });
+
+                            // Replace IMG with SVG
+                            $img.replaceWith($svg);
+                        }, 'xml');
+                    });
+                });
+            }
+        }
+    });

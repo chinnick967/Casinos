@@ -1,0 +1,23 @@
+<!DOCTYPE>
+<html ng-app="app">
+<head>
+<title>Node Server</title>
+    <script type="text/javascript" src="bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="templates/styles/css/globals.css">
+    <link rel="stylesheet" type="text/css" href="templates/styles/css/main.css">
+    <link rel="stylesheet" type="text/css" href="templates/styles/css/home.css">
+    <link rel="stylesheet" type="text/css" href="templates/styles/css/account.css">
+    
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea' });</script>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+<body>
+    <navigation></navigation>
+    <message></message>
+    <div class="container main">
+        <div ng-view></div>
+    </div>
+    <sticky-footer></sticky-footer>
+</body>
+</html>
