@@ -1,0 +1,51 @@
+module.exports = {
+
+    list: [
+        {"name": "Spain", "language": "Spanish", "flag": "/assets/flags/es.svg"},
+        {"name": "United Kingdom", "language": "English", "flag": "/assets/flags/gb.svg"},
+        {"name": "Brazil", "language": "Portugesel", "flag": "/assets/flags/br.svg"},
+        {"name": "Russia", "language": "Russian", "flag": "/assets/flags/ru.svg"},
+        {"name": "China", "language": "Chinese", "flag": "/assets/flags/cn.svg"},
+        {"name": "Sweden", "language": "Swedish", "flag": "/assets/flags/se.svg"},
+        {"name": "Denmark", "language": "Danish", "flag": "/assets/flags/dk.svg"},
+        {"name": "France", "language": "French", "flag": "/assets/flags/fr.svg"},
+        {"name": "Germany", "language": "German", "flag": "/assets/flags/de.svg"},
+        {"name": "Netherlands", "language": "Dutch", "flag": "/assets/flags/nl.svg"},
+        {"name": "Japan", "language": "Japanese", "flag": "/assets/flags/jp.svg"},
+        {"name": "Italy", "language": "Italian", "flag": "/assets/flags/it.svg"},
+        {"name": "Poland", "language": "Polish", "flag": "/assets/flags/pl.svg"},
+        {"name": "Norway", "language": "Norsk", "flag": "/assets/flags/no.svg"},
+        {"name": "India", "language": "Hindi", "flag": "/assets/flags/in.svg"},
+        {"name": "South Korea", "language": "Korean", "flag": "/assets/flags/kr.svg"},
+        {"name": "Australia", "language": "", "flag": "/assets/flags/au.svg"},
+        {"name": "Austria", "language": "", "flag": "/assets/flags/at.svg"},
+        {"name": "Bahamas", "language": "", "flag": "/assets/flags/bs.svg"},
+        {"name": "Belgium", "language": "", "flag": "/assets/flags/be.svg"},
+        {"name": "Belize", "language": "", "flag": "/assets/flags/bz.svg"},
+        {"name": "Bermuda", "language": "", "flag": "/assets/flags/bm.svg"},
+        {"name": "Canada", "language": "", "flag": "/assets/flags/ca.svg"},
+        {"name": "Chile", "language": "", "flag": "/assets/flags/cl.svg"},
+        {"name": "Colombia", "language": "", "flag": "/assets/flags/co.svg"},
+        {"name": "Cook Islands", "language": "", "flag": "/assets/flags/ck.svg"},
+        {"name": "Costa Rica", "language": "", "flag": "/assets/flags/cr.svg"},
+        {"name": "Curacao", "language": "", "flag": "/assets/flags/cw.svg"},
+        {"name": "Dominica", "language": "", "flag": "/assets/flags/dm.svg"},
+        {"name": "Finland", "language": "", "flag": "/assets/flags/fi.svg"},
+        {"name": "Greece", "language": "", "flag": "/assets/flags/gr.svg"},
+        {"name": "Guatemala", "language": "", "flag": "/assets/flags/gt.svg"},
+        {"name": "Ireland", "language": "", "flag": "/assets/flags/ie.svg"},
+        {"name": "Israel", "language": "", "flag": "/assets/flags/il.svg"},
+        {"name": "Kenya", "language": "", "flag": "/assets/flags/ke.svg"},
+        {"name": "Macau", "language": "", "flag": "/assets/flags/mo.svg"},
+        {"name": "Mexico", "language": "", "flag": "/assets/flags/mx.svg"},
+        {"name": "Monaco", "language": "", "flag": "/assets/flags/mc.svg"},
+        {"name": "New Zealand", "language": "", "flag": "/assets/flags/nz.svg"},
+        {"name": "South Africa", "language": "", "flag": "/assets/flags/za.svg"},
+        {"name": "Switzerland", "language": "", "flag": "/assets/flags/ch.svg"},
+        {"name": "United Arab Emirates", "language": "", "flag": "/assets/flags/ae.svg"},
+        {"name": "United States", "language": "", "flag": "/assets/flags/us.svg"}
+    ]
+
+}
+
+// flags guide at http://flag-icon-css.lip.is/

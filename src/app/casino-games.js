@@ -2,36 +2,36 @@ angular
     .module('app')
     .directive('casinoGames', function() {
         return {
-            controller: function ($scope, $http, casinos) {
+            controller: function ($scope, $http, appData) {
                 
             },
             controllerAs: "$ctrl",
             template: `               
                 <div class="games-container">
-                    <div class="col-sm-2 game">
+                    <a href="/#!/games/VideoSlots" class="col-sm-2 game">
                         <img class="svg" src="/assets/SVG/VideoSlots.svg">
                         <div class="img-title">Video Slots</div>
-                    </div>
-                    <div class="col-sm-2 game">
+                    </a>
+                    <a href="/#!/games/Roulette" class="col-sm-2 game">
                         <img class="svg" src="/assets/SVG/Roulette.svg">
                         <div class="img-title">Roulette</div>
-                    </div>
-                    <div class="col-sm-2 game">
+                    </a>
+                    <a href="/#!/games/Blackjack" class="col-sm-2 game">
                         <img class="svg" src="/assets/SVG/Blackjack.svg">
                         <div class="img-title">Blackjack</div>
-                    </div>
-                    <div class="col-sm-2 game">
+                    </a>
+                    <a href="/#!/games/VideoPoker" class="col-sm-2 game">
                         <img class="svg" src="/assets/SVG/Poker.svg">
                         <div class="img-title">Video Poker</div>
-                    </div>
-                    <div class="col-sm-2 game">
+                    </a>
+                    <a href="/#!/games/Jackpots" class="col-sm-2 game">
                         <img class="svg" src="/assets/SVG/Jackpot.svg">
                         <div class="img-title">Jackpots</div>
-                    </div>
-                    <div class="col-sm-2 game">
+                    </a>
+                    <a href="/#!/games/3DSlots" class="col-sm-2 game">
                         <img class="svg" src="/assets/SVG/3DSlots.svg">
                         <div class="img-title">3D Slots</div>
-                    </div>
+                    </a>
                 </div>
             `,
             link: function() {

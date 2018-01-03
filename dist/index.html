@@ -1,23 +1,42 @@
 <!DOCTYPE>
-<html ng-app="app">
+<html ng-app="app" ng-controller="customHeader">
 <head>
-<title>Node Server</title>
+    <!--{{ customHeader }}
+    <title>Node Server</title>-->
+    <title>{{header.title}}</title>
+    <meta name="description" content={{header.description}}>
+    <meta name="keywords" content={{header.keywords}}>
+    <META NAME="ROBOTS" CONTENT="{{header.indexing}}">
     <script type="text/javascript" src="bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="templates/styles/css/animate.css">
     <link rel="stylesheet" type="text/css" href="templates/styles/css/globals.css">
     <link rel="stylesheet" type="text/css" href="templates/styles/css/main.css">
     <link rel="stylesheet" type="text/css" href="templates/styles/css/home.css">
     <link rel="stylesheet" type="text/css" href="templates/styles/css/account.css">
+    <link rel="stylesheet" type="text/css" href="templates/styles/css/casino.css">
+    <link rel="stylesheet" type="text/css" href="templates/styles/css/bonus.css">
+    <link rel="stylesheet" type="text/css" href="templates/styles/css/toplists.css">
+    <link rel="stylesheet" type="text/css" href="templates/styles/css/articles.css">
+    <link rel="stylesheet" type="text/css" href="templates/styles/css/games.css">
+    <link rel="stylesheet" type="text/css" href="templates/styles/css/slotgame.css">
+    <link rel="stylesheet" type="text/css" href="templates/styles/css/info.css">
+    <meta name="twitter:image:src" content="https://720kb.net/assets/img/720kb-fb.png" />
     
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-sanitize.js"></script>
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
     <script>tinymce.init({ selector:'textarea' });</script>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Artifika" rel="stylesheet">
+    <div>
+        <title>Testing Title</title>
+    </div>
 </head>
 <body>
     <navigation></navigation>
     <message></message>
-    <div class="container main">
-        <div ng-view></div>
-    </div>
+    <div ng-view autoscroll="true"></div>
     <sticky-footer></sticky-footer>
+    <global-css></global-css>
+    <!--<loading-screen></loading-screen>-->
 </body>
 </html>

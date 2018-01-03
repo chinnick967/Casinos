@@ -1,13 +1,121 @@
 body {
     margin: 0px !important;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ededed+44,c4c4c4+100 */
-    background: #f2f2f2;
-    box-shadow: inset 0px 0px 86px 0px rgba(0,0,0,0.75);
-    min-height: 100%;
+    //background: #fff;
+    //box-shadow: inset 0px 0px 86px 0px rgba(0,0,0,0.75);
+    //min-height: 100%;
+    //width: 100vw;
+    overflow-x: hidden;
+    background-image: url(/assets/repeatablebg.jpg);
+    font-family: 'Lato', sans-serif;
+    background-attachment: fixed;
+}
+
+.main {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.7), 0 0 20px rgba(0,0,0,0.7), 0 0 30px rgba(0,0,0,0.7);
+    padding: 0;
+    //padding-bottom: 20px;
 }
 
 p {
     font-size: 16px;
+}
+
+.graybg {
+    height: 100%;
+    width: 200vw;
+    margin-left: -50vw;
+    //margin-right: -50vw;
+   // right: 50%;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    //left: 50%;
+    /*&:before {
+        content: "";
+        background-color: rgba(0, 0, 0, 0.05) !important;
+        height: 100%;
+        width: 100vw;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }*/
+}
+
+.link {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.section-title {
+    a {
+        transition: 250ms;
+        &:hover {
+            color: #df0e14;
+        }
+    }
+}
+
+.styles {
+    font-size: 16px !important;
+    white-space: pre-wrap;
+    font-family: 'Lato', sans-serif;
+    h1 {
+        font-weight: bold;
+        font-size: 36px !important;
+        margin-top: 20px !important;
+        margin-bottom: -15px !important;
+        color: #df0e14;
+    }
+    b {
+        color: #df0e14 !important;
+    }
+    p {
+        font-size: 16px !important;
+    }
+    a {
+        color: #337ab7 !important;
+        text-decoration: none !important;
+        &:hover {
+            text-decoration: none !important;
+            color: #df0e14 !important;
+        }
+    }
+}
+
+loading-screen {
+    #cover {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        //background-color: #373940;
+        background-image: url("/assets/repeatablebg.jpg");
+        z-index: 9999999;
+        opacity: 1;
+        transition: 500ms;
+        &.hidecover {
+            opacity: 0;
+            transform: scale(0);
+        }
+        img {
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            top: 0px;
+            bottom: 0px;
+            margin: auto;
+            //transform: scale(1.5);
+        }
+    }
 }
 
 .show {
@@ -24,8 +132,51 @@ html {
     min-height: 100%;
 }
 
-.main {
-    min-height: 100%;
+.gray-bg {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 495px;
+    background-color: rgba(0,0,0,.05)!important;
+    z-index: -1;
+}
+
+edit {
+    position: absolute;
+    font-size: 16px;
+    font-weight: normal;
+    height: 30px;
+    width: 30px;
+    text-shadow: none;
+    .edit-wrapper {
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        top: 0px;
+        left: 0px;
+    }
+    .edit {
+        transform: scale(.8);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+    }
+}
+
+.edit {
+    background-color: #4ec65f;
+    color: white;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50px;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 sticky-footer {
@@ -35,10 +186,10 @@ sticky-footer {
 }
 
 #username {
-    
+    text-transform: capitalize;
 }
 
-#overlay {
+#overlay, .overlay {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -117,6 +268,8 @@ sticky-footer {
     border-radius: 0px !important;
     border: none !important;
     margin-bottom: 0px;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    z-index: 9;
 
     .navbar-brand {
         height: 50px !important;
@@ -140,32 +293,47 @@ sticky-footer {
             }
         }
         
-        a:focus {
+        /*a:focus {
             background-color: transparent !important;
             color: #df0e14 !important;
             border-bottom: 2px solid #df0e14;
             box-sizing: border-box;
             height: 50px !important;
+        }*/
+
+        &:hover {
+            .dropdown-menu {
+                visibility: visible;
+                opacity: 1;
+                height: 160px;
+                padding: 5px 0;
+            }
         }
 
         .dropdown-menu {
-            min-width: 610px;
-            height: 160px;
+            width: auto;
+            min-width: 720px;
+            height: 0px;
+            padding: 0px;
             background-color: #222;
-            
+            display: block;
+            transition: 250ms;
+
+            div:first-child {
+                margin-left: 15px;
+            }
 
             .section {
                 display: inline-block;
-                margin-right: 10px;
-                margin-left: 10px;
+                margin-right: 8px;
+                margin-left: 8px;
                 height: 100%;
                 vertical-align: top;
-                margin-right: 25px;
-                margin-left: 20px;
+                box-sizing: border-box;
+                //margin-right: 25px;
+                //margin-left: 20px;
 
-                &:first-child {
-                    margin-left: 30px;
-                }
+                
 
                 .nav-header {
                     position: relative;
@@ -179,9 +347,9 @@ sticky-footer {
                 }
 
                 li {
-                    width: 100px;
+                    width: 150px;
                     height: 25px;
-                    font-size: 18px;
+                    font-size: 16px;
                     margin-top: 5px;
                     margin-bottom: 5px;
 
@@ -228,12 +396,91 @@ sticky-footer {
 }
 
 .content {
-    padding: 0 !important;
+    padding: 0;
 }
 
 footer {
-    height: 75px;
+    min-height: 75px;
+    height: auto;
     background-color: #222;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    div {
+        text-align: left;
+    }
+    span {
+        color: #ccc;
+        width: 100%;
+        text-align: center;
+        display: block;
+        margin-top: 10px;
+    }
+    .col-sm-4 {      
+        height: 264px;
+        &:nth-child(2) {
+            &:before, &:after {
+                content: "";
+                width: 1px;
+                height: 200px;
+                background-color: black;
+                display: block;
+                position: absolute;
+                top: 40px;
+            }
+            &:before {
+                left: 0px;
+            }
+            &:after {
+                right: 0px;
+            }
+            //border-right: 1px solid black;
+            //border-left: 1px solid black;
+        }
+    }
+    h4 {
+        color: white;
+        font-size: 22px;
+        text-align: center;
+    }
+    ul {
+        list-style: none;
+        padding-left: 0;
+        width: 175px;
+        display: block;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        li {
+            padding: 5px;
+            padding-left: 30px;
+            position: relative;
+            a {
+                color: #ccc;
+                font-size: 14px;
+                &:hover, &:focus {
+                    cursor: pointer;
+                    color: white;
+                    text-decoration: none;
+                }
+            }
+            &:before {
+                content: "";
+                background-image: url(/assets/spade.png);
+                background-size: cover;
+                width: 20px;
+                height: 20px;
+                display: block;
+                position: absolute;
+                left: 0px;
+                top: 7px;
+            }
+            &.no-list {
+                &:before {
+                    background-image: none;
+                }
+            }
+        }
+    }
 }
 
 .navbar-right {
@@ -259,6 +506,10 @@ footer {
         background-color: #4ec65f !important;
         border: none !important;
     }
+}
+
+.nobold {
+    font-weight: normal !important;
 }
 
 form {

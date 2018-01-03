@@ -1,0 +1,318 @@
+.casino-desc {
+    background-color: rgb(252, 252, 252);
+    position: relative;
+    #casino-name {
+        height: 60px;
+        font-size: 36px;
+        text-align: center;
+        line-height: 60px;
+        padding: 0 10px;
+        width: 100%;
+        font-weight: bold;
+        position: relative;
+        &:after {
+            content : "";
+            position: absolute;
+            left    : 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            bottom  : 0;
+            height  : 1px;
+            width   : 100%;
+            border-bottom: solid 1px #444;
+        }
+    }
+    #casino-summary {
+        padding-top: 10px;
+        font-size: 16px;
+        height: 75px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-height: 21px;
+        width: 100%;
+        position: relative;
+        transition: 250ms;
+        background-color: rgb(252, 252, 252);
+        &.extended {
+            height: auto !important;
+        }
+    }
+    #show-btn {
+        float: right;
+        text-decoration: none;
+        margin-right: 10px;
+        margin-bottom: 5px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.casino-summ-box {
+    height: 220px;
+    background-color: rgb(252, 252, 252);
+}
+
+#casino-ratings {
+    h3 {
+        font-size: 18px;
+        width: 100%;
+        height: 30px;
+        margin: 0px;
+        margin-bottom: 5px;
+        border-bottom: dashed 1px #444;
+    }
+    .rating {
+        width: 100%;
+        height: 45px;
+        position: relative;
+        .rating-box {
+            position: relative;
+            top: 7.5px;
+            height: 30px;
+            width: 30px;
+            font-size: 16px;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            background-color: #03c;
+            display: inline-block;
+            vertical-align: top;
+            font-weight: bold;
+            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        }
+        span {
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 12.5px;
+            margin-left: 5px;
+            font-weight: bold;
+        }
+        .info {
+            position: absolute;
+            right: 5px;
+            top: 10px;
+            height: 25px;
+            width: 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            color: white;
+            background-color: #333;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            &:hover {
+                cursor: help;
+                //opacity: .7;
+            }
+        }
+    }
+}
+
+#casino-preview {
+    //background-image: url("https://www.casinotopsonline.com/img/objects/casinos_158_127142695Casinoland-games-lobby.jpg");
+    background-size: cover;
+}
+
+#casino-ranking {
+    .countries {
+        width: 100%;
+        height: 19px;
+        margin-top: 10px;
+        .country {
+            width: 27px;
+            height: 19px;
+            vertical-align: top;
+            margin-right: 3px;
+        }
+    }
+    .ranking {
+        #rankingProgress {
+            width: 150px;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 40px;
+        }
+    }
+
+    #casinoRanking {
+
+    }
+}
+
+.casino-btn {
+    height: 65px;
+    color: white;
+    line-height: 65px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 250ms;
+    &:hover {
+        cursor: pointer;
+        font-size: 20px;
+    }
+}
+
+#casino-review-btn {
+    background-color: #444;
+}
+
+#casino-favorite-btn {
+    background-color: #df0e14;
+}
+
+#casino-play-btn {
+    background-color: #4ec65f;
+}
+
+.casino-info {
+    h2 {
+        font-size: 26px;
+        width: 100%;
+        padding-bottom: 5px;
+        margin: 0;
+        text-align: center;
+        //border-bottom: solid 2px #999;
+    }
+    .casino-summ-table {
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+        border: solid 2px #999;
+        tbody {
+            tr {
+                border-bottom: dashed 1px #999;
+                position: relative;
+                td {
+                    width: 45%;
+                    padding: 15px 0;
+                    position: relative;
+                    &:first-child {
+                        font-weight: bold;
+                        font-size: 16px;
+                    }
+                    ul {
+                        width: 100%;
+                        padding: 0;
+                        margin: 0;
+                        li {
+                            list-style: none;
+                            min-width: 45%;
+                            max-width: 100%;
+                            display: inline-block;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            margin: 2.5px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .row {
+        padding: 10px 0;
+        .title {
+            font-size: 14px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            text-align: center;
+            li {
+                display: inline-block;
+                min-width: 49%;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+.welcome-bonus {
+    background-image: url(https://www.bypeople.com/wp-content/uploads/2014/05/light-live-background-css.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    border: solid 5px white;
+    width: 100%;
+    margin-bottom: 15px;
+    h2, h3, h4 {
+        margin-top: 25px;
+        margin-bottom: 0;
+    }
+    h2 {
+        width: 100%;
+        font-size: 50px;
+        text-align: center;
+        font-weight: bold;
+    }
+    h3 {
+        width: 100%;
+        font-size: 40px;
+        text-align: center;
+        font-weight: bold;
+        color: #df0e14;
+    }
+    h4 {
+        width: 100%;
+        font-size: 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+    a {
+        width: 90%;
+        text-align: center;
+        background-color: #4ec65f;
+        height: 75px;
+        display: block;
+        font-size: 25px;
+        line-height: 75px;
+        color: white;
+        transition: 250ms;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25px;
+        &:hover {
+            text-decoration: none;
+            font-size: 30px;
+        }
+    }
+}
+
+blockquote {
+    border: none;
+    text-align: center;
+    background-image: url(https://www.bypeople.com/wp-content/uploads/2014/05/light-live-background-css.jpg);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    border: solid 5px white;
+    width: 100%;
+    padding: 20px 20px;
+    position: relative;
+    font-weight: normal;
+    h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+        margin-top: 0px;
+        span {
+            color: #df0e14;
+            font-weight: bold;
+        }
+    }
+    p {
+        font-size: 20px;
+        font-style: italic;
+        white-space: pre-line;
+    }
+}

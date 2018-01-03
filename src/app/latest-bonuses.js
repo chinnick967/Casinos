@@ -1,111 +1,59 @@
 angular
     .module('app')
     .component('latestBonuses', {
-        controller: function ($scope, $http, casinos) {
-            var self = this;
-            this.casinos = [];
+        controller: function ($scope, $http, appData, userService) {
+            this.data = appData;
+            this.bonuses = undefined;
+            this.userService = userService;
 
-            this.$onInit = function () {
-                casinos.getCasinos()
-                    .then(function (casinos) {
-                        self.casinos = casinos;
-                    });
+            this.data.load(function() {
+                var bonuses = this.data.bonuses;
+                if (this.data.casino != undefined) {
+                    this.bonuses = bonuses.filter(function(bonus) {
+                        return bonus.casino == this.data.casino;
+                    }.bind(this));
+                } else {
+                    this.bonuses = bonuses;
+                }
+                this.bonuses.reverse();
+            }.bind(this));
+
+            /*window.addEventListener('data-loaded', function() {
+                var bonuses = this.data.bonuses;
+                if (this.data.casino != undefined) {
+                    this.bonuses = bonuses.filter(function(bonus) {
+                        return bonus.casino == this.data.casino;
+                    }.bind(this));
+                } else {
+                    this.bonuses = bonuses;
+                }
+                this.bonuses.reverse();
+            }.bind(this));*/
+
+            this.findCasino = function(name) {
+                var casino = this.data.casinos.filter(function(cas) {
+                    return cas["name"] = name;
+                });
+                return casino[0];
+            }
+
+            this.findSoftware = function(name) {
+                var software = this.data.software.filter(function(cas) {
+                    return cas["name"] = name;
+                });
+                return software[0];
             }
         },
         controllerAs: "$ctrl",
-        template: `               
-            <h2 class="section-title">Latest Bonuses <a href="#" class="link"><span>View more</span><span class="glyphicon glyphicon-chevron-right"></span></a></h2>
-            <p>Don’t miss out on the very best freebies and bonuses at your favourite online casinos! A wide choice of casino bonuses can be found at CasinoTopsOnline.com, including latest exclusive offers, slots bonus codes, free spins, mobile casino no deposit bonuses and many more.</p>
-            <div class="bonuses-container">
-                <div class="listing">
-                    <div class="col-sm-9"><img class="thumbnail" src="https://www.casinotopsonline.com/img/objects/file_278340_1491130117.png" />
-                        <div class="info">
-                            <a href="#"><h3>Guts Casino Bonus</h3></a>
-                            <div class="countries">
-                                <img class="country" src="https://www.casinotopsonline.com/img/objects/file_843636_1445956432.png" />
-                                <img class="country" src="https://www.casinotopsonline.com/img/objects/file_843636_1445956432.png" />
-                                <img class="country" src="https://www.casinotopsonline.com/img/objects/file_843636_1445956432.png" />
-                            </div>
-                            <p>$/€ 1000 + 1000 Free Spins Package</p>
-                            <p>Bonus code: <span>CA500</span></p>
-                        </div>
-                    </div>
-                    <div class="buttons-container col-sm-3">
-                        <a href="#" class="top-button button .btn-hover">More Info</a>
-                        <a href="#" class="bottom-button button .btn-hover">Bonuses</a>
-                    </div>
-                </div>
-                <div class="listing">
-                    <div class="col-sm-9"><img class="thumbnail" src="https://www.casinotopsonline.com/img/objects/file_278340_1491130117.png" />
-                        <div class="info">
-                            <a href="#"><h3>Guts Casino Bonus</h3></a>
-                            <div class="countries">
-                                <img class="country" src="https://www.casinotopsonline.com/img/objects/file_843636_1445956432.png" />
-                                <img class="country" src="https://www.casinotopsonline.com/img/objects/file_843636_1445956432.png" />
-                                <img class="country" src="https://www.casinotopsonline.com/img/objects/file_843636_1445956432.png" />
-                            </div>
-                            <p>$/€ 1000 + 1000 Free Spins Package</p>
-                            <p>Bonus code: <span>CA500</span></p>
-                        </div>
-                    </div>
-                    <div class="buttons-container col-sm-3">
-                        <a href="#" class="top-button button">More Info</a>
-                        <a href="#" class="bottom-button button">Bonuses</a>
-                    </div>
-                </div>
-                <div class="listing">
-                    <div class="col-sm-9"><img class="thumbnail" src="https://www.casinotopsonline.com/img/objects/file_278340_1491130117.png" />
-                        <div class="info">
-                            <a href="#"><h3>Guts Casino Bonus</h3></a>
-                            <div class="countries">
-                                <img class="country" src="https://www.casinotopsonline.com/img/objects/file_843636_1445956432.png" />
-                                <img class="country" src="https://www.casinotopsonline.com/img/objects/file_843636_1445956432.png" />
-                                <img class="country" src="https://www.casinotopsonline.com/img/objects/file_843636_1445956432.png" />
-                            </div>
-                            <p>$/€ 1000 + 1000 Free Spins Package</p>
-                            <p>Bonus code: <span>CA500</span></p>
-                        </div>
-                    </div>
-                    <div class="buttons-container col-sm-3">
-                        <a href="#" class="top-button button">More Info</a>
-                        <a href="#" class="bottom-button button">Bonuses</a>
-                    </div>
-                </div>
-                <div class="listing">
-                    <div class="col-sm-9"><img class="thumbnail" src="https://www.casinotopsonline.com/img/objects/file_278340_1491130117.png" />
-                        <div class="info">
-                            <a href="#"><h3>Guts Casino Bonus</h3></a>
-                            <div class="countries">
-                                <img class="country" src="https://www.casinotopsonline.com/img/objects/file_843636_1445956432.png" />
-                                <img class="country" src="https://www.casinotopsonline.com/img/objects/file_843636_1445956432.png" />
-                                <img class="country" src="https://www.casinotopsonline.com/img/objects/file_843636_1445956432.png" />
-                            </div>
-                            <p>$/€ 1000 + 1000 Free Spins Package</p>
-                            <p>Bonus code: <span>CA500</span></p>
-                        </div>
-                    </div>
-                    <div class="buttons-container col-sm-3">
-                        <a href="#" class="top-button button">More Info</a>
-                        <a href="#" class="bottom-button button">Bonuses</a>
-                    </div>
-                </div>
-                <div class="listing">
-                    <div class="col-sm-9"><img class="thumbnail" src="https://www.casinotopsonline.com/img/objects/file_278340_1491130117.png" />
-                        <div class="info">
-                            <a href="#"><h3>Guts Casino Bonus</h3></a>
-                            <div class="countries">
-                                <img class="country" src="https://www.casinotopsonline.com/img/objects/file_843636_1445956432.png" />
-                                <img class="country" src="https://www.casinotopsonline.com/img/objects/file_843636_1445956432.png" />
-                                <img class="country" src="https://www.casinotopsonline.com/img/objects/file_843636_1445956432.png" />
-                            </div>
-                            <p>$/€ 1000 + 1000 Free Spins Package</p>
-                            <p>Bonus code: <span>CA500</span></p>
-                        </div>
-                    </div>
-                    <div class="buttons-container col-sm-3">
-                        <a href="#" class="top-button button">More Info</a>
-                        <a href="#" class="bottom-button button">Bonuses</a>
-                    </div>
+        template: `
+            <div style="position: relative;" ng-if="$ctrl.bonuses.length > 0">
+                 <edit style="top: 90px; left: -60px;" collection="html" name="latestbonuses">
+                    <textarea type="text" ng-model="$ctrl.form.text" placeholder="Heading <h1> || Sub-Heading <h2> || Paragraph <p> (or hit enter) || Bold Red <b> || Italicized <i> || Link <a href>"></textarea>
+                </edit>             
+                <h2 class="section-title">Latest Bonuses <a class="link" ng-click="$ctrl.userService.betaFeature()"><span>View more</span><span class="glyphicon glyphicon-chevron-right"></span></a></h2>
+                <p ng-bind-html="$ctrl.data.html['latestbonuses'].text"></p>
+                <div class="bonuses-container">
+                        <bonus-listing class="col-sm-12" ng-repeat="bonus in $ctrl.bonuses | limitTo:6" bonus="{{ bonus }}"></bonus-listing>
                 </div>
             </div>
         `

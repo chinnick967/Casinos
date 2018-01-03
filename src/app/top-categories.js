@@ -1,21 +1,16 @@
 angular
     .module('app')
     .component('topCategories', {
-        controller: function ($scope, $http, casinos) {
-            var self = this;
-            this.casinos = [];
-
-            this.$onInit = function () {
-                casinos.getCasinos()
-                    .then(function (casinos) {
-                        self.casinos = casinos;
-                    });
-            }
+        controller: function ($scope, $http, appData) {
+            this.data = appData;
         },
         controllerAs: "$ctrl",
-        template: `               
+        template: ` 
+            <edit style="top: 90px; left: -60px;" collection="html" name="topcategories">
+                <textarea type="text" ng-model="$ctrl.form.text" placeholder="Heading <h1> || Sub-Heading <h2> || Paragraph <p> (or hit enter) || Bold Red <b> || Italicized <i> || Link <a href>"></textarea>
+            </edit>                   
             <h2 class="section-title">Top Casinos <a href="#" class="link"><span>View more</span><span class="glyphicon glyphicon-chevron-right"></span></a></h2>
-            <p>Don’t miss out on the very best freebies and bonuses at your favourite online casinos! A wide choice of casino bonuses can be found at CasinoTopsOnline.com, including latest exclusive offers, slots bonus codes, free spins, mobile casino no deposit bonuses and many more.</p>
+            <p ng-bind-html="$ctrl.data.html['topcategories'].text"></p>
             <div class="bonuses-container">
                 <div class="listing">
                     <h3>United States</h3>

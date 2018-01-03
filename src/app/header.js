@@ -1,5 +1,5 @@
 angular
-    .module('app', ["ngRoute"])
+    .module('app', ["ngRoute", "ngAnimate", "ngSanitize", '720kb.socialshare'])
     .directive('navigation', function navigation() {
         return {
             restrict: "E",
@@ -14,39 +14,92 @@ angular
                                 {
                                     "category" : "Casinos",
                                     "items" : [
-                                        {"name": "Casinos", "URL": "facebook.com"},
-                                        {"name": "Bonuses", "URL": "google.com"},
-                                        {"name": "Casinos", "URL": "facebook.com"},
-                                        {"name": "Casinos", "URL": "facebook.com"},
-                                        {"name": "Casinos", "URL": "facebook.com"}
+                                        {"name": "Top 10 Casinos", "URL": "/#!/toplists/casinos/ratings/all/any/10/1"},
+                                        {"name": "Best Jackpot", "URL": "/#!/toplists/casinos/ratings/games/Jackpot/10/1"},
+                                        {"name": "Latest Casinos", "URL": "/#!/toplists/casinos/latest/all/any/100/1"}
                                     ]
                                 },
                                 {
-                                    "category" : "Rawr",
+                                    "category" : "Bonuses",
                                     "items" : [
-                                        {"name": "Casinos", "URL": "facebook.com"},
-                                        {"name": "Bonuses", "URL": "google.com"},
-                                        {"name": "Casinos", "URL": "facebook.com"},
-                                        {"name": "Casinos", "URL": "facebook.com"}
+                                        {"name": "Latest Bonuses", "URL": "/#!/toplists/bonuses/latest/all/any/100/1"},
+                                        {"name": "Welcome Bonus", "URL": "/#!/toplists/bonuses/latest/type/Welcome%20Bonus/100/1"},
+                                        {"name": "Promotion Bonus", "URL": "/#!/toplists/bonuses/latest/type/Promotion%20Bonus/100/1"}
+                                    ]
+                                },
+                                {
+                                    "category" : "Games",
+                                    "items" : [
+                                        {"name": "Play Here", "URL": "/#!/games/Play"},
+                                        {"name": "Latest Games", "URL": "/#!/games"}
+                                    ]
+                                },
+                                {
+                                    "category" : "Mobile",
+                                    "items" : [
+                                        {"name": "Mobile Casinos", "URL": "/#!/toplists/casinos/ratings/mobile/true/100/1"},
+                                        {"name": "Mobile Bonuses", "URL": "/#!/toplists/bonuses/latest/mobile/true/100/1"},
+                                        {"name": "Mobile Games", "URL": "/#!/toplists/casinos/ratings/mobile/true/10/1"}
+                                    ]
+                                },
+                            ]
+                        },
+                        {
+                            "name": "Casinos",
+                            "categories": [
+                                {
+                                    "category" : "Newest",
+                                    "items" : [
+                                        {"name": "Casinos", "URL": "/#!/toplists/casinos/latest/all/any/100/1"},
+                                        {"name": "Mobile-Friendly", "URL": "/#!/toplists/casinos/latest/mobile/true/100/1"}
+                                    ]
+                                },
+                                {
+                                    "category" : "Countries",
+                                    "items" : [
+                                        {"name": "United Kingdom", "URL": "/#!/toplists/casinos/ratings/countries/United_Kingdom/100/1"},
+                                        {"name": "United States", "URL": "/#!/toplists/casinos/ratings/countries/United_States/100/1"},
+                                        {"name": "Sweden", "URL": "/#!/toplists/casinos/ratings/countries/Sweden/100/1"},
+                                        {"name": "Germany", "URL": "/#!/toplists/casinos/ratings/countries/Germany/100/1"},
+                                        {"name": "Japan", "URL": "/#!/toplists/casinos/ratings/countries/Japan/100/1"},
+                                        {"name": "Finland", "URL": "/#!/toplists/casinos/ratings/countries/Finland/100/1"},
+                                        {"name": "International", "URL": "/#!/toplists/casinos/ratings/all/any/100/1"}
                                     ]
                                 }
                             ]
                         },
                         {
-                            "name": "Casinos",
-                            "URL" : "facebook.com"
-                        },
-                        {
                             "name": "Slots",
-                            "URL" : "facebook.com"
+                            "URL" : "/#!/games/3DSlots"
                         },
                         {
                             "name": "Bonuses",
-                            "URL" : "facebook.com"
+                            "categories": [
+                                {
+                                    "category" : "Newest",
+                                    "items" : [
+                                        {"name": "Latest Bonuses", "URL": "/#!/toplists/bonuses/latest/all/any/100/1"},
+                                        {"name": "Mobile-Friendly", "URL": "/#!/toplists/bonuses/latest/mobile/true/100/1"}
+                                    ]
+                                },
+                                {
+                                    "category" : "Types",
+                                    "items" : [
+                                        {"name": "Welcome Bonus", "URL": "/#!/toplists/bonuses/latest/type/Welcome%20Bonus/100/1"},
+                                        {"name": "Promotion Bonus", "URL": "/#!/toplists/bonuses/latest/type/Promotion%20Bonus/100/1"},
+                                        {"name": "Sign-up Bonus", "URL": "/#!/toplists/bonuses/latest/type/Sign-up%20Bonus/100/1"},
+                                        {"name": "Deposit Bonus", "URL": "/#!/toplists/bonuses/latest/type/Deposit%20Bonus/100/1"},
+                                        {"name": "Free Spin Bonus", "URL": "/#!/toplists/bonuses/latest/type/Free%20Spin%20Bonus/100/1"},
+                                        {"name": "Loyalty Bonus", "URL": "/#!/toplists/bonuses/latest/type/Loyalty%20Bonus/100/11"},
+                                        {"name": "Referral Bonus", "URL": "/#!/toplists/bonuses/latest/type/Referral%20Bonus/100/1"},
+                                        {"name": "Highly Rated", "URL": "/#!/toplists/bonuses/ratings/all/any/100/1"}
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "name": "Games",
-                            "URL" : "facebook.com"
+                            "URL" : "/#!/games"
                         }
                     
                     ];

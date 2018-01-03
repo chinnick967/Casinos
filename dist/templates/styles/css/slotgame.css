@@ -1,0 +1,100 @@
+slot-game {
+  width: 100%;
+  height: auto;
+  /*.inner-circle {
+      height: 500px;
+      background-color: #111;
+      border-radius: 300px;
+      border-left: solid 15px #111;
+      border-right: solid 15px #111;
+      //background-color: #F0F0F0;
+      box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  }*/ }
+  slot-game iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+    background-color: #111;
+    margin-bottom: 0; }
+  slot-game .tri-btn {
+    height: 75px;
+    line-height: 75px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+    font-family: 'Lato', sans-serif;
+    color: white;
+    font-weight: bold;
+    transition: 250ms; }
+    slot-game .tri-btn:hover {
+      font-size: 30px; }
+    slot-game .tri-btn.review-btn {
+      background-color: #444; }
+    slot-game .tri-btn.favorite-btn {
+      background-color: #df0e14; }
+    slot-game .tri-btn.more-btn {
+      background-color: #4ec65f; }
+  slot-game .info {
+    background-color: #111;
+    height: auto;
+    padding-top: 25px;
+    padding-bottom: 25px; }
+    slot-game .info .info {
+      padding-top: 0;
+      padding-bottom: 0; }
+  slot-game casino-listing .info {
+    background-color: transparent; }
+  slot-game .description {
+    padding: 25px 10px;
+    padding-top: 0;
+    height: auto;
+    border-radius: 15px;
+    position: relative;
+    box-sizing: border-box; }
+    slot-game .description .wrapper {
+      min-height: 150px;
+      padding: 15px 15px;
+      background-color: #333;
+      width: 100%;
+      color: white;
+      box-sizing: border-box; }
+      slot-game .description .wrapper h2 {
+        margin-top: 0;
+        font-weight: bold; }
+  slot-game .rating {
+    padding: 0;
+    margin-bottom: 20px;
+    height: 130px;
+    border-radius: 15px; }
+    slot-game .rating .wrapper {
+      padding: 25px 10px;
+      background-color: #333;
+      line-height: 70px;
+      border-radius: 15px;
+      height: 100%;
+      width: 100%;
+      position: relative;
+      text-align: center;
+      color: #4ec65f;
+      font-size: 60px;
+      font-weight: bold; }
+      slot-game .rating .wrapper:after {
+        content: "Rating";
+        color: white;
+        position: absolute;
+        bottom: 10px;
+        left: 0px;
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+        line-height: initial; }
+    slot-game .rating.trust .wrapper:after {
+      content: "Trust Rating"; }
+    slot-game .rating.quality .wrapper:after {
+      content: "Quality Rating"; }
+    slot-game .rating.bonuses .wrapper:after {
+      content: "Bonuses Rating"; }
+    slot-game .rating.payout .wrapper:after {
+      content: "Payout Rating"; }
+
+/*# sourceMappingURL=slotgame.css.map */

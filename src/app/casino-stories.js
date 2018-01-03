@@ -1,16 +1,9 @@
 angular
     .module('app')
     .component('casinoStories', {
-        controller: function ($scope, $http, casinos) {
-            var self = this;
-            this.casinos = [];
-
-            this.$onInit = function () {
-                casinos.getCasinos()
-                    .then(function (casinos) {
-                        self.casinos = casinos;
-                    });
-            }
+        controller: function ($scope, $http, appData) {
+            this.data = appData;
+            
         },
         controllerAs: "$ctrl",
         template: `               

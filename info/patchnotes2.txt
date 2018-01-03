@@ -1,0 +1,8 @@
+1) I have to add withdrawal/deposit types manually now because it follows a certain pattern based off the icons you sent me previously. I should have removed the option to add them from the admin panel, I'll do that. If you want to add more, send me icons
+2) Deposits were an oversight, that has been fixed :)
+3) Telephone edit section has been changed to a textarea, you can add drop down to a new line and enter another phone number
+4) Game types was not intended to use icons, that option has been removed
+5) I've made it so the "What's Hot" section will read the inserted text as HTML now
+6) Links seem to be working properly. For the Mr. Green page you linked, the link you had set was the homepage (you had entered the homepage as the link address for some reason, I changed it to the Mr. Green homepage and you can edit this with the pencil icon at the bottom of that page)
+7) Links for your software providers aren't working properly because you linked with the www address and not the http version. What I normally do is open the site in my browser then copy the address from there. You'll have to remake them.
+8) The admin css editors weren't opening properly, should be fixed.

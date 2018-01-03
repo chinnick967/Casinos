@@ -1,0 +1,88 @@
+site-article {
+  padding: 0 !important; }
+  site-article .article-header {
+    width: 100%;
+    height: 400px;
+    object-fit: cover; }
+  site-article .info-bar {
+    width: 100%;
+    background-color: #222;
+    height: 40px;
+    position: relative; }
+    site-article .info-bar .category {
+      background-color: green;
+      height: 100%;
+      text-align: center;
+      line-height: 40px;
+      text-transform: uppercase;
+      color: #222;
+      font-weight: bold;
+      font-size: 14px; }
+      site-article .info-bar .category.article {
+        background-color: #AA8639; }
+      site-article .info-bar .category.story {
+        background-color: #427A82; }
+      site-article .info-bar .category.news {
+        background-color: #87468B; }
+  site-article .title {
+    width: 100%;
+    font-size: 36px;
+    color: #333;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin: 0px;
+    padding: 20px;
+    padding-left: 0;
+    /*&:after {
+        content: "";
+        height: 2px;
+        width: 80%;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        background-color: #333;
+        margin-left: auto;
+        margin-right: auto;
+        right: 0px;
+    }*/ }
+  site-article article {
+    width: 100%;
+    height: auto;
+    font-size: 16px; }
+  site-article .socials {
+    width: 115px;
+    position: relative;
+    margin: 0 auto;
+    height: auto;
+    transition: 500ms;
+    position: static;
+    top: 0;
+    left: 0; }
+    site-article .socials.fixed {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      margin: 0; }
+    site-article .socials .social {
+      width: 115px;
+      height: 114px;
+      display: block;
+      margin: -25px auto;
+      position: relative;
+      transform: scale(0.6);
+      transition: 250ms ease; }
+      site-article .socials .social:first-child {
+        margin-top: 15px; }
+      site-article .socials .social:hover {
+        cursor: pointer;
+        transform: scale(0.7); }
+      site-article .socials .social.facebook {
+        background: url("/assets/social-icons.png") 0px -140px; }
+      site-article .socials .social.twitter {
+        background: url("/assets/social-icons.png") -290px -140px; }
+      site-article .socials .social.google {
+        background: url("/assets/social-icons.png") -145px -140px; }
+      site-article .socials .social.linkedin {
+        background: url("/assets/social-icons.png") 0px 0px; }
+
+/*# sourceMappingURL=articles.css.map */

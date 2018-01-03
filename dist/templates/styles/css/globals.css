@@ -3,4 +3,39 @@
   .btn-hover:hover {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); }
 
+.tooltip-message {
+  width: 200px;
+  height: 80px;
+  background-color: #333;
+  z-index: 999999;
+  position: absolute;
+  top: -85px;
+  left: -87.5px;
+  font-size: 10px;
+  line-height: 12px;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center; }
+  .tooltip-message.ng-hide-remove {
+    animation: 0.5s flipInX ease;
+    opacity: 1 !important; }
+
+.sidebar-container .play-button:hover .tip {
+  width: 120px;
+  height: 35px;
+  background-color: #222;
+  z-index: 999999;
+  position: absolute;
+  top: -5px;
+  left: -130px;
+  font-size: 10px;
+  line-height: 12px;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  animation: 0.5s flipInX ease;
+  display: block; }
+.sidebar-container .tip {
+  display: none; }
+
 /*# sourceMappingURL=globals.css.map */

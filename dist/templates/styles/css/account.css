@@ -1,9 +1,17 @@
-.admin-panel {
-  margin-top: 75px; }
+.admin-panel h1 {
+  display: block;
+  margin-top: 0;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: bold;
+  background-color: #222;
+  color: white;
+  padding: 15px 0;
+  text-align: center; }
 
 .new-item {
   height: 250px;
-  margin-bottom: 40px; }
+  margin-bottom: 20px; }
   .new-item .plus {
     position: relative;
     margin-left: auto;
@@ -58,27 +66,122 @@
   border-radius: 15px;
   text-align: center;
   font-family: Lato;
-  transform: scale(0); }
+  transform: scale(0);
+  overflow-x: hidden;
+  white-space: initial;
+  color: black;
+  /*select {
+      width: 250px;
+      height: 100px;
+      text-align: center;
+      margin: 10px;
+      position: relative;s
+  }*/
+  /* The switch - the box around the slider */
+  /* Hide default HTML checkbox */
+  /* The slider */
+  /* Rounded sliders */ }
   .add-form .form-section {
     width: 100%;
     height: auto;
     text-align: center;
     display: none; }
-    .add-form .form-section h2 {
-      margin-top: 0px;
-      text-transform: capitalize; }
-    .add-form .form-section input {
-      display: inline-block;
-      margin: 10px;
-      text-align: center;
-      width: 200px; }
-    .add-form .form-section .input-container {
-      display: inline-block;
-      margin: 10px;
-      text-align: center; }
-    .add-form .form-section label {
-      display: inline-block;
-      width: 150px; }
+  .add-form h2 {
+    margin-top: 0px;
+    text-transform: capitalize; }
+  .add-form input {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    width: 200px;
+    font-weight: normal; }
+  .add-form output {
+    display: inline-block;
+    margin: 10px;
+    margin-top: -5px;
+    padding: 0;
+    text-align: center;
+    width: 200px;
+    font-size: 16px;
+    font-weight: bold; }
+  .add-form select {
+    width: 250px;
+    height: 25px;
+    text-align: center;
+    margin: 10px;
+    position: relative; }
+  .add-form select[multiple] {
+    width: 250px;
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
+  .add-form .switch {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60px;
+    height: 34px;
+    margin-top: 20px;
+    margin-bottom: 10px; }
+    .add-form .switch .switch-text {
+      top: -32px;
+      position: relative;
+      line-height: 34px;
+      display: inline-block; }
+  .add-form .switch input {
+    display: none; }
+  .add-form .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s; }
+  .add-form .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s; }
+  .add-form input:checked + .slider {
+    background-color: #2196F3; }
+  .add-form input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3; }
+  .add-form input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px); }
+  .add-form .slider.round {
+    border-radius: 34px; }
+  .add-form .slider.round:before {
+    border-radius: 50%; }
+  .add-form span {
+    position: relative;
+    display: block;
+    margin: 10px; }
+  .add-form textarea {
+    display: inline-block;
+    width: 100%;
+    height: 150px;
+    text-align: left;
+    margin: 10px 0;
+    resize: none; }
+  .add-form .input-container {
+    display: inline-block;
+    margin: 10px;
+    text-align: center; }
+  .add-form label {
+    display: inline-block;
+    width: 150px; }
   .add-form .form-save {
     display: inline-block;
     padding: 5px 15px;
@@ -95,9 +198,212 @@
     text-align: center; }
   .add-form .form-button {
     margin: 10px;
-    transition: 250ms; }
+    transition: 250ms;
+    font-size: 14px;
+    line-height: initial; }
     .add-form .form-button:hover {
       cursor: pointer;
       transform: scale(1.1); }
+
+.admin-list-container .search {
+  height: 30px;
+  line-height: 30px; }
+  .admin-list-container .search h2 {
+    font-size: 20px;
+    margin-top: 5px;
+    display: inline-block;
+    text-transform: capitalize; }
+  .admin-list-container .search .search-bar {
+    display: inline-block;
+    float: right;
+    margin-top: 5px;
+    position: relative; }
+    .admin-list-container .search .search-bar input {
+      height: 20px;
+      width: 150px;
+      padding-right: 30px; }
+    .admin-list-container .search .search-bar span {
+      font-size: 16px;
+      background-color: #4ec65f;
+      color: white;
+      font-weight: bold;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      height: 100%;
+      line-height: 17px;
+      width: 30px;
+      text-align: center; }
+      .admin-list-container .search .search-bar span:hover {
+        cursor: pointer; }
+  .admin-list-container .search select {
+    float: right;
+    margin-top: 5px;
+    margin-left: 5px;
+    height: 20px;
+    text-transform: capitalize; }
+.admin-list-container .list-container {
+  height: 300px;
+  border: solid 1px #333;
+  padding: 20px;
+  position: relative;
+  margin-bottom: 20px;
+  overflow-x: hidden; }
+  .admin-list-container .list-container .item {
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 5px;
+    background-color: #F9F9F9;
+    font-size: 16px;
+    position: relative; }
+    .admin-list-container .list-container .item:nth-child(even) {
+      background-color: #669999;
+      color: white; }
+    .admin-list-container .list-container .item .remove-btn {
+      color: white;
+      height: 15px;
+      width: 15px;
+      line-height: 12px;
+      border-radius: 50px;
+      text-align: center;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      font-size: 14px;
+      background-color: #df0e14; }
+      .admin-list-container .list-container .item .remove-btn:hover {
+        cursor: pointer;
+        opacity: .8; }
+    .admin-list-container .list-container .item .edit {
+      color: white;
+      background-color: #4ec65f;
+      height: 20px;
+      top: 2.5px;
+      width: 20px;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: center;
+      position: absolute;
+      right: 25px; }
+      .admin-list-container .list-container .item .edit:hover {
+        cursor: pointer;
+        opacity: .8; }
+    .admin-list-container .list-container .item .bonus {
+      color: white;
+      background-color: #444;
+      height: 20px;
+      top: 2.5px;
+      width: 50px;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: center;
+      position: absolute;
+      right: 50px; }
+      .admin-list-container .list-container .item .bonus:hover {
+        cursor: pointer;
+        opacity: .8; }
+
+logout-button {
+  background-color: #4ec65f;
+  color: white;
+  height: 75px;
+  font-size: 30px;
+  text-align: center;
+  line-height: 75px;
+  text-transform: uppercase;
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  transition: 250ms; }
+  logout-button:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); }
+  logout-button .wrapper {
+    width: 100%;
+    height: 100%; }
+
+admin-controls {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: auto;
+  line-height: 75px;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 99;
+  text-align: center;
+  transition: 250ms; }
+  admin-controls .wrap {
+    height: 75px;
+    width: 100%;
+    transition: 250ms; }
+    admin-controls .wrap.open {
+      height: 100vh; }
+  admin-controls button {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: #4ec65f;
+    border-radius: 50px;
+    box-shadow: 0px 3px 0px 0px #008A11;
+    font-size: 20px;
+    margin-top: 12.5px;
+    transition: 250ms;
+    margin-left: 10px;
+    margin-right: 10px; }
+    admin-controls button:focus {
+      outline: none; }
+    admin-controls button:hover {
+      transform: scale(1.1); }
+  admin-controls .edit {
+    transform: scale(1);
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 3px 0px 0px #008A11;
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 12.5px;
+    line-height: 50px;
+    color: #222;
+    transition: 250ms; }
+    admin-controls .edit:hover {
+      transform: scale(1.1); }
+  admin-controls .transclude-container {
+    line-height: initial; }
+  admin-controls input, admin-controls textarea {
+    line-height: 1.2em !important; }
+  admin-controls .control-form {
+    margin-top: 20px; }
+    admin-controls .control-form h2 {
+      font-size: 50px;
+      font-weight: bold;
+      color: white; }
+    admin-controls .control-form textarea {
+      width: 400px;
+      height: 600px;
+      line-height: 1.2em;
+      padding: 10px; }
+    admin-controls .control-form .save-btn {
+      display: block;
+      width: 75px;
+      height: 30px;
+      line-height: 30px;
+      color: #222;
+      position: relative;
+      margin: 0 auto;
+      background-color: #4ec65f;
+      box-shadow: 0px 3px 0px 0px #008A11;
+      font-size: 20px;
+      margin-top: 12.5px;
+      transition: 250ms;
+      color: white; }
+      admin-controls .control-form .save-btn:hover {
+        cursor: pointer;
+        transform: scale(1.1); }
 
 /*# sourceMappingURL=account.css.map */

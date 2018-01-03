@@ -1,18 +1,21 @@
 angular
     .module('app')
     .component('topTabs',  {
-        controller: function($scope, $interval, casinos) {
+        controller: function($scope, $interval, appData) {
+            this.data = appData;
             this.selected = 0;
             this.selections = ["Top Casinos", "Top Slots", "Live Dealers", "Top Mobile"];
             this.counter = 0;
             this.tick = function(ctrl) {
-                ctrl.counter += 500;
-                if (ctrl.counter == 8000) {
-                    ctrl.counter = 0;
-                    if (ctrl.selected != 3) {
-                        ctrl.selected++;
-                    } else {
-                        ctrl.selected = 0;
+                if (!this.data.animations.stop) {
+                    ctrl.counter += 500;
+                    if (ctrl.counter == 8000) {
+                        ctrl.counter = 0;
+                        if (ctrl.selected != 3) {
+                            ctrl.selected++;
+                        } else {
+                            ctrl.selected = 0;
+                        }
                     }
                 }
             }
@@ -22,37 +25,50 @@ angular
         controllerAs: "$ctrl",
         template: `               
             <div class="top-casinos-container">
+                <div class="graybg"></div>
                 <div id="top-casinos" class="tab-content" ng-class="{selectedContent : $ctrl.selections[$ctrl.selected] == 'Top Casinos'}">
                     <img src="/assets/top-casino-background.jpg" />
                     <div class="content">
                         <h1>THE TOP 10 CASINO SITES YOU NEED TO VISIT</h1>
-                        <p>Here is a list of the top 10 online casinos for 2017. The sites are ranked on a range of different factors and qualities such as: Reliability, customer support, online casino security, games and software, variety of languages and currencies, payout time, bonuses and promotions. We turn each online casino inside out!</p>
-                        <a href="#" class="play-button">Play</a><a href="#" class="review-button">Read More</a>
+                        <p ng-bind-html="$ctrl.data.html['home1'].text"></p>
+                        <a href="/#!/games/Play" class="play-button">Play</a><a href="/#!/toplists/casinos/ratings/all/any/10/1" class="review-button">More</a>
                     </div>
+                    <edit style="top: 30px; left: -60px;" collection="html" name="home1">
+                        <textarea type="text" ng-model="$ctrl.form.text" placeholder="Heading <h1> || Sub-Heading <h2> || Paragraph <p> (or hit enter) || Bold Red <b> || Italicized <i> || Link <a href>"></textarea>
+                    </edit>
                 </div>
                 <div id="top-slots" class="tab-content" ng-class="{selectedContent : $ctrl.selections[$ctrl.selected] == 'Top Slots'}">
                     <img src="/assets/top-slots-casino-background.jpg" />
                     <div class="content">
-                        <h1>THE TOP 10 CASINO SITES YOU NEED TO VISIT</h1>
-                        <p>Here is a list of the top 10 online casinos for 2017. The sites are ranked on a range of different factors and qualities such as: Reliability, customer support, online casino security, games and software, variety of languages and currencies, payout time, bonuses and promotions. We turn each online casino inside out!</p>
-                        <a href="#" class="play-button">Play</a><a href="#" class="review-button">Read More</a>
+                        <h1>THE TOP 10 SLOT GAMES YOU HAVE TO TRY</h1>
+                        <p ng-bind-html="$ctrl.data.html['home2'].text"></p>
+                        <a href="/#!/games/3DSlots" class="play-button">Play</a><a href="/#!/games/SlotReviews" class="review-button">More</a>
                     </div>
+                    <edit style="top: 30px; left: -60px;" collection="html" name="home2">
+                        <textarea type="text" ng-model="$ctrl.form.text" placeholder="Heading <h1> || Sub-Heading <h2> || Paragraph <p> (or hit enter) || Bold Red <b> || Italicized <i> || Link <a href>"></textarea>
+                    </edit>
                 </div>
                 <div id="top-live-dealers" class="tab-content" ng-class="{selectedContent : $ctrl.selections[$ctrl.selected] == 'Live Dealers'}">
                     <img src="/assets/top-live-dealer-background.jpg" />
                     <div class="content">
-                        <h1>THE TOP 10 CASINO SITES YOU NEED TO VISIT</h1>
-                        <p>Here is a list of the top 10 online casinos for 2017. The sites are ranked on a range of different factors and qualities such as: Reliability, customer support, online casino security, games and software, variety of languages and currencies, payout time, bonuses and promotions. We turn each online casino inside out!</p>
-                        <a href="#" class="play-button">Play</a><a href="#" class="review-button">Read More</a>
+                        <h1>PLAY WITH LIVE DEALERS FROM THE COMFORT OF YOUR LIVING ROOM</h1>
+                        <p ng-bind-html="$ctrl.data.html['home3'].text"></p>
+                        <!--<a href="#" class="play-button">Play</a><a href="#" class="review-button">More</a>-->
                     </div>
+                    <edit style="top: 30px; left: -60px;" collection="html" name="home3">
+                        <textarea type="text" ng-model="$ctrl.form.text" placeholder="Heading <h1> || Sub-Heading <h2> || Paragraph <p> (or hit enter) || Bold Red <b> || Italicized <i> || Link <a href>"></textarea>
+                    </edit>
                 </div>
                 <div id="top-mobile" class="tab-content" ng-class="{selectedContent : $ctrl.selections[$ctrl.selected] == 'Top Mobile'}">
                     <img src="/assets/top-mobile-casino-background2.jpg" />
                     <div class="content">
-                        <h1>THE TOP 10 CASINO SITES YOU NEED TO VISIT</h1>
-                        <p>Here is a list of the top 10 online casinos for 2017. The sites are ranked on a range of different factors and qualities such as: Reliability, customer support, online casino security, games and software, variety of languages and currencies, payout time, bonuses and promotions. We turn each online casino inside out!</p>
-                        <a href="#" class="play-button">Play</a><a href="#" class="review-button">Read More</a>
+                        <h1>THE TOP 10 MOBILE CASINOS TO PLAY ON FROM YOUR PHONE</h1>
+                        <p ng-bind-html="$ctrl.data.html['home4'].text"></p>
+                        <a href="/#!/games/Mobile" class="play-button">Play</a><a href="/#!/toplists/casinos/ratings/mobile/true/10/1" class="review-button">More</a>
                     </div>
+                    <edit style="top: 30px; left: -60px;" collection="html" name="home4">
+                        <textarea type="text" ng-model="$ctrl.form.text" placeholder="Heading <h1> || Sub-Heading <h2> || Paragraph <p> (or hit enter) || Bold Red <b> || Italicized <i> || Link <a href>"></textarea>
+                    </edit>
                 </div>
                 <div class="tabs-container">
                     <div class="col-sm-3 tab" ng-click="$ctrl.selected = 0; $ctrl.counter = 0;" ng-class="{selected : $ctrl.selections[$ctrl.selected] == 'Top Casinos'}">Top Casinos</div>

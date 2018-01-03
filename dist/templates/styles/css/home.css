@@ -1,5 +1,6 @@
 .top-casinos-container {
-  width: 100%; }
+  width: 100%;
+  position: relative; }
   .top-casinos-container .tab-content {
     position: absolute;
     top: 0px;
@@ -25,7 +26,9 @@
         font-weight: bold;
         text-shadow: 5px 5px 5px black; }
       .top-casinos-container .tab-content .content p {
-        text-shadow: 5px 5px 5px black; }
+        text-shadow: 5px 5px 5px black;
+        white-space: pre-line;
+        line-height: 18px; }
       .top-casinos-container .tab-content .content .play-button {
         display: inline-block;
         width: 150px;
@@ -37,7 +40,8 @@
         font-size: 16px;
         margin-top: 20px;
         margin-right: 10px;
-        box-sizing: border-box; }
+        box-sizing: border-box;
+        transition: 500ms; }
         .top-casinos-container .tab-content .content .play-button:hover {
           text-decoration: none;
           -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
@@ -54,12 +58,12 @@
         margin-top: 20px;
         border: 1px solid white;
         box-sizing: border-box;
-        vertical-align: top; }
+        vertical-align: top;
+        transition: 500ms; }
         .top-casinos-container .tab-content .content .review-button:hover {
           background-color: white;
           color: #222;
-          text-decoration: none;
-          transition: background-color .3s; }
+          text-decoration: none; }
   .top-casinos-container .selectedContent {
     position: relative !important;
     display: block !important; }
@@ -67,16 +71,19 @@
     position: relative;
     bottom: 0px;
     width: 100%;
-    height: 50px;
-    background-color: black; }
+    height: auto;
+    background-color: black;
+    min-height: 50px; }
     .top-casinos-container .tabs-container .tab {
       color: white;
       line-height: 50px;
+      height: 50px;
       text-align: center;
       font-size: 16px;
       font-family: 'Lato', sans-serif;
       background-color: #111;
-      border-right: 1px solid #333; }
+      border-right: 1px solid #333;
+      position: relative; }
       .top-casinos-container .tabs-container .tab:hover {
         cursor: pointer; }
       .top-casinos-container .tabs-container .tab:last-child {
@@ -120,7 +127,7 @@
     border-bottom: 1px solid #333;
     color: white; }
     .sidebar-container .title:after, .sidebar-container .title:before {
-      z-index: 99;
+      z-index: 1;
       top: 100%;
       left: 50%;
       border: solid transparent;
@@ -184,6 +191,8 @@
     background-color: #222;
     border-bottom: 1px solid #333;
     color: white; }
+    .sidebar-container .loader:hover {
+      cursor: pointer; }
     .sidebar-container .loader:after, .sidebar-container .loader:before {
       bottom: 100%;
       left: 50%;
@@ -199,19 +208,35 @@
       border-width: 10px;
       margin-left: -10px; }
 
+casino-games {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  background-color: #111;
+  border-top: 1px solid #333; }
+
+top-tabs {
+  position: relative;
+  width: auto;
+  height: auto; }
+
 .games-container {
   width: 100%;
-  height: 140px;
-  border-bottom: 1px solid rgba(51, 51, 51, 0.7); }
+  height: auto;
+  position: relative; }
   .games-container .game {
-    text-align: center; }
+    text-align: center;
+    color: white;
+    transition: 250ms; }
     .games-container .game:hover > .svg {
       fill: #df0e14; }
     .games-container .game:hover {
       color: #df0e14;
-      cursor: pointer; }
+      cursor: pointer;
+      text-decoration: none; }
     .games-container .game .svg {
-      fill: #333;
+      fill: white;
       width: 50px;
       height: 50px;
       position: relative;
@@ -224,8 +249,16 @@
     .games-container .game .img-title {
       position: relative;
       font-family: 'Lato', sans-serif;
-      font-size: 18px; }
+      font-size: 18px;
+      margin-bottom: 20px; }
 
+home-summary {
+  position: relative; }
+
+.latest-articles-container .intro-text {
+  padding: 20px 0; }
+  .latest-articles-container .intro-text h1 {
+    margin-top: 0px !important; }
 .latest-articles-container .articles {
   position: relative;
   display: inline-block;
@@ -234,27 +267,28 @@
   .latest-articles-container .articles .first-article {
     background-color: #333;
     height: 450px;
-    transition: all .5s ease; }
+    transition: all .5s ease;
+    /*&:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0.4;
+        background-image: url("http://telebidder.com/media/article_detailed/articles/headline-article-about-online-casino-en.jpeg");
+        background-repeat: no-repeat;
+        background-position: center; 
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }*/ }
     .latest-articles-container .articles .first-article:hover {
-      transform: scale(0.9); }
-    .latest-articles-container .articles .first-article:before {
-      content: ' ';
-      display: block;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      opacity: 0.4;
-      background-image: url("http://telebidder.com/media/article_detailed/articles/headline-article-about-online-casino-en.jpeg");
-      background-repeat: no-repeat;
-      background-position: center;
-      -ms-background-size: cover;
-      -o-background-size: cover;
-      -moz-background-size: cover;
-      -webkit-background-size: cover;
-      background-size: cover; }
+      transform: scale(0.95); }
     .latest-articles-container .articles .first-article .content {
       position: absolute;
       margin: auto;
@@ -290,27 +324,28 @@
   .latest-articles-container .articles .article {
     background-color: #333;
     height: 145px;
-    transition: all .5s ease; }
+    transition: all .5s ease;
+    /*&:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0.4;
+        background-image: url("http://telebidder.com/media/article_detailed/articles/headline-article-about-online-casino-en.jpeg");
+        background-repeat: no-repeat;
+        background-position: center; 
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }*/ }
     .latest-articles-container .articles .article:hover {
-      transform: scale(0.9); }
-    .latest-articles-container .articles .article:before {
-      content: ' ';
-      display: block;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      opacity: 0.4;
-      background-image: url("http://telebidder.com/media/article_detailed/articles/headline-article-about-online-casino-en.jpeg");
-      background-repeat: no-repeat;
-      background-position: center;
-      -ms-background-size: cover;
-      -o-background-size: cover;
-      -moz-background-size: cover;
-      -webkit-background-size: cover;
-      background-size: cover; }
+      transform: scale(0.95); }
     .latest-articles-container .articles .article:last-child {
       margin-bottom: 0px !important; }
     .latest-articles-container .articles .article .content {
@@ -345,23 +380,73 @@
         font-weight: bold; }
 
 .listing {
-  width: 100%;
   vertical-align: top;
   display: inline-block;
-  margin-top: 15px; }
+  margin-top: 15px;
+  width: 100%;
+  transition: 250ms ease; }
+  .listing.casino {
+    width: 100%; }
   .listing h3 {
-    margin-top: 0px !important; }
+    margin-top: 0px !important;
+    transition: 250ms ease; }
+  .listing a {
+    transition: 250ms ease; }
+  .listing .img-wrapper {
+    height: auto;
+    padding: 0; }
+    .listing .img-wrapper .ranking-first {
+      width: 39.5px;
+      height: 67.5px;
+      background-image: url("/assets/first-ranking.png");
+      background-position: top left;
+      background-size: 39.75px  67.5px;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: -15px;
+      left: -19px;
+      color: white;
+      padding-top: 9px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      font-family: 'Lato', sans-serif;
+      text-shadow: 0px 0px 1px black; }
+    .listing .img-wrapper .ranking {
+      width: 39.5px;
+      height: 45px;
+      background-image: url("/assets/ranking.png");
+      background-position: top left;
+      background-size: 39.75px 45px;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: -10px;
+      left: -17px;
+      color: #ddcc92;
+      padding-top: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      font-family: 'Artifika', serif;
+      text-shadow: 0px 0px 1px black;
+      filter: drop-shadow(5px 5px 5px #222); }
   .listing .thumbnail {
-    width: 170px;
     height: 120px;
-    display: inline-block; }
+    display: inline-block;
+    object-fit: cover;
+    border-right: solid 1px black !important; }
+    .listing .thumbnail.casino-listing-thumb {
+      width: 100%; }
   .listing .info {
     display: inline-block;
     vertical-align: top;
-    margin-left: 10px; }
+    margin-top: 10px; }
     .listing .info .stars {
-      font-size: 18px;
-      color: #df0e14 !important; }
+      font-size: 22px;
+      color: #df0e14 !important;
+      text-shadow: 0 0 1px black; }
+      .listing .info .stars .glyphicon {
+        margin-right: 4px; }
     .listing .info h3 {
       display: inline-block;
       top: 0px;
@@ -369,18 +454,21 @@
       vertical-align: top;
       margin-top: 0 !important;
       font-size: 20px;
-      font-weight: bold;
-      margin-top: 10px !important;
-      color: #337ab7 !important;
-      margin-bottom: 3px !important; }
+      margin-top: 5px !important;
+      color: white !important; }
       .listing .info h3:hover {
         color: #df0e14 !important; }
     .listing .info .countries {
       margin-top: 2px;
-      margin-bottom: 5px; }
+      margin-bottom: 12px; }
       .listing .info .countries .country {
         width: 27px;
-        height: 18.86px; }
+        height: 18.86px;
+        margin-right: 5px; }
+    .listing .info .bonus-desc {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap; }
     .listing .info p {
       font-size: 16px;
       font-family: 'Lato', sans-serif;
@@ -400,11 +488,44 @@
     text-align: center;
     line-height: 50px;
     margin-top: 10px;
-    transition: all .3s ease; }
+    transition: all .3s ease;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); }
     .listing .buttons-container .button:hover {
-      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); }
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+      transform: scale(1.05); }
   .listing .buttons-container .top-button {
     background-color: #333; }
+  .listing .more-info {
+    height: 0px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: 600ms; }
+    .listing .more-info.extended {
+      height: auto;
+      max-height: 300px;
+      transform-origin: top; }
+    .listing .more-info .countries {
+      margin-top: 20px; }
+    .listing .more-info .comma:after {
+      content: ", "; }
+    .listing .more-info .comma:last-child:after {
+      content: ""; }
+    .listing .more-info .description {
+      padding: 10px 0;
+      border-top: solid 1px #333;
+      margin-top: 10px;
+      text-align: center; }
+    .listing .more-info .read-more {
+      text-align: center;
+      height: 35px;
+      line-height: 35px;
+      background-color: #333;
+      color: white;
+      margin-bottom: 10px; }
+      .listing .more-info .read-more:hover {
+        text-decoration: none;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+        transition: 250ms; }
 
 .section-title {
   height: 70px;
@@ -424,6 +545,10 @@
     .section-title .link .glyphicon {
       top: 2px; }
 
+newest-games {
+  display: inline-block;
+  width: 100%; }
+
 .new-games-container {
   display: inline-block;
   margin-top: 30px;
@@ -433,10 +558,14 @@
     height: 135px;
     margin-bottom: 50px;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+    text-decoration: none; }
     .new-games-container .game img {
       width: 200px;
-      height: 135px; }
+      height: 135px;
+      object-fit: cover; }
+    .new-games-container .game .img-title {
+      text-decoration: none; }
     .new-games-container .game h3 {
       width: 100%;
       font-size: 18px;
@@ -464,7 +593,8 @@
     transition: all .3s ease; }
     .new-games-container .free-slots-button:hover {
       cursor: pointer;
-      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); }
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+      text-decoration: none; }
 
 .stories-container {
   position: relative;
@@ -549,7 +679,10 @@
       color: white;
       font-size: 20px;
       line-height: 50px;
-      text-align: center; }
+      text-align: center;
+      transition: 250ms; }
+      .subscription-container .subscription .subscribe-button:hover {
+        cursor: pointer; }
 
 @keyframes fade-in {
   from {

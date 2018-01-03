@@ -1,6 +1,6 @@
 angular
     .module('app')
-    .service('loginService', function ($timeout, $http, messageService) {
+    .service('loginService', function ($rootScope, $timeout, $http, $window, messageService) {
         this.user = null;
 
         window.fbAsyncInit = function() {
@@ -26,12 +26,11 @@ angular
         }(document, 'script', 'facebook-jssdk'));
 
         this.fbLogin = function() {
-            var self = this;
             window.FB.login(function(response) {
                 window.FB.api('/me?fields=id,name,email', function(response) {
-                    //self.createCookie("user", JSON.stringify(response), 360);
-                    self.user = response;
-                });
+                    this.createCookie("user", JSON.stringify(response), 360);
+                    this.user = response;
+                }.bind(this));
             });
         }.bind(this);
 
@@ -44,31 +43,27 @@ angular
             this.validateAccount(username, password, function (res) {
                 if (res.validation) {
                     this.user = res.user;
+                    this.createCookie("user", JSON.stringify(this.user), 360);
                     messageService.message("You have successfully logged into your account.");
+                    $rootScope.$apply();
                 } else {
                     messageService.message(res.validationMessage);
                 }
-            }.bind(self))
+            }.bind(this))
         }.bind(this);
 
         this.checkLoginStatus = function() {
-            console.log("checking");
-            // check for login cookie
-            /*var user = JSON.parse(this.readCookie("user"));
-            if (user != null) {
-                this.user = user;
+            if (this.readCookie('user') != null) {
+                this.user = JSON.parse(this.readCookie('user'));
             }
-
-            console.log(user);
-            // check facebook login 
-                // return user's info from facebook as login credentials
-            window.FB.api('/me?fields=id,name,email', function(response) {
-                console.log("logged into facebook");
-                self.user = response;
-            });
-            
-            // return login json */
         }.bind(this);
+
+        this.logout = function() {
+            var user = this.user;
+            this.user = null;
+            this.eraseCookie('user');
+            $window.location.href = '/';
+        }
 
         this.createAccount = function(input_username, input_password) {
             var self = this;
@@ -83,7 +78,7 @@ angular
 
         this.validateAccount = function(username, password, callback) {
             $.post( "/validateAccount", { username: username, password: password }, function(res) {
-                callback(res);
+                if (callback) {callback(res) };
             });
         }.bind(this);
 
@@ -109,7 +104,9 @@ angular
         }
 
         this.eraseCookie = function(name) {
-            createCookie(name,"",-1);
+            this.createCookie(name,"",-1);
         }
+
+        this.checkLoginStatus();
 
     });

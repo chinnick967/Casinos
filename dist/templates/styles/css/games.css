@@ -1,0 +1,172 @@
+games {
+  width: 100%;
+  height: auto;
+  position: relative;
+  display: inline-block;
+  margin-bottom: -20px; }
+  games .games-cont {
+    padding: 15px 0;
+    height: calc(100vh - 50px);
+    height: -webkit-calc(100vh - 50px);
+    overflow-x: hidden; }
+    games .games-cont .game {
+      height: auto;
+      display: inline-block;
+      margin-bottom: 5px;
+      position: relative;
+      transition: 250ms;
+      max-width: 300px; }
+      games .games-cont .game:hover {
+        text-decoration: none; }
+      games .games-cont .game .preview {
+        width: 100%;
+        height: 160px;
+        background-color: #222;
+        background-size: cover;
+        background-position: center; }
+      games .games-cont .game h5 {
+        color: #222;
+        font-weight: bold;
+        position: relative;
+        padding-right: 25px; }
+        games .games-cont .game h5 span {
+          color: #df0e14;
+          position: absolute;
+          right: 0px;
+          top: -4px;
+          font-size: 22px;
+          transition: 250ms; }
+          games .games-cont .game h5 span:hover {
+            cursor: pointer;
+            transform: scale(1.1); }
+      games .games-cont .game.slot .preview {
+        transition: 250ms ease; }
+        games .games-cont .game.slot .preview:after {
+          content: "Play";
+          width: 70%;
+          height: 50px;
+          background-color: #4ec65f;
+          line-height: 50px;
+          position: absolute;
+          top: 55px;
+          left: 0px;
+          right: 0px;
+          margin-left: auto;
+          margin-right: auto;
+          z-index: 2;
+          transition: 500ms;
+          font-size: 14px;
+          color: white;
+          text-align: center;
+          text-transform: uppercase;
+          transition: inherit;
+          transform: scale(0); }
+        games .games-cont .game.slot .preview:before {
+          content: "";
+          width: 100%;
+          height: 160px;
+          background-color: white;
+          opacity: 0;
+          z-index: 1;
+          display: inline-block;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          transition: inherit; }
+        games .games-cont .game.slot .preview:hover:before {
+          opacity: .8; }
+        games .games-cont .game.slot .preview:hover:after {
+          transform: scale(1); }
+      games .games-cont .game.review .preview {
+        transition: 250ms ease; }
+        games .games-cont .game.review .preview:after {
+          content: "Review";
+          width: 70%;
+          height: 50px;
+          background-color: #df0e14;
+          line-height: 50px;
+          position: absolute;
+          top: 55px;
+          left: 0px;
+          right: 0px;
+          margin-left: auto;
+          margin-right: auto;
+          z-index: 2;
+          transition: 500ms;
+          font-size: 14px;
+          color: white;
+          text-align: center;
+          text-transform: uppercase;
+          transition: inherit;
+          transform: scale(0); }
+        games .games-cont .game.review .preview:before {
+          content: "";
+          width: 100%;
+          height: 160px;
+          background-color: white;
+          opacity: 0;
+          z-index: 1;
+          display: inline-block;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          transition: inherit; }
+        games .games-cont .game.review .preview:hover:before {
+          opacity: .8; }
+        games .games-cont .game.review .preview:hover:after {
+          transform: scale(1); }
+  games .filters {
+    background-color: #222;
+    padding: 0;
+    height: calc(100vh - 50px);
+    height: -webkit-calc(100vh - 50px);
+    overflow-x: hidden; }
+    games .filters .search {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      height: 40px;
+      padding: 10px;
+      border: 0;
+      font-size: 16px;
+      font-family: 'Lato', sans-serif; }
+      games .filters .search:focus {
+        outline: none; }
+    games .filters .filter-buttons {
+      padding: 0;
+      border-bottom: solid 1px #333; }
+      games .filters .filter-buttons .filter-btn {
+        font-size: 12px;
+        color: white;
+        text-decoration: none;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        background-color: #222; }
+        games .filters .filter-buttons .filter-btn:hover {
+          cursor: pointer;
+          background-color: #4ec65f; }
+        games .filters .filter-buttons .filter-btn.selected {
+          background-color: #4ec65f; }
+    games .filters .providers {
+      padding: 0;
+      padding-bottom: 10px; }
+      games .filters .providers h3 {
+        color: #df0e14;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 20px; }
+      games .filters .providers .checkbox-cont {
+        color: white;
+        font-size: 10px;
+        height: 40px;
+        vertical-align: top; }
+        games .filters .providers .checkbox-cont input {
+          margin-top: 0;
+          display: inline-block;
+          margin-right: 5px;
+          vertical-align: middle; }
+        games .filters .providers .checkbox-cont span {
+          display: inline-block;
+          vertical-align: middle; }
+
+/*# sourceMappingURL=games.css.map */

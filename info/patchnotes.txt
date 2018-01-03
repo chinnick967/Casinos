@@ -1,0 +1,43 @@
+Patch Notes:
+
+10/22/17
+
+-------------------- Features --------------------
+
+- A logout button has been implemented and added to the "My Account" page. Logging out functionality has been added.
+- Login sessions have been added.
+- The server requests for fetching website data has been adjusted to have faster responses and work better with Angular. Should reduce risks of bugs.
+- The system will now prevent admin from creating duplicates, giving an error message instead
+- Admin can now add articles/stories/news
+- Admin can now delete slots and articles from admin panel
+
+-------------------- Major Design Changes --------------------
+
+- A side shadow has been added to make the main content pop off the background better.
+- The extended info section of casino listings has had a slight design improvement
+
+-------------------- Bug Fixes / Issues --------------------
+
+- Users will remain logged in when they refresh the website, rather than being automatically logged off
+- Countries should be displayed as the correct corresponding flags in the casino top lists now
+- {{ }} bracket issues instead of data loading on various pages should be fixed now
+- The casino lists on slot pages should now display properly
+
+10/30/17
+
+-------------------- Features --------------------
+
+- Home page now displays the 4 latest articles in a latest articles section
+
+-------------------- Major Design Changes --------------------
+
+- Some padding has been normalized on home page
+- Article hover effect reduced
+- Editing icons have been reduced to be less intrusive
+- Delete buttons on admin page have had their x's centered
+- Casino listings on slot game page have been made smaller to fix thumbnail images
+
+-------------------- Bug Fixes / Issues --------------------
+
+- Newest games section is now limited to the latest 6 games
+- Changing pages will now properly scroll to the top

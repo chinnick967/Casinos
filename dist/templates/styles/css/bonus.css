@@ -1,0 +1,104 @@
+.bonus {
+  padding-top: 20px; }
+  .bonus .intro-container {
+    padding: 25px 10px;
+    height: auto;
+    border: dashed 1px #555;
+    background-image: url(https://www.bypeople.com/wp-content/uploads/2014/05/light-live-background-css.jpg);
+    border: solid 5px white;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    position: relative; }
+    .bonus .intro-container h1, .bonus .intro-container h2 {
+      margin: 20px 0; }
+    .bonus .intro-container h1 {
+      width: 100%;
+      text-align: center;
+      font-size: 60px;
+      color: #df0e14;
+      font-weight: bold; }
+    .bonus .intro-container h2 {
+      font-size: 40px;
+      width: 100%;
+      text-align: center; }
+      .bonus .intro-container h2 br {
+        line-height: 200%; }
+    .bonus .intro-container .text {
+      height: auto;
+      text-align: center;
+      font-size: 20px;
+      width: 100%;
+      padding: 20px 10px;
+      position: relative; }
+      .bonus .intro-container .text:before {
+        content: "";
+        height: 1px;
+        width: 80%;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #222;
+        top: 0px; }
+    .bonus .intro-container a {
+      width: 80%;
+      height: 75px;
+      line-height: 75px;
+      text-align: center;
+      display: block;
+      font-size: 25px;
+      color: white;
+      background-color: #df0e14;
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+      transition: 250ms; }
+      .bonus .intro-container a:hover {
+        text-decoration: none;
+        transform: scale(1.1); }
+  .bonus .bonus-info {
+    padding-left: 25px; }
+    .bonus .bonus-info h3 {
+      width: 100%;
+      font-size: 24px;
+      position: relative;
+      margin-bottom: 30px; }
+      .bonus .bonus-info h3:after {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background-color: #222;
+        position: absolute;
+        bottom: -10px;
+        left: 0px; }
+      .bonus .bonus-info h3 a {
+        font-weight: bold; }
+        .bonus .bonus-info h3 a:hover {
+          text-decoration: none; }
+      .bonus .bonus-info h3 img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        margin-right: 5px; }
+    .bonus .bonus-info h4 {
+      font-size: 22px;
+      text-align: center;
+      width: 100%;
+      margin: 20px 0; }
+      .bonus .bonus-info h4 span {
+        color: #df0e14; }
+    .bonus .bonus-info .section {
+      padding: 10px 0;
+      font-size: 16px;
+      border-top: 1px solid rgba(0, 0, 0, 0.05); }
+      .bonus .bonus-info .section img {
+        width: 27px;
+        height: 19px;
+        margin-right: 10px;
+        margin-bottom: 10px; }
+      .bonus .bonus-info .section span:after {
+        content: ", "; }
+      .bonus .bonus-info .section span:last-child:after {
+        content: ""; }
+
+/*# sourceMappingURL=bonus.css.map */
