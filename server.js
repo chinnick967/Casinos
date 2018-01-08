@@ -10,7 +10,7 @@ var fs = require('fs');
 var countries = require('./setup/countries.js');
 var payment = require('./setup/payments.js');
 
-var url = "mongodb://localhost:27017/top-casinos"; // "mongodb://localhost:27017/top-casinos" for local, mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos for server
+var url = "mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos"; // "mongodb://localhost:27017/top-casinos" for local, mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos for server
 
 app.use(express.static(path.resolve(__dirname, './dist')));
 app.use(bodyParser.json({limit: '50mb'}));
@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({
     extended: true,
     limit: '50mb'
 }));
+app.use(require('prerender-node'));
 
 // Routing
 app.get('/', function(req, res) {
@@ -100,6 +101,7 @@ app.post("/update-data", function(req, res) {
     var item = req.body.item;
     var collection = req.body.collection;
     var name = req.body.name;
+    item = checkForImages(item);
     mongo.connect(url, function(err, db) {
         for (var key in item) {
             if (item.hasOwnProperty(key)) {
@@ -137,6 +139,32 @@ function checkForImages(json) {
         }
     }
     return obj;
+}
+
+function replaceImages(collection) {
+    var resultArray = [];
+    mongo.connect(url, function(err, db) {
+        assert.equal(null, err);
+        var cursor = db.collection(collection).find();
+        cursor.forEach(function(doc, err) {
+            var item = checkForImages(doc);
+            var name = doc.name;
+            mongo.connect(url, function(err, db) {
+                for (var key in item) {
+                    if (item.hasOwnProperty(key)) {
+                        var update = {};
+                        update[key] = item[key];
+                        db.collection(collection).update({name: name},{$set : update}, {upsert : true}, function(err, result) {
+                            logEntry(collection + " was updated in the database");
+                        });
+                    }
+                }
+                db.close();
+            });
+        }, function() {
+            db.close();
+        });
+    });
 }
 
 function isDataURL(s) {
@@ -287,6 +315,16 @@ function setup() {
 }
 
 run();*/
+
+var dir = __dirname + "/dist/assets/admin/";
+
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
+
+replaceImages("casinos");
+replaceImages("slots");
+
 setup();
 app.listen(3000);
 console.log("Server running on port 3000");
