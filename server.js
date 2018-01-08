@@ -322,9 +322,6 @@ if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
 }
 
-replaceImages("casinos");
-replaceImages("slots");
-
 setup();
 app.listen(3000);
 console.log("Server running on port 3000");
