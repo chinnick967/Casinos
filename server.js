@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({
     extended: true,
     limit: '50mb'
 }));
-app.use(require('prerender-node'));
+app.use(require('prerender-node').set('prerenderToken', 'QhomDSDyXK2kyX9CMcls'));
 
 // Routing
 app.get('/', function(req, res) {
