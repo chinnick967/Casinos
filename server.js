@@ -10,7 +10,7 @@ var fs = require('fs');
 var countries = require('./setup/countries.js');
 var payment = require('./setup/payments.js');
 
-var url = "mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos"; // "mongodb://localhost:27017/top-casinos" for local, mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos for server
+var url = "mongodb://localhost:27017/top-casinos"; // "mongodb://localhost:27017/top-casinos" for local, mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos for server
 var db;
 mongo.connect(url, function(err, mydb) {
     if (!err) {
@@ -47,8 +47,7 @@ app.get("/get-casinos", function(req, res) {
 app.post("/get-data", function(req, res) {
     var resultArray = [];
     var collection = req.body.collection;
-    var cursor = db.collection(collection).find();
-    cursor.forEach(function(doc, err) {
+    db.collection(collection).find().forEach(function(doc) {
         resultArray.push(doc);
     }, function() {
         res.send(resultArray);
