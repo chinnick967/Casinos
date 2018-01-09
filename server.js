@@ -11,6 +11,14 @@ var countries = require('./setup/countries.js');
 var payment = require('./setup/payments.js');
 
 var url = "mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos"; // "mongodb://localhost:27017/top-casinos" for local, mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos for server
+var db;
+mongo.connect(url, function(err, mydb) {
+    if (!err) {
+        console.log("Mongodb has connected");
+        db = mydb;
+        setup();
+    }
+});
 
 app.use(express.static(path.resolve(__dirname, './dist')));
 app.use(bodyParser.json({limit: '50mb'}));
@@ -27,32 +35,23 @@ app.get('/', function(req, res) {
 
 app.get("/get-casinos", function(req, res) {
     var resultArray = [];
-    mongo.connect(url, function(err, db) {
+    var cursor = db.collection('casinos').find();
+    cursor.forEach(function(doc, err) {
         assert.equal(null, err);
-        var cursor = db.collection('casinos').find();
-        cursor.forEach(function(doc, err) {
-            assert.equal(null, err);
-            resultArray.push(doc);
-        }, function() {
-            db.close();
-            res.send(resultArray);
-        });
+        resultArray.push(doc);
+    }, function() {
+        res.send(resultArray);
     });
 });
 
 app.post("/get-data", function(req, res) {
     var resultArray = [];
     var collection = req.body.collection;
-    mongo.connect(url, function(err, db) {
-        assert.equal(null, err);
-        var cursor = db.collection(collection).find();
-        cursor.forEach(function(doc, err) {
-            assert.equal(null, err);
-            resultArray.push(doc);
-        }, function() {
-            db.close();
-            res.send(resultArray);
-        });
+    var cursor = db.collection(collection).find();
+    cursor.forEach(function(doc, err) {
+        resultArray.push(doc);
+    }, function() {
+        res.send(resultArray);
     });
 });
 
@@ -62,38 +61,31 @@ app.post("/remove-data", function(req, res) {
     var value = req.body.value;
     var query = {};
     query[title] = value;
-    mongo.connect(url, function(err, db) {
-        db.collection(collection).remove(query);
-        res.send("success");
-    });
+    db.collection(collection).remove(query);
+    res.send("success");
 });
 
 app.post("/post-data", function(req, res) {
     var item = req.body.item;
     item.date = new Date();
-    mongo.connect(url, function(err, db) {
-        assert.equal(null, err);
-        checkIfExists(item["collection"], "name", item["name"], function(result, message) {
-            message = message || '';
-            var response;
-            if (result == true) {
-                item = checkForImages(item);
-                if (item["collection"] != undefined) {
-                    db.collection(item["collection"]).insertOne(item, function(err, result) {
-                        assert.equal(null, err);
-                        logEntry(item["collection"] + " was added to the database");
-                        res.json({"status": true, "message": message, "id": result.ops[0]['_id']});
-                        db.close();
-                    });
-                } else {
-                    res.json({"status": false, "message": "Undefined collection, wasn't able to insert it into the database"});
-                    logEntry("Undefined collection, wasn't able to insert it into the database");
-                }
+    checkIfExists(item["collection"], "name", item["name"], function(result, message) {
+        message = message || '';
+        var response;
+        if (result == true) {
+            item = checkForImages(item);
+            if (item["collection"] != undefined) {
+                db.collection(item["collection"]).insertOne(item, function(err, result) {
+                    assert.equal(null, err);
+                    logEntry(item["collection"] + " was added to the database");
+                    res.json({"status": true, "message": message, "id": result.ops[0]['_id']});
+                });
             } else {
-                res.json({"status": false, "message": message});
-                db.close();
+                res.json({"status": false, "message": "Undefined collection, wasn't able to insert it into the database"});
+                logEntry("Undefined collection, wasn't able to insert it into the database");
             }
-        });
+        } else {
+            res.json({"status": false, "message": message});
+        }
     });
 });
 
@@ -102,36 +94,31 @@ app.post("/update-data", function(req, res) {
     var collection = req.body.collection;
     var name = req.body.name;
     item = checkForImages(item);
-    mongo.connect(url, function(err, db) {
-        for (var key in item) {
-            if (item.hasOwnProperty(key)) {
-                var update = {};
-                update[key] = item[key];
-                db.collection(collection).update({name: name},{$set : update}, {upsert : true}, function(err, result) {
-                    logEntry(collection + " was updated in the database");
-                });
-            }
+    for (var key in item) {
+        if (item.hasOwnProperty(key)) {
+            var update = {};
+            update[key] = item[key];
+            db.collection(collection).update({name: name},{$set : update}, {upsert : true}, function(err, result) {
+                logEntry(collection + " was updated in the database");
+            });
         }
-        res.json({"status": true, "message": "Item updated"});
-        db.close();
-    })
+    }
+    res.json({"status": true, "message": "Item updated"});
 });
 
 function checkForImages(json) {
-    console.log("checking images");
     var obj = json;
     for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
           var val = obj[key];
           if (typeof val == "string") {
               if (isDataURL(val)) {
-                  console.log("writing file");
                   var ext = getExtension(val);
                   var filename = obj['collection'] + '-' + obj['name'] + '-' + key;
                   filename = filename.replace(/ /g,"_");
                   val = val.replace(/^data:image\/(png|gif|jpeg|jpg|tiff);base64,/,'');
                   fs.writeFile(__dirname + "/dist/assets/admin/" + filename + '.' + ext, val, 'base64', function(err) {
-                      console.log(err);
+
                   });
                   obj[key] = "/assets/admin/" + filename + '.' + ext;
               }
@@ -149,7 +136,6 @@ function replaceImages(collection) {
         cursor.forEach(function(doc, err) {
             var item = checkForImages(doc);
             var name = doc.name;
-            mongo.connect(url, function(err, db) {
                 for (var key in item) {
                     if (item.hasOwnProperty(key)) {
                         var update = {};
@@ -159,10 +145,8 @@ function replaceImages(collection) {
                         });
                     }
                 }
-                db.close();
-            });
         }, function() {
-            db.close();
+
         });
     });
 }
@@ -191,23 +175,17 @@ function getExtension(string) {
 function checkIfExists(collection, title, value, callback) {
     var search = {};
     search[title] = value;
-    mongo.connect(url, function(err, db) {
-        assert.equal(null, err);
-        db.collection(collection).count(search, function(err, cursor) {
-            if (cursor == 0 || collection == "bonuses") {
-                callback(true, "Successfully added!");
-            } else {
-                callback(false, "This name already exists");
-            }
-        });
+    db.collection(collection).count(search, function(err, cursor) {
+        if (cursor == 0 || collection == "bonuses") {
+            callback(true, "Successfully added!");
+        } else {
+            callback(false, "This name already exists");
+        }
     });
 }
 
 app.post("/createAccount", function(req, res) {
     req.body.role = "user";
-    console.log(req);
-    mongo.connect(url, function(err, db) {
-        assert.equal(null, err);
         //db.collection("accounts").insertOne({"username": req.body.username});
         //db.collection("accounts").remove({username: req.body.username});
         db.collection("accounts").find({username: req.body.username}).toArray(function (err, docs) {
@@ -239,34 +217,29 @@ app.post("/createAccount", function(req, res) {
                 }
             }
         });
-    });
 });
 
 app.post("/validateAccount", function(req, res) {
     var resultArray = [];
     var response = {};
-    mongo.connect(url, function(err, db) {
-        var cursor = db.collection("accounts").find({username: req.body.username});
-        cursor.forEach(function(doc, err) {
-            assert.equal(null, err);
-            resultArray.push(doc);
-        }, function() {
-            if (resultArray.length > 0) {
-                if (resultArray[0].password == req.body.password) {
-                    response.validation = true;
-                    response.user = resultArray[0];
-                } else {
-                    response.validation = false;
-                    response.validationMessage = "The password you have entered is invalid.";
-                }
+    var cursor = db.collection("accounts").find({username: req.body.username});
+    cursor.forEach(function(doc, err) {
+        assert.equal(null, err);
+        resultArray.push(doc);
+    }, function() {
+        if (resultArray.length > 0) {
+            if (resultArray[0].password == req.body.password) {
+                response.validation = true;
+                response.user = resultArray[0];
             } else {
                 response.validation = false;
-                response.validationMessage = "The username you have entered does not exist.";
+                response.validationMessage = "The password you have entered is invalid.";
             }
-
-            db.close();
-            res.json(response);
-        });
+        } else {
+            response.validation = false;
+            response.validationMessage = "The username you have entered does not exist.";
+        }
+        res.json(response);
     });
 });
 
@@ -281,30 +254,23 @@ function createFolder(dir) {
 }
 
 function setup() {
-    mongo.connect(url, function(err, db) {
-        assert.equal(null, err);
-        // countries
-        db.collection("countries").remove({});
-            countries.list.forEach(function(element) {
-                db.collection("countries").insertOne(element, function(err, result) {
-                    assert.equal(null, err);
-                    logEntry("country was added to the database");
-                    db.close();
-                });
-            });
-        // payment
-        db.collection("payment").remove({});
-        payment.list.forEach(function(element) {
-            db.collection("payment").insertOne(element, function(err, result) {
+    // countries
+    db.collection("countries").remove({});
+        countries.list.forEach(function(element) {
+            db.collection("countries").insertOne(element, function(err, result) {
                 assert.equal(null, err);
-                logEntry("payment was added to the database");
+                logEntry("country was added to the database");
                 db.close();
             });
         });
-
-        db.close();
+    // payment
+    db.collection("payment").remove({});
+    payment.list.forEach(function(element) {
+        db.collection("payment").insertOne(element, function(err, result) {
+            assert.equal(null, err);
+            logEntry("payment was added to the database");
+        });
     });
-    ////////////////////
 }
 
 /*function run() {
@@ -322,6 +288,5 @@ if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
 }
 
-setup();
 app.listen(3000);
 console.log("Server running on port 3000");

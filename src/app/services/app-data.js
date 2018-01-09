@@ -33,6 +33,7 @@ angular
                 this.getData(collection);
             }.bind(this));
         }.bind(this);
+        
         this.getAllData = function(arr, counter) {
             var self = this;
             var counter = counter || 0;
