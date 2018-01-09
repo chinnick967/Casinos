@@ -10,14 +10,11 @@ var fs = require('fs');
 var countries = require('./setup/countries.js');
 var payment = require('./setup/payments.js');
 
-var url = "mongodb://localhost:27017/top-casinos"; // "mongodb://localhost:27017/top-casinos" for local, mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos for server
+var url = "mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos"; // "mongodb://localhost:27017/top-casinos" for local, mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos for server
 var db;
 mongo.connect(url, function(err, mydb) {
-    if (!err) {
-        console.log("Mongodb has connected");
-        db = mydb;
-        setup();
-    }
+    db = mydb;
+    setup();
 });
 
 app.use(express.static(path.resolve(__dirname, './dist')));
@@ -37,7 +34,6 @@ app.get("/get-casinos", function(req, res) {
     var resultArray = [];
     var cursor = db.collection('casinos').find();
     cursor.forEach(function(doc, err) {
-        assert.equal(null, err);
         resultArray.push(doc);
     }, function() {
         res.send(resultArray);
@@ -47,11 +43,13 @@ app.get("/get-casinos", function(req, res) {
 app.post("/get-data", function(req, res) {
     var resultArray = [];
     var collection = req.body.collection;
-    db.collection(collection).find().forEach(function(doc) {
-        resultArray.push(doc);
-    }, function() {
-        res.send(resultArray);
-    });
+        var cursor = db.collection(collection).find();
+        cursor.forEach(function(doc, err) {
+            assert.equal(null, err);
+            resultArray.push(doc);
+        }, function() {
+            res.send(resultArray);
+        });
 });
 
 app.post("/remove-data", function(req, res) {
@@ -67,6 +65,7 @@ app.post("/remove-data", function(req, res) {
 app.post("/post-data", function(req, res) {
     var item = req.body.item;
     item.date = new Date();
+    assert.equal(null, err);
     checkIfExists(item["collection"], "name", item["name"], function(result, message) {
         message = message || '';
         var response;
@@ -93,16 +92,16 @@ app.post("/update-data", function(req, res) {
     var collection = req.body.collection;
     var name = req.body.name;
     item = checkForImages(item);
-    for (var key in item) {
-        if (item.hasOwnProperty(key)) {
-            var update = {};
-            update[key] = item[key];
-            db.collection(collection).update({name: name},{$set : update}, {upsert : true}, function(err, result) {
-                logEntry(collection + " was updated in the database");
-            });
+        for (var key in item) {
+            if (item.hasOwnProperty(key)) {
+                var update = {};
+                update[key] = item[key];
+                db.collection(collection).update({name: name},{$set : update}, {upsert : true}, function(err, result) {
+                    logEntry(collection + " was updated in the database");
+                });
+            }
         }
-    }
-    res.json({"status": true, "message": "Item updated"});
+        res.json({"status": true, "message": "Item updated"});
 });
 
 function checkForImages(json) {
@@ -129,8 +128,6 @@ function checkForImages(json) {
 
 function replaceImages(collection) {
     var resultArray = [];
-    mongo.connect(url, function(err, db) {
-        assert.equal(null, err);
         var cursor = db.collection(collection).find();
         cursor.forEach(function(doc, err) {
             var item = checkForImages(doc);
@@ -145,9 +142,8 @@ function replaceImages(collection) {
                     }
                 }
         }, function() {
-
+           
         });
-    });
 }
 
 function isDataURL(s) {
@@ -238,6 +234,7 @@ app.post("/validateAccount", function(req, res) {
             response.validation = false;
             response.validationMessage = "The username you have entered does not exist.";
         }
+
         res.json(response);
     });
 });
@@ -253,23 +250,22 @@ function createFolder(dir) {
 }
 
 function setup() {
-    // countries
-    db.collection("countries").remove({});
-        countries.list.forEach(function(element) {
-            db.collection("countries").insertOne(element, function(err, result) {
+        // countries
+        db.collection("countries").remove({});
+            countries.list.forEach(function(element) {
+                db.collection("countries").insertOne(element, function(err, result) {
+                    assert.equal(null, err);
+                    logEntry("country was added to the database");
+                });
+            });
+        // payment
+        db.collection("payment").remove({});
+        payment.list.forEach(function(element) {
+            db.collection("payment").insertOne(element, function(err, result) {
                 assert.equal(null, err);
-                logEntry("country was added to the database");
-                db.close();
+                logEntry("payment was added to the database");
             });
         });
-    // payment
-    db.collection("payment").remove({});
-    payment.list.forEach(function(element) {
-        db.collection("payment").insertOne(element, function(err, result) {
-            assert.equal(null, err);
-            logEntry("payment was added to the database");
-        });
-    });
 }
 
 /*function run() {
