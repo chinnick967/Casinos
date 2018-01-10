@@ -11,7 +11,7 @@ var fs = require('fs');
 var countries = require('./setup/countries.js');
 var payment = require('./setup/payments.js');
 
-var url = "mongodb://localhost:27017/top-casinos"; // "mongodb://localhost:27017/top-casinos" for local, mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos for server
+var url = "mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos"; // "mongodb://localhost:27017/top-casinos" for local, mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos for server
 var db;
 mongo.connect(url, function(err, mydb) {
     db = mydb;
