@@ -1,7 +1,7 @@
 var express = require("express");
 var path = require('path');
 var app = express();
-app.use(require('prerender-node').set('prerenderServiceUrl', 'http://localhost:1337/').set('prerenderToken', 'QhomDSDyXK2kyX9CMcls'));
+app.use(require('prerender-node').set('prerenderServiceUrl', '127.0.0.1:1337/').set('prerenderToken', 'QhomDSDyXK2kyX9CMcls'));
 var shell = require('shelljs');
 var mongo = require("mongodb");
 var assert = require("assert");
