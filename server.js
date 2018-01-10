@@ -1,6 +1,7 @@
 var express = require("express");
 var path = require('path');
 var app = express();
+app.use(require('prerender-node').set('prerenderServiceUrl', 'http://localhost:1337/').set('prerenderToken', 'QhomDSDyXK2kyX9CMcls'));
 var shell = require('shelljs');
 var mongo = require("mongodb");
 var assert = require("assert");
@@ -10,10 +11,11 @@ var fs = require('fs');
 var countries = require('./setup/countries.js');
 var payment = require('./setup/payments.js');
 
-var url = "mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos"; // "mongodb://localhost:27017/top-casinos" for local, mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos for server
+var url = "mongodb://localhost:27017/top-casinos"; // "mongodb://localhost:27017/top-casinos" for local, mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos for server
 var db;
 mongo.connect(url, function(err, mydb) {
     db = mydb;
+    console.log("Connected to Mongodb");
     setup();
 });
 
@@ -23,7 +25,6 @@ app.use(bodyParser.urlencoded({
     extended: true,
     limit: '50mb'
 }));
-app.use(require('prerender-node').set('prerenderToken', 'QhomDSDyXK2kyX9CMcls'));
 
 // Routing
 app.get('/', function(req, res) {
