@@ -22,6 +22,37 @@ p {
     font-size: 16px;
 }
 
+#loading {
+    width: 100%;
+    height: 100%;
+    background-color: #222222;
+    background-image: url(/assets/pagegif.gif);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 99999999;
+    color: #b8160b;
+    text-transform: uppercase;
+    //transition: 1s;
+    opacity: 1;
+    display: block;
+    span {
+        top: calc(50% - 8px);
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        font-size: 16px;
+        font-weight: bold;
+        display: block;
+    }
+    &.hide-loading {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 .graybg {
     height: 100%;
     width: 200vw;

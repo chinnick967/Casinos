@@ -1,9 +1,7 @@
 <!DOCTYPE>
 <html ng-app="app" ng-controller="customHeader">
 <head>
-    <!--{{ customHeader }}
-    <title>Node Server</title>-->
-    <title>{{header.title}}</title>
+    <title ng-cloak>{{header.title}}</title>
     <meta name="description" content={{header.description}}>
     <meta name="keywords" content={{header.keywords}}>
     <META NAME="ROBOTS" CONTENT="{{header.indexing}}">
@@ -39,5 +37,6 @@
     <sticky-footer></sticky-footer>
     <global-css></global-css>
     <!--<loading-screen></loading-screen>-->
+    <div id="loading"><span>Gambler's Update</span></div>
 </body>
 </html>

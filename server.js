@@ -10,13 +10,31 @@ var formidable = require("formidable");
 var fs = require('fs');
 var countries = require('./setup/countries.js');
 var payment = require('./setup/payments.js');
+var environment;
+// Launch variables
+process.argv.forEach((val, index) => {
+    environment = val;
+});
 
-var url = "mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos"; // "mongodb://localhost:27017/top-casinos" for local, mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos for server
+if (environment == "production") {
+    var url = "mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos";
+} else if (environment == "development") {
+    var url = "mongodb://localhost:27017/top-casinos"; // "mongodb://localhost:27017/top-casinos" for local, mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos for server
+} else {
+    console.log("Error: Please specify a development environment with either 'development' or 'production'. Example: 'node server development'");
+    process.exit(1);
+}
+
 var db;
 mongo.connect(url, function(err, mydb) {
-    db = mydb;
-    console.log("Connected to Mongodb");
-    setup();
+    if (!err) {
+        db = mydb;
+        console.log("Connected to Mongodb");
+        setup();
+    } else {
+        console.log("Connection to Mongodb failed: " + err);
+        process.exit(1);
+    }
 });
 
 app.use(express.static(path.resolve(__dirname, './dist')));
@@ -285,4 +303,4 @@ if (!fs.existsSync(dir)){
 }
 
 app.listen(3000);
-console.log("Server running on port 3000");
+console.log("Server running on port 3000 in " + environment + " mode");

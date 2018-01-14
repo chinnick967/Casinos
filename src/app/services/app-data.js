@@ -10,7 +10,6 @@ angular
         this.getData = function(collection, callback) {
             $http.post('/get-data', {collection: collection})
             .then(function successCallback(response) {
-                console.log(this);
                 this[collection] = response.data;
                 if (collection == "html") {
                     this.setKeys(collection);
@@ -45,6 +44,7 @@ angular
                 } else {
                     this.refreshCurrentCasino();
                     window.dispatchEvent(new Event('data-loaded'));
+                    $("#loading").addClass("hide-loading");
                     console.log(this);
                     this.loaded = true;
                     $rootScope.$apply();
