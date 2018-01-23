@@ -71,10 +71,9 @@ useful-links ul {
 
 casino-listing, bonus-listing {
   background-color: #222;
-  margin-bottom: 10px;
+  margin: 5px 0;
   color: white;
   height: auto;
-  border: solid 1px black;
   padding-right: 0 !important;
   display: inline-block;
   box-shadow: 0px 0px 3px 1px black; }
@@ -110,6 +109,6 @@ casino-listing, bonus-listing {
   casino-listing .more-info, bonus-listing .more-info {
     margin-top: 1px; }
     casino-listing .more-info.extended, bonus-listing .more-info.extended {
-      border-top: 1px solid black; }
+      border-top: .5px solid black; }
 
 /*# sourceMappingURL=toplists.css.map */

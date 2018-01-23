@@ -30,6 +30,9 @@ angular
             .when("/slots/:slot", {
                 templateUrl: "templates/slots.html"
             })
+            .when("/review/:gamereview", {
+                templateUrl: "templates/gamereviews.html"
+            })
             .when("/pages/:title", {
                 templateUrl: "templates/info.html"
             });

@@ -53,6 +53,7 @@ require("./app/info-page.js");
 require("./app/admin-controls.js");
 require("./app/global-css.js");
 require("./app/custom-header.js");
+require("./app/game-review.js");
 
 // Services
 require("./app/services/app-data.js");
