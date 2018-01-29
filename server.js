@@ -16,13 +16,11 @@ process.argv.forEach((val, index) => {
     environment = val;
 });
 
-if (environment == "production") {
-    var url = "mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos";
-} else if (environment == "development") {
+if (environment == "development") {
     var url = "mongodb://localhost:27017/top-casinos"; // "mongodb://localhost:27017/top-casinos" for local, mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos for server
 } else {
-    console.log("Error: Please specify a development environment with either 'development' or 'production'. Example: 'node server development'");
-    process.exit(1);
+    var url = "mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos";
+    environment = "production";
 }
 
 var db;
@@ -84,7 +82,6 @@ app.post("/remove-data", function(req, res) {
 app.post("/post-data", function(req, res) {
     var item = req.body.item;
     item.date = new Date();
-    assert.equal(null, err);
     checkIfExists(item["collection"], "name", item["name"], function(result, message) {
         message = message || '';
         var response;
@@ -125,6 +122,7 @@ app.post("/update-data", function(req, res) {
 
 function checkForImages(json) {
     var obj = json;
+    console.log(obj.collection);
     for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
           var val = obj[key];

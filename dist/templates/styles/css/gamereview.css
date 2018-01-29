@@ -5,7 +5,8 @@ game-review {
   game-review .game-heading-img {
     width: 100%;
     object-fit: cover;
-    height: 500px; }
+    height: 500px;
+    background-color: #111; }
   game-review .text {
     min-height: 500px;
     height: auto;
@@ -103,7 +104,19 @@ game-review {
       game-review .text .game-info span {
         margin: 0 20px;
         font-style: italic; }
+        game-review .text .game-info span ul {
+          display: inline-block;
+          padding-left: 5px; }
+          game-review .text .game-info span ul li {
+            display: inline-block;
+            list-style-type: none;
+            margin-right: 3px; }
+            game-review .text .game-info span ul li:after {
+              content: ","; }
+            game-review .text .game-info span ul li:last-child:after {
+              content: ""; }
     game-review .text .inner {
-      padding: 15px; }
+      padding: 15px;
+      position: relative; }
 
 /*# sourceMappingURL=gamereview.css.map */

@@ -39,6 +39,8 @@ angular
                     if ($scope.validateEntries()) {
                         $scope.addImages(function() {
                             var item = $scope.removeEmptyValues($scope.$ctrl.form);
+                            item.name = name;
+                            item.collection = $scope.$ctrl.collection;
                             $.post("/update-data", {item: item, collection: $scope.$ctrl.collection, name: name}, function(res) {
                                 if (res.status == true) {
                                     $scope.clearFields();
