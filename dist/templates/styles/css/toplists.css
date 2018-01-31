@@ -110,5 +110,28 @@ casino-listing, bonus-listing {
     margin-top: 1px; }
     casino-listing .more-info.extended, bonus-listing .more-info.extended {
       border-top: .5px solid black; }
+  @media screen and (max-width: 768px) {
+    casino-listing, bonus-listing {
+      display: inline-block;
+      width: 320px;
+      padding-bottom: 5px;
+      margin: 10px; }
+      casino-listing .listing .buttons-container, bonus-listing .listing .buttons-container {
+        margin-bottom: 10px; }
+      casino-listing .listing .thumbnail.casino-listing-thumb, bonus-listing .listing .thumbnail.casino-listing-thumb {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 0; }
+      casino-listing .listing .img-wrapper, bonus-listing .listing .img-wrapper {
+        background: #111;
+        height: 200px; }
+      casino-listing .more-info, bonus-listing .more-info {
+        text-align: left; }
+        casino-listing .more-info .read-more, bonus-listing .more-info .read-more {
+          display: block; } }
+
+@media screen and (max-width: 768px) {
+  .bonuses-container {
+    text-align: center; } }
 
 /*# sourceMappingURL=toplists.css.map */

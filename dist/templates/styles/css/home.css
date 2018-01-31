@@ -6,10 +6,13 @@
     top: 0px;
     left: 0px;
     width: 100%;
-    display: none; }
+    display: none;
+    min-height: 330px; }
     .top-casinos-container .tab-content img {
       width: 100%;
-      filter: brightness(50%); }
+      min-height: 330px;
+      filter: brightness(50%);
+      object-fit: cover; }
     .top-casinos-container .tab-content .content {
       position: absolute;
       color: white;
@@ -24,9 +27,9 @@
         font-family: 'Lato', sans-serif;
         font-size: 22px;
         font-weight: bold;
-        text-shadow: 5px 5px 5px black; }
+        text-shadow: 0px 1px 2px black; }
       .top-casinos-container .tab-content .content p {
-        text-shadow: 5px 5px 5px black;
+        text-shadow: 0px 1px 2px black;
         white-space: pre-line;
         line-height: 18px; }
       .top-casinos-container .tab-content .content .play-button {
@@ -64,6 +67,17 @@
           background-color: white;
           color: #222;
           text-decoration: none; }
+    @media screen and (max-width: 768px) {
+      .top-casinos-container .tab-content .content {
+        top: 10px; }
+        .top-casinos-container .tab-content .content h1 {
+          font-size: 18px; }
+        .top-casinos-container .tab-content .content .play-button {
+          width: 100px;
+          margin-top: 0px; }
+        .top-casinos-container .tab-content .content .review-button {
+          width: 100px;
+          margin-top: 0px; } }
   .top-casinos-container .selectedContent {
     position: relative !important;
     display: block !important; }
@@ -88,6 +102,9 @@
         cursor: pointer; }
       .top-casinos-container .tabs-container .tab:last-child {
         border-right: none; }
+      @media screen and (max-width: 768px) {
+        .top-casinos-container .tabs-container .tab {
+          border-right: none; } }
     .top-casinos-container .tabs-container .selected {
       /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff0000+0,cc0000+45,cc0000+100   background-image: linear-gradient(#111 50%, #df0e14 50%); */
       background-image: linear-gradient(#111 50%, #ff0000 10%, #cc0000 15%, #cc0000 25%);
@@ -108,6 +125,9 @@
         border-bottom-color: #cc0000;
         border-width: 20px;
         margin-left: -20px; }
+      @media screen and (max-width: 768px) {
+        .top-casinos-container .tabs-container .selected:after, .top-casinos-container .tabs-container .selected:before {
+          border-color: transparent; } }
 
 .sidebar {
   padding: 0 !important; }
@@ -124,7 +144,6 @@
     font-size: 22px;
     text-align: center;
     background-color: #222;
-    border-bottom: 1px solid #333;
     color: white; }
     .sidebar-container .title:after, .sidebar-container .title:before {
       z-index: 1;
@@ -251,6 +270,16 @@ top-tabs {
       font-family: 'Lato', sans-serif;
       font-size: 18px;
       margin-bottom: 20px; }
+    @media screen and (max-width: 768px) {
+      .games-container .game {
+        width: 16.1%;
+        display: inline-block; }
+        .games-container .game .img-title {
+          display: none; }
+        .games-container .game .svg {
+          width: 30px;
+          height: 30px;
+          margin-bottom: 25px; } }
 
 home-summary {
   position: relative; }
@@ -268,6 +297,7 @@ home-summary {
     background-color: #333;
     height: 450px;
     transition: all .5s ease;
+    background-size: cover;
     /*&:before {
         content: ' ';
         display: block;
@@ -325,6 +355,7 @@ home-summary {
     background-color: #333;
     height: 145px;
     transition: all .5s ease;
+    background-size: cover;
     /*&:before {
         content: ' ';
         display: block;
@@ -378,6 +409,20 @@ home-summary {
         color: white;
         font-size: 18px;
         font-weight: bold; }
+@media screen and (max-width: 768px) {
+  .latest-articles-container .articles {
+    text-align: center; }
+  .latest-articles-container .first-article, .latest-articles-container .article-tab {
+    width: 100%;
+    max-width: 340px;
+    height: 400px !important;
+    display: inline-block;
+    padding: 0;
+    margin: 5px;
+    vertical-align: top;
+    text-align: left; }
+    .latest-articles-container .first-article .article, .latest-articles-container .article-tab .article {
+      height: 100%; } }
 
 .listing {
   vertical-align: top;
@@ -595,6 +640,16 @@ newest-games {
       cursor: pointer;
       box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
       text-decoration: none; }
+  @media screen and (max-width: 768px) {
+    .new-games-container {
+      text-align: center; }
+      .new-games-container .col-sm-4 {
+        display: inline-block;
+        text-align: left; }
+      .new-games-container .game {
+        display: inline-block; }
+      .new-games-container .free-slots-button {
+        display: block; } }
 
 .stories-container {
   position: relative;
@@ -647,12 +702,14 @@ newest-games {
     color: white;
     text-align: center; }
     .subscription-container .subscription-header h2 {
-      margin-top: 20px !important; }
+      margin-top: 20px !important;
+      margin-bottom: 20px; }
   .subscription-container .mail-icon {
     height: 75px;
     font-size: 50px;
     color: white;
-    text-align: center; }
+    text-align: center;
+    margin-top: -12.5px; }
     .subscription-container .mail-icon span {
       line-height: 75px;
       float: right; }
@@ -660,29 +717,46 @@ newest-games {
     height: 75px;
     margin-bottom: 20px; }
     .subscription-container .subscription .column {
-      margin-left: 0px !important;
+      margin-left: 0px;
       margin-right: 0px !important;
       padding: 0 !important;
-      display: table-cell !important;
-      vertical-align: middle !important;
-      height: 100%; }
+      height: 100%;
+      width: 70%;
+      display: inline-block;
+      vertical-align: top; }
       .subscription-container .subscription .column input {
         width: 100%;
         height: 50px;
-        margin-top: 12.5px;
         font-size: 20px;
         padding-left: 20px; }
     .subscription-container .subscription .subscribe-button {
       height: 50px !important;
-      margin-top: 12.5px;
       background-color: #4ec65f;
       color: white;
       font-size: 20px;
       line-height: 50px;
       text-align: center;
-      transition: 250ms; }
+      transition: 250ms;
+      display: inline-block !important;
+      width: 29%;
+      vertical-align: top; }
       .subscription-container .subscription .subscribe-button:hover {
         cursor: pointer; }
+  @media screen and (max-width: 768px) {
+    .subscription-container .subscription-header h2 {
+      font-size: 20px; }
+    .subscription-container .glyphicon {
+      display: none; }
+    .subscription-container .mail-icon {
+      display: none; }
+    .subscription-container .subscription .subscribe-button {
+      font-size: 16px;
+      margin-left: -3px;
+      width: 39% !important; }
+    .subscription-container .subscription .column {
+      width: 60%; }
+      .subscription-container .subscription .column input {
+        font-size: 16px; } }
 
 @keyframes fade-in {
   from {

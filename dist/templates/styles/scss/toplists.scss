@@ -147,4 +147,38 @@ casino-listing, bonus-listing {
             border-top: .5px solid black;
         }
     }
+    @media screen and (max-width: 768px) {
+        display: inline-block;
+        width: 320px;
+        padding-bottom: 5px;
+        margin: 10px;
+        .listing {
+            .buttons-container {
+                margin-bottom: 10px;
+            }
+            .thumbnail {
+                &.casino-listing-thumb {
+                    width: 100%;
+                    height: 100%;
+                    margin-bottom: 0;
+                }
+            }
+            .img-wrapper {
+                background: #111;
+                height: 200px;
+            }
+        }
+        .more-info {
+            text-align: left;
+            .read-more {
+                display: block;
+            }
+        }
+    }
+}
+
+.bonuses-container {
+    @media screen and (max-width: 768px) {
+        text-align: center;
+    }
 }

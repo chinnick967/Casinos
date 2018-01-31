@@ -9,10 +9,13 @@
         left: 0px;
         width: 100%;
         display: none;
+        min-height: 330px;
 
         img {
             width: 100%;
+            min-height: 330px;
             filter: brightness(50%);
+            object-fit: cover;
         }
 
         .content {
@@ -30,11 +33,11 @@
                 font-family: 'Lato', sans-serif;
                 font-size: 22px;
                 font-weight: bold;
-                text-shadow: 5px 5px 5px black;
+                text-shadow: 0px 1px 2px rgba(0, 0, 0, 1);
             }
 
             p {
-                text-shadow: 5px 5px 5px black;
+                text-shadow: 0px 1px 2px rgba(0, 0, 0, 1);
                 white-space: pre-line;
                 line-height: 18px;
             }
@@ -82,6 +85,23 @@
                 }
             }
         }
+
+        @media screen and (max-width: 768px) {
+            .content {
+                top: 10px;
+                h1 {
+                    font-size: 18px;
+                }
+                .play-button {
+                    width: 100px;
+                    margin-top: 0px;
+                }
+                .review-button {
+                    width: 100px;
+                    margin-top: 0px;
+                }
+            }
+        }
     }
 
     .selectedContent {
@@ -116,6 +136,10 @@
                 border-right: none;
             }
 
+            @media screen and (max-width: 768px) {
+                border-right: none;
+            }
+
         }
 
         .selected {
@@ -144,6 +168,12 @@
                 border-width: 20px;
                 margin-left: -20px;
             }
+
+            @media screen and (max-width: 768px) {
+                &:after, &:before {
+                    border-color: transparent;
+                }
+            }
         }
     }
 
@@ -166,7 +196,6 @@
         font-size: 22px;
         text-align: center;
         background-color: #222;
-        border-bottom: 1px solid #333;
         color: white;
 
         &:after, &:before {
@@ -334,6 +363,19 @@ top-tabs {
                 font-size: 18px;
                 margin-bottom: 20px;
             }
+
+            @media screen and (max-width: 768px) {
+                width: 16.1%;
+                display: inline-block;
+                .img-title {
+                    display: none;
+                }
+                .svg {
+                    width: 30px;
+                    height: 30px;
+                    margin-bottom: 25px;
+                }
+            }
         }
 }
 
@@ -365,6 +407,7 @@ home-summary {
             background-color: #333;
             height: 450px;
             transition: all .5s ease;
+            background-size: cover;
             
             &:hover {
                 transform: scale(.95);
@@ -440,6 +483,7 @@ home-summary {
             background-color: #333;
             height: 145px;
             transition: all .5s ease;
+            background-size: cover;
             
             &:hover {
                 transform: scale(.95);
@@ -507,6 +551,25 @@ home-summary {
                     font-size: 18px;
                     font-weight: bold;
                 }
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .articles {
+            text-align: center;
+        }
+        .first-article, .article-tab {
+            width: 100%;
+            max-width: 340px;
+            height: 400px !important;
+            display: inline-block;
+            padding: 0;
+            margin: 5px;
+            vertical-align: top;
+            text-align: left;
+            .article {
+                height: 100%;
             }
         }
     }
@@ -799,6 +862,7 @@ newest-games {
                 }
             }
         }
+
     }
 
     .free-slots-button {
@@ -818,6 +882,20 @@ newest-games {
             text-decoration: none;
         }
     }
+
+    @media screen and (max-width: 768px) {
+        text-align: center;
+        .col-sm-4 {
+            display: inline-block;
+            text-align: left;
+        }
+        .game {
+            display: inline-block;
+        }
+        .free-slots-button {
+            display: block;
+        }
+     }
 }
 
 .stories-container {
@@ -893,6 +971,7 @@ newest-games {
 
         h2 {
             margin-top: 20px !important;
+            margin-bottom: 20px;
         }
     }
 
@@ -901,6 +980,7 @@ newest-games {
         font-size: 50px;
         color: white;
         text-align: center;
+        margin-top: -12.5px;
 
         span {
             line-height: 75px;
@@ -913,17 +993,17 @@ newest-games {
         margin-bottom: 20px;
 
         .column {
-            margin-left: 0px !important;
+            margin-left: 0px;
             margin-right: 0px !important;
             padding: 0 !important;
-            display: table-cell !important;
-            vertical-align: middle !important;
             height: 100%;
+            width: 70%;
+            display: inline-block;
+            vertical-align: top;
 
             input {
                 width: 100%;
                 height: 50px;
-                margin-top: 12.5px;
                 font-size: 20px;
                 padding-left: 20px;
             }
@@ -931,15 +1011,44 @@ newest-games {
 
         .subscribe-button {
             height: 50px !important;
-            margin-top: 12.5px;
             background-color: #4ec65f;
             color: white;
             font-size: 20px;
             line-height: 50px;
             text-align: center;
             transition: 250ms;
+            display: inline-block !important;
+            width: 29%;
+            vertical-align: top;
             &:hover {
                 cursor: pointer;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .subscription-header {
+            h2 {
+                font-size: 20px;
+            }
+        }
+        .glyphicon {
+            display: none;
+        }
+        .mail-icon {
+            display: none;
+        }
+        .subscription {
+            .subscribe-button {
+                font-size: 16px;
+                margin-left: -3px;
+                width: 39% !important;
+            }
+            .column {
+                width: 60%;
+                input {
+                    font-size: 16px;
+                }
             }
         }
     }
