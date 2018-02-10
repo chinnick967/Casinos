@@ -285,7 +285,8 @@ home-summary {
   position: relative; }
 
 .latest-articles-container .intro-text {
-  padding: 20px 0; }
+  padding: 20px 0;
+  padding-bottom: 0; }
   .latest-articles-container .intro-text h1 {
     margin-top: 0px !important; }
 .latest-articles-container .articles {

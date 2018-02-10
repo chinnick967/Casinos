@@ -129,7 +129,7 @@ angular
                     <div class="container-fluid">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                            <a href="#"><img class="navbar-brand" src="/assets/Logo-small.png" /></a>
+                            <a href="/"><img class="navbar-brand" src="/assets/Logo-small.png" /></a>
                         </div>
                         <div class="collapse navbar-collapse" id="navigation">
                         <ul class="nav navbar-nav">
