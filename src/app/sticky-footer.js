@@ -12,7 +12,6 @@ angular
 
                     return casino1 - casino2;
                 });
-                $scope.$apply();
             }.bind(this));
         },
         controllerAs: "$ctrl",

@@ -9,13 +9,26 @@ games {
         height: calc(100vh - 50px);
         height: -webkit-calc(100vh - 50px);
         overflow-x: hidden;
+        text-align: center;
+        &::-webkit-scrollbar {
+            background: #FFAAAA;
+            border-radius: 4px;
+            height: 4px;
+            width: 8px;
+          }
+          
+        &::-webkit-scrollbar-thumb {
+            background: #df0e14;
+            border-radius: 4px;
+        }
         .game {
             height: auto;
             display: inline-block;
             margin-bottom: 5px;
             position: relative;
             transition: 250ms;
-            max-width: 300px;
+            width: 300px;
+            text-align: left;
             &:hover {
                 text-decoration: none;
             }
@@ -157,6 +170,11 @@ games {
             &:focus {
                 outline: none;
             }
+            @media screen and (max-width: 990px) {
+                display: block;
+                width: 80%;
+                margin: 20px auto;
+            }
         }
         .filter-buttons {
             padding: 0;
@@ -169,6 +187,7 @@ games {
                 line-height: 50px;
                 text-align: center;
                 background-color: #222;
+                display: inline-block;
                 &:hover {
                     cursor: pointer;
                     background-color: #4ec65f;
@@ -204,6 +223,9 @@ games {
                     vertical-align: middle;
                 }
             }
+        }
+        @media screen and (max-width: 990px) {
+            height: auto;
         }
     }
 }

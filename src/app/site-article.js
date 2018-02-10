@@ -36,7 +36,6 @@ angular
 
             this.data.load(function() {
                 this.article = this.getArticle();
-                $scope.$apply();
             }.bind(this));
         },
         controllerAs: "$ctrl",

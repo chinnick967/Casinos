@@ -8,14 +8,24 @@ games {
     padding: 15px 0;
     height: calc(100vh - 50px);
     height: -webkit-calc(100vh - 50px);
-    overflow-x: hidden; }
+    overflow-x: hidden;
+    text-align: center; }
+    games .games-cont::-webkit-scrollbar {
+      background: #FFAAAA;
+      border-radius: 4px;
+      height: 4px;
+      width: 8px; }
+    games .games-cont::-webkit-scrollbar-thumb {
+      background: #df0e14;
+      border-radius: 4px; }
     games .games-cont .game {
       height: auto;
       display: inline-block;
       margin-bottom: 5px;
       position: relative;
       transition: 250ms;
-      max-width: 300px; }
+      width: 300px;
+      text-align: left; }
       games .games-cont .game:hover {
         text-decoration: none; }
       games .games-cont .game .preview {
@@ -131,6 +141,11 @@ games {
       font-family: 'Lato', sans-serif; }
       games .filters .search:focus {
         outline: none; }
+      @media screen and (max-width: 990px) {
+        games .filters .search {
+          display: block;
+          width: 80%;
+          margin: 20px auto; } }
     games .filters .filter-buttons {
       padding: 0;
       border-bottom: solid 1px #333; }
@@ -141,7 +156,8 @@ games {
         height: 50px;
         line-height: 50px;
         text-align: center;
-        background-color: #222; }
+        background-color: #222;
+        display: inline-block; }
         games .filters .filter-buttons .filter-btn:hover {
           cursor: pointer;
           background-color: #4ec65f; }
@@ -168,5 +184,8 @@ games {
         games .filters .providers .checkbox-cont span {
           display: inline-block;
           vertical-align: middle; }
+    @media screen and (max-width: 990px) {
+      games .filters {
+        height: auto; } }
 
 /*# sourceMappingURL=games.css.map */

@@ -42,6 +42,9 @@
     .casino-desc #show-btn:hover {
       cursor: pointer; }
 
+@media screen and (max-width: 990px) {
+  .casino-overview {
+    margin-top: 20px; } }
 .casino-summ-box {
   height: 220px;
   background-color: #fcfcfc; }
@@ -93,8 +96,19 @@
     #casino-ratings .rating .info:hover {
       cursor: help; }
 
+casino-summary-boxes {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  background: #fcfcfc; }
+  casino-summary-boxes a:hover {
+    text-decoration: none; }
+
 #casino-preview {
-  background-size: cover; }
+  background-size: cover;
+  max-width: 293px;
+  margin: 0 auto;
+  position: relative; }
 
 #casino-ranking .countries {
   width: 100%;
@@ -254,5 +268,8 @@ blockquote {
     font-size: 20px;
     font-style: italic;
     white-space: pre-line; }
+  @media screen and (max-width: 990px) {
+    blockquote {
+      margin-top: 20px; } }
 
 /*# sourceMappingURL=casino.css.map */

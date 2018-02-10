@@ -49,6 +49,12 @@
     }
 }
 
+@media screen and (max-width: 990px) {
+    .casino-overview {
+        margin-top: 20px;
+    }
+}
+
 .casino-summ-box {
     height: 220px;
     background-color: rgb(252, 252, 252);
@@ -110,9 +116,24 @@
     }
 }
 
+casino-summary-boxes {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    background: #fcfcfc;
+    a {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
 #casino-preview {
     //background-image: url("https://www.casinotopsonline.com/img/objects/casinos_158_127142695Casinoland-games-lobby.jpg");
     background-size: cover;
+    max-width: 293px;
+    margin: 0 auto;
+    position: relative;
 }
 
 #casino-ranking {
@@ -314,5 +335,8 @@ blockquote {
         font-size: 20px;
         font-style: italic;
         white-space: pre-line;
+    }
+    @media screen and (max-width: 990px) {
+        margin-top: 20px;
     }
 }

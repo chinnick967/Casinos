@@ -121,11 +121,14 @@ angular
         }
 
         this.findMatch = function(collection, name, value) {
-            for (var i = 0; i < this[collection].length; i++) {
-                //console.log("name: " + this + " value: " + value);
-                if (this[collection][i][name] == value) {
-                    return this[collection][i];
+            if (this[collection] !== undefined) {
+                for (var i = 0; i < this[collection].length; i++) {
+                    if (this[collection][i][name] == value) {
+                        return this[collection][i];
+                    }
                 }
+            } else {
+                return null;
             }
         }
 

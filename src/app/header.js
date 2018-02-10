@@ -116,6 +116,12 @@ angular
                     var arr = this.routeNavigation.find(function(item) { return item.name == ctrl.lastSelected; });
                     return arr.categories;
                 }
+
+                $("#navigation").on("click", function() {
+                    console.log("moo");
+                });
+
+
             },
             controllerAs: "$ctrl",
             template: `            

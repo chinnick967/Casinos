@@ -98,12 +98,18 @@ p {
     font-size: 16px !important;
     white-space: pre-wrap;
     font-family: 'Lato', sans-serif;
+    font-smooth: always;
     h1 {
         font-weight: bold;
         font-size: 36px !important;
         margin-top: 20px !important;
         margin-bottom: -15px !important;
         color: #df0e14;
+    }
+    h2, h3, h4, h5, h6 {
+        color: #df0e14;
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
     b {
         color: #df0e14 !important;
@@ -117,6 +123,14 @@ p {
         &:hover {
             text-decoration: none !important;
             color: #df0e14 !important;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        h1 {
+            font-size: 24px !important;
+        }
+        h2, h3, h4, h5, h6 {
+            font-size: 20px;
         }
     }
 }
@@ -161,6 +175,7 @@ b {
 
 html {
     min-height: 100%;
+    overflow-x: hidden;
 }
 
 .gray-bg {
@@ -313,6 +328,10 @@ sticky-footer {
         }
     }
 
+    .navbar-toggle {
+        margin-right: 25px;
+    }
+
     .menu-item {
         font-family: 'Lato', sans-serif;
         font-size: 20px;
@@ -363,7 +382,6 @@ sticky-footer {
                 box-sizing: border-box;
                 //margin-right: 25px;
                 //margin-left: 20px;
-
                 
 
                 .nav-header {
@@ -405,6 +423,85 @@ sticky-footer {
 
             }
         }
+
+    }
+
+    @media screen and (max-width: 768px) {
+        .navbar-collapse {
+            padding: 0;
+        }
+        .navbar-right {
+            height: auto;
+            //background: #df0e14;
+            li#username {
+                text-align: center;
+                color: white;
+            }
+            #login-button {
+                text-align: center;
+            }
+            #login-dp {
+                min-width: 0;
+                padding-left: 0;
+                width: 95%;
+                margin: 0 auto;
+                box-sizing: border-box;
+            }
+            #account-button {
+                height: 55px;
+                line-height: 35px;
+            }
+        }
+        .navbar-nav {
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            .menu-item {
+                border-bottom: dashed 1px #333;
+                margin: 10px 0;
+                a {
+                    background-color: transparent !important;
+                }
+                &.open {
+                    overflow-x: scroll;
+                    overflow-y: hidden;
+                    .dropdown-menu {
+                        visibility: visible;
+                        height: 160px;
+                        opacity: 1;
+                        position: relative;
+                        box-shadow: none;
+                        border: none;
+                        margin-top: 0px;
+                    }
+                    &:hover {
+                        .dropdown-menu {
+                            visibility: visible;
+                        }
+                    }
+                }
+                &:hover {
+                    margin: 10px 0;
+                    border-bottom: dashed 1px #333;
+                    .dropdown-menu {
+                        padding: 0;
+                        visibility: hidden;
+                    }
+                }
+                &::-webkit-scrollbar {
+                    background: #FFAAAA;
+                    border-radius: 4px;
+                    height: 4px;
+                    width: 8px;
+                  }
+                  
+                &::-webkit-scrollbar-thumb {
+                    background: #df0e14;
+                    border-radius: 4px;
+                }
+            }
+        }
+
     }
 }
 
@@ -508,6 +605,29 @@ footer {
             &.no-list {
                 &:before {
                     background-image: none;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .col-sm-4 {      
+            &:nth-child(2) {
+                height: 180px;
+                &:before, &:after {
+                    width: 0px;
+                }
+            }
+            &:nth-child(3) {
+                ul {
+                    li {
+                        text-align: center;
+                        padding: 0;
+                        margin-bottom: 10px;
+                        &:nth-child(3) {
+                            margin-bottom: 5px;
+                        }
+                    }
                 }
             }
         }
