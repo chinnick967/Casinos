@@ -4,6 +4,7 @@ angular
     controller: function ($scope, appData, $routeParams) {
         this.data = appData;
         this.filter = $routeParams['filter'] || 'All';
+        this.search = "";
 
         this.sortGames = function(array) {
             switch(this.filter) {
@@ -30,6 +31,48 @@ angular
             }
             return array;
         }
+
+        this.setSearchFilter = function(array) {
+            var newArray = [];
+            if (!this.search == "") {
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i].name.toLowerCase().includes(this.search.toLowerCase())) {
+                        newArray.push(array[i]);
+                    }
+                }
+            } else {
+                return array;
+            }
+            return newArray;
+        }
+
+        this.setProviderFilter = function(array) {
+            var newArray = [];
+            if (document.getElementsByClassName("check-all")[0].checked) {
+                return array;
+            } else {
+                var softwares = Array.prototype.slice.call(document.getElementsByClassName('provider-checkbox'));
+                softwares = softwares.map(x => x.value);
+                for (var i = 0; i < array.length; i++) {
+                    for (var j = 0; j < array[i].casinos.length; j++) {
+                        var casino = this.data.getCasinoByName(array[i].casinos[j]);
+                        if (casino && casino.software) {
+                            if (findOne(casino.software, softwares)) {
+                                newArray.push(array[i]);
+                                j = array[i].casinos.length;
+                            }
+                        }
+                    }
+                }
+                return newArray;
+            }
+        }
+
+        var findOne = function (haystack, arr) {
+            return arr.some(function (v) {
+                return haystack.indexOf(v) >= 0;
+            });
+        };
 
         this.setGames = function() {
             var oldArray = this.data["game reviews"].concat(this.data.slots);
@@ -159,17 +202,37 @@ angular
                 }
             }
 
-            return this.sortGames(newArray);
+            return this.setProviderFilter(this.setSearchFilter(this.sortGames(newArray)));
+        }
+
+        this.showResults = function() {
+            this.games = this.setGames();
+        }
+
+        this.checkboxChange = function(mainCheckboxClick) {
+            var checkboxes = document.getElementsByClassName("provider-checkbox");
+            if (mainCheckboxClick) {
+                if (document.getElementsByClassName("check-all")[0].checked) {
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (!$(checkboxes[i]).hasClass("check-all")) {
+                            checkboxes[i].checked = false;
+                        }
+                    }
+                }
+            } else {
+                document.getElementsByClassName("check-all")[0].checked = false;
+            }
+            this.showResults();
         }
 
         this.data.load(function() {
-            this.games = this.setGames();
+            this.showResults();
         }.bind(this));
     },
     controllerAs: "$ctrl",
     template: `
     <div class="filters col-md-2">
-        <input class="search col-md-8 col-md-offset-2" type="text" placeholder="Search Games..." />
+        <input class="search col-md-8 col-md-offset-2" type="text" placeholder="Search Games..." ng-model="$ctrl.search" ng-change="$ctrl.showResults()" />
         <div class="filter-buttons col-md-12">
             <a href="/#!/games" class="filter-btn col-md-6" ng-class="{selected : $ctrl.filter == 'All'}">All</a><a href="/#!/games/Mobile" class="filter-btn col-md-6" ng-class="{selected : $ctrl.filter == 'Mobile'}">Mobile</a>
             <a href="/#!/games/Jackpots" class="filter-btn col-md-6" ng-class="{selected : $ctrl.filter == 'Jackpots'}">Jackpots</a><a href="/#!/games/Free" class="filter-btn col-md-6" ng-class="{selected : $ctrl.filter == 'Free'}">Free</a>
@@ -187,7 +250,8 @@ angular
         </div>
         <div class="providers col-md-12">
             <h3 class="col-md-12">Providers</h3>
-            <div class="checkbox-cont col-md-6" ng-repeat="software in $ctrl.data.software"><input type="checkbox" checked /><span>{{software.name}}</span></div>
+            <div class="checkbox-cont col-md-12 all-checkbox"><input class="provider-checkbox check-all" type="checkbox" ng-click="$ctrl.checkboxChange(true)" checked /><span>Show All Games</span></div>
+            <div class="checkbox-cont col-md-6" ng-repeat="software in $ctrl.data.software"><input value="{{software.name}}" class="provider-checkbox" type="checkbox" ng-click="$ctrl.checkboxChange(false)" /><span>{{software.name}}</span></div>
         </div>
     </div>
     

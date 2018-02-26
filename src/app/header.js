@@ -117,10 +117,6 @@ angular
                     return arr.categories;
                 }
 
-                $("#navigation").on("click", function() {
-                    console.log("moo");
-                });
-
 
             },
             controllerAs: "$ctrl",
@@ -148,6 +144,7 @@ angular
                                 </div>
                             </ul>
                             </li>
+                            <li><a class="free-btn" href="/games/Play">PLAY FREE SLOTS</a></li>
                         </ul>
                         <login></login>
                         

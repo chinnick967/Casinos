@@ -32,28 +32,35 @@ top-list-header {
     width: 100%;
     text-align: center; }
 
+item-list {
+  margin-bottom: 10px; }
+
 useful-links ul {
-  padding: 10px 20px;
+  padding: 7px;
   background-color: #333;
   height: auto;
   width: 100%;
   margin: 20px 0; }
   useful-links ul:before {
     content: attr(aria-label);
-    font-size: 120%;
+    font-size: 95%;
     font-weight: bold;
     color: white;
     text-align: center;
-    margin-bottom: 5px;
-    padding-bottom: 5px;
+    margin-bottom: 10px;
+    padding: 7px;
     width: 100%;
-    display: block; }
+    display: block;
+    background: #df0e14;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    text-transform: uppercase; }
   useful-links ul li {
     list-style-type: none;
     vertical-align: top;
     line-height: 20px;
     transition: 200ms;
-    margin: 5px 0; }
+    margin: 5px 0;
+    padding: 0 10px; }
     useful-links ul li .glyphicon {
       color: #df0e14;
       top: 1.5px;
@@ -71,12 +78,13 @@ useful-links ul {
 
 casino-listing, bonus-listing {
   background-color: #222;
-  margin: 5px 0;
+  margin: 6px 0;
   color: white;
   height: auto;
   padding-right: 0 !important;
-  display: inline-block;
-  box-shadow: 0px 0px 3px 1px black; }
+  display: inline-block; }
+  casino-listing:first-child, bonus-listing:first-child {
+    margin-top: 0; }
   casino-listing.col-sm-12, bonus-listing.col-sm-12 {
     padding-left: 0; }
   casino-listing .stars, bonus-listing .stars {
@@ -91,7 +99,7 @@ casino-listing, bonus-listing {
     margin-top: 0; }
     casino-listing .listing h3, bonus-listing .listing h3 {
       text-transform: uppercase;
-      margin-bottom: 8px; }
+      margin-bottom: 3px; }
     casino-listing .listing .thumbnail, bonus-listing .listing .thumbnail {
       border: 0;
       background-color: transparent;
@@ -101,13 +109,15 @@ casino-listing, bonus-listing {
       margin-bottom: 0;
       box-sizing: border-box;
       margin-bottom: -2px; }
+      casino-listing .listing .thumbnail.casino-listing-thumb, bonus-listing .listing .thumbnail.casino-listing-thumb {
+        width: 99.9%; }
     casino-listing .listing .buttons-container, bonus-listing .listing .buttons-container {
       padding-top: 10px; }
     casino-listing .listing .stars, bonus-listing .listing .stars {
       font-size: 20px;
       margin-bottom: 12px; }
   casino-listing .more-info, bonus-listing .more-info {
-    margin-top: 1px; }
+    min-height: 0px; }
     casino-listing .more-info.extended, bonus-listing .more-info.extended {
       border-top: .5px solid black; }
   @media screen and (max-width: 768px) {
@@ -118,10 +128,12 @@ casino-listing, bonus-listing {
       margin: 10px; }
       casino-listing .listing .buttons-container, bonus-listing .listing .buttons-container {
         margin-bottom: 10px; }
-      casino-listing .listing .thumbnail.casino-listing-thumb, bonus-listing .listing .thumbnail.casino-listing-thumb {
-        width: 100%;
-        height: 100%;
-        margin-bottom: 0; }
+      casino-listing .listing .thumbnail, bonus-listing .listing .thumbnail {
+        border-right: none !important; }
+        casino-listing .listing .thumbnail.casino-listing-thumb, bonus-listing .listing .thumbnail.casino-listing-thumb {
+          width: 99.9%;
+          height: 100%;
+          margin-bottom: 0; }
       casino-listing .listing .img-wrapper, bonus-listing .listing .img-wrapper {
         background: #111;
         height: 200px; }

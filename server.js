@@ -10,6 +10,8 @@ var formidable = require("formidable");
 var fs = require('fs');
 var countries = require('./setup/countries.js');
 var payment = require('./setup/payments.js');
+var urls = require('./setup/urls.js');
+var dot = require('mongo-dot-notation');
 var environment;
 // Launch variables
 process.argv.forEach((val, index) => {
@@ -43,6 +45,11 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Routing
+app.get('/sitemap.txt', function(req, res) {
+    console.log("sitemap");
+    res.sendFile("./dist/sitemap.txt");
+});
+
 app.get('/', function(req, res) {
     res.sendFile("./dist/index.html");
 });
@@ -77,6 +84,7 @@ app.post("/remove-data", function(req, res) {
     query[title] = value;
     db.collection(collection).remove(query);
     res.send("success");
+    generate_sitemap();
 });
 
 app.post("/post-data", function(req, res) {
@@ -92,6 +100,7 @@ app.post("/post-data", function(req, res) {
                     assert.equal(null, err);
                     logEntry(item["collection"] + " was added to the database");
                     res.json({"status": true, "message": message, "id": result.ops[0]['_id']});
+                    generate_sitemap();
                 });
             } else {
                 res.json({"status": false, "message": "Undefined collection, wasn't able to insert it into the database"});
@@ -108,21 +117,17 @@ app.post("/update-data", function(req, res) {
     var collection = req.body.collection;
     var name = req.body.name;
     item = checkForImages(item);
-        for (var key in item) {
-            if (item.hasOwnProperty(key)) {
-                var update = {};
-                update[key] = item[key];
-                db.collection(collection).update({name: name},{$set : update}, {upsert : true}, function(err, result) {
-                    logEntry(collection + " was updated in the database");
-                });
-            }
-        }
-        res.json({"status": true, "message": "Item updated"});
+    db.collection(collection).update({name: name}, dot.flatten(item), {upsert : true}, function(err, result) {
+        console.log("update");
+        console.log(err);
+        logEntry(collection + " was updated in the database");
+    });
+     res.json({"status": true, "message": "Item updated"});
+     generate_sitemap();
 });
 
 function checkForImages(json) {
     var obj = json;
-    console.log(obj.collection);
     for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
           var val = obj[key];
@@ -283,22 +288,60 @@ function setup() {
                 logEntry("payment was added to the database");
             });
         });
+        generate_sitemap();
 }
 
-/*function run() {
-    shell.exec('mongod');
-    console.log("Mongodb is now running");
-    shell.exec('webpack --watch');
-    console.log("webpack is now watching");
+function generate_sitemap(callback) {
+    var sitemapString = '';
+    // base urls
+    urls.list.forEach(function(element) {
+        sitemapString += element + "\r\n";
+    });
+
+    /*createSitemapString("/casino/", "casinos", "name", function(resultString) {
+        sitemapString += resultString;
+    });*/
+
+    createSitemapString([
+        {collection: 'casinos', baseurl: '/casino/', identifier: 'name', replacer: "-"},
+        {collection: 'game reviews', baseurl: '/gamereviews/', identifier: 'name', replacer: "-"},
+        {collection: 'bonuses', baseurl: '/bonus/', identifier: '_id', replacer: "-"},
+        {collection: 'articles', baseurl: '/article/', identifier: '_id', replacer: "-"},
+        {collection: 'slots', baseurl: '/slots/', identifier: 'name', replacer: "-"}
+    ], function(resultString) {
+        sitemapString += resultString;
+        fs.writeFile(__dirname + '/dist/sitemap.txt', sitemapString, function(err) {
+
+        });
+    });
 }
 
-run();*/
+function createSitemapString(pages, callback) {
+    var loaded = 0;
+    var resultString = "";
+    pages.forEach(function(object) {
+        var cursor = db.collection(object.collection).find();
+        cursor.forEach(function(doc, err) {
+            assert.equal(null, err);
+            resultString += object.baseurl + doc[object.identifier].toString().replace(/\s/g, object.replacer) + "\r\n";
+        }, function() {
+            loaded++;
+            if (loaded == pages.length) {
+                callback(resultString);
+            }
+        });
+    });
+}
 
 var dir = __dirname + "/dist/assets/admin/";
 
 if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
 }
+
+app.get('*', function(req, res) {
+    res.sendFile("./dist/index.html", {"root": __dirname});
+});
 
 app.listen(3000);
 console.log("Server running on port 3000 in " + environment + " mode");

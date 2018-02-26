@@ -27,6 +27,7 @@ angular
             <div class="top-casinos-container">
                 <div class="graybg"></div>
                 <div id="top-casinos" class="tab-content" ng-class="{selectedContent : $ctrl.selections[$ctrl.selected] == 'Top Casinos'}">
+                    <div class="tab-overlay"></div>
                     <img src="/assets/top-casino-background.jpg" />
                     <div class="content">
                         <h1>THE TOP 10 CASINO SITES YOU NEED TO VISIT</h1>
@@ -38,6 +39,7 @@ angular
                     </edit>
                 </div>
                 <div id="top-slots" class="tab-content" ng-class="{selectedContent : $ctrl.selections[$ctrl.selected] == 'Top Slots'}">
+                    <div class="tab-overlay"></div>
                     <img src="/assets/top-slots-casino-background.jpg" />
                     <div class="content">
                         <h1>THE TOP 10 SLOT GAMES YOU HAVE TO TRY</h1>
@@ -49,6 +51,7 @@ angular
                     </edit>
                 </div>
                 <div id="top-live-dealers" class="tab-content" ng-class="{selectedContent : $ctrl.selections[$ctrl.selected] == 'Live Dealers'}">
+                    <div class="tab-overlay"></div>
                     <img src="/assets/top-live-dealer-background.jpg" />
                     <div class="content">
                         <h1>PLAY WITH LIVE DEALERS FROM THE COMFORT OF YOUR LIVING ROOM</h1>
@@ -60,6 +63,7 @@ angular
                     </edit>
                 </div>
                 <div id="top-mobile" class="tab-content" ng-class="{selectedContent : $ctrl.selections[$ctrl.selected] == 'Top Mobile'}">
+                    <div class="tab-overlay"></div>
                     <img src="/assets/top-mobile-casino-background2.jpg" />
                     <div class="content">
                         <h1>THE TOP 10 MOBILE CASINOS TO PLAY ON FROM YOUR PHONE</h1>

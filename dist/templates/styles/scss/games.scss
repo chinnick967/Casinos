@@ -208,8 +208,8 @@ games {
             }
             .checkbox-cont {
                 color: white;
-                font-size: 10px;
-                height: 40px;
+                font-size: 12px;
+                min-height: 30px;
                 //line-height: 40px;
                 vertical-align: top;
                 input {
@@ -217,10 +217,25 @@ games {
                     display: inline-block;
                     margin-right: 5px;
                     vertical-align: middle;
+                    width: 20px;
+                    height: 20px;
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
                 span {
                     display: inline-block;
                     vertical-align: middle;
+                }
+                &.all-checkbox {
+                    display: block;
+                    text-align: right;
+                    width: 100%;
+                    font-size: 10px;
+                    input {
+                        height: 15px;
+                        width: 15px;
+                    }
                 }
             }
         }

@@ -33,6 +33,8 @@ angular
                     return new Array(10 - (Math.round(rating / 10)));
                 }
             }
+            console.log("PARENT");
+            console.log($scope.$parent);
         },
         controllerAs: "subctrl",
         scope: true,
@@ -47,7 +49,7 @@ angular
                         <a href="{{'/#!/casino/' + $parent.casino.prettylink}}"><h3>{{ $parent.casino.name }}</h3></a>
                         <div class="stars"><span ng-repeat="i in subctrl.ratingsArray(true) track by $index" class="glyphicon glyphicon-star"></span><span ng-repeat="i in subctrl.ratingsArray(false) track by $index" class="glyphicon glyphicon-star" style="color: #444; text-shadow: none;"></span></div>
                         <div class="countries">
-                            <img class="country" src="{{ subctrl.data.searchCollection('countries', 'name', country)['flag'] }}" ng-repeat="country in $parent.casino.countries" />
+                            <img class="country" src="{{ subctrl.data.searchCollection('countries', 'name', country)['flag'] }}" ng-repeat="country in $parent.casino.countries | limitTo: 6" />
                         </div>
                         <div  class="bonus-desc">{{ $parent.casino.bonuses[0].description }}</div>
                     </div>

@@ -9,8 +9,8 @@ angular
         $scope.limit = $routeParams["limit"];
         $scope.pagestart = $routeParams["pagestart"];
         if ($scope.sort == "ratings") {
-            $scope.heading = "Highest Ratings";
+            $scope.heading = "Highest Rated Casinos";
         } else {
-            $scope.heading = "Latest";
+            $scope.heading = "Latest Added Casinos";
         }
     });

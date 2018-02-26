@@ -39,6 +39,7 @@ angular
                             <li><a href="/#!/pages/whychooseus">Gambler's Update</a></li>
                             <li><a href="/#!/pages/termsofuse">Terms of Use</a></li>
                             <li><a href="/#!/pages/privacypolicy">Privacy Policy</a></li>
+                            <li><a href="/sitemap.txt" target="_self">Sitemap</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-4">

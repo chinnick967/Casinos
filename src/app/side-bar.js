@@ -4,16 +4,16 @@ angular
         controller: function ($scope, $http, appData) {
             console.log("RAAAAAAAAAAAAWWWWWWWRRRRRRR");
             this.data = appData;
-            this.limit = 15;
+            this.limit = 30;
             this.showText = "Show more...";
             this.casinos = {};
 
             this.changeLimit = function() {
-                if (this.limit == 15) {
-                    this.limit = 45;
+                if (this.limit == 30) {
+                    this.limit = 60;
                     this.showText = "Show less...";
                 } else {
-                    this.limit = 15;
+                    this.limit = 30;
                     this.showText = "Show more...";
                 }
             }
@@ -59,5 +59,6 @@ angular
                 </div>
                 <div class="loader" ng-click="$ctrl.changeLimit();">{{ $ctrl.showText }}</div>
             </div>
+            <promo></promo>
         `
     });
