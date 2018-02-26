@@ -2,7 +2,6 @@ angular
     .module('app')
     .component('sideBar', {
         controller: function ($scope, $http, appData) {
-            console.log("RAAAAAAAAAAAAWWWWWWWRRRRRRR");
             this.data = appData;
             this.limit = 30;
             this.showText = "Show more...";
@@ -40,11 +39,8 @@ angular
                     return b.rating - a.rating;
                 });
             }
-            console.log("moo");
             this.data.load(() => {
                 this.casinos = this.sortList(this.data.casinos);
-                console.log("test");
-                console.log(this.casinos);
             });
         },
         controllerAs: "$ctrl",

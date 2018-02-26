@@ -71,7 +71,6 @@ angular
                 messageService.message(res.message);
                 if (res.status == true) {
                     self.user = res.username;
-                    console.log(self);
                 }
             }.bind(self));
         }.bind(this);

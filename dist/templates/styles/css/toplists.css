@@ -35,9 +35,49 @@ top-list-header {
 item-list {
   margin-bottom: 10px; }
 
+useful-links .legend {
+  display: inline-block;
+  padding: 15px;
+  margin: 0px 0;
+  margin-top: 20px;
+  line-height: 40px;
+  width: 100%;
+  background: #222;
+  color: white;
+  border: double 5px #df0e14; }
+  useful-links .legend .glyphicon-phone {
+    font-size: 16px;
+    color: #ffa500;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 23px;
+    border-radius: 50px;
+    border: solid 1px #ffa500;
+    margin-right: 10px; }
+  useful-links .legend .glyphicon-fire {
+    font-size: 16px;
+    color: #fd0000;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 23px;
+    border-radius: 50px;
+    border: solid 1px #fd0000;
+    margin-right: 10px; }
+  useful-links .legend .glyphicon-globe {
+    font-size: 16px;
+    color: #4ec65f;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 23px;
+    border-radius: 50px;
+    border: solid 1px #4ec65f;
+    margin-right: 10px; }
 useful-links ul {
   padding: 7px;
-  background-color: #333;
+  background-color: #222;
   height: auto;
   width: 100%;
   margin: 20px 0; }
@@ -115,7 +155,7 @@ casino-listing, bonus-listing {
       padding-top: 10px; }
     casino-listing .listing .stars, bonus-listing .listing .stars {
       font-size: 20px;
-      margin-bottom: 12px; }
+      margin-bottom: 10px; }
   casino-listing .more-info, bonus-listing .more-info {
     min-height: 0px; }
     casino-listing .more-info.extended, bonus-listing .more-info.extended {
@@ -136,7 +176,10 @@ casino-listing, bonus-listing {
           margin-bottom: 0; }
       casino-listing .listing .img-wrapper, bonus-listing .listing .img-wrapper {
         background: #111;
-        height: 200px; }
+        height: 200px;
+        max-width: 100%; }
+      casino-listing .listing .info, bonus-listing .listing .info {
+        width: 100%; }
       casino-listing .more-info, bonus-listing .more-info {
         text-align: left; }
         casino-listing .more-info .read-more, bonus-listing .more-info .read-more {

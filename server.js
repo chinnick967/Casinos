@@ -303,11 +303,11 @@ function generate_sitemap(callback) {
     });*/
 
     createSitemapString([
-        {collection: 'casinos', baseurl: '/casino/', identifier: 'name', replacer: "-"},
-        {collection: 'game reviews', baseurl: '/gamereviews/', identifier: 'name', replacer: "-"},
-        {collection: 'bonuses', baseurl: '/bonus/', identifier: '_id', replacer: "-"},
-        {collection: 'articles', baseurl: '/article/', identifier: '_id', replacer: "-"},
-        {collection: 'slots', baseurl: '/slots/', identifier: 'name', replacer: "-"}
+        {collection: 'casinos', baseurl: 'http://gamblersupdate.com/casino/', identifier: 'name', replacer: "-"},
+        {collection: 'game reviews', baseurl: 'http://gamblersupdate.com/gamereviews/', identifier: 'name', replacer: "-"},
+        {collection: 'bonuses', baseurl: 'http://gamblersupdate.com/bonus/', identifier: '_id', replacer: "-"},
+        {collection: 'articles', baseurl: 'http://gamblersupdate.com/article/', identifier: '_id', replacer: "-"},
+        {collection: 'slots', baseurl: 'http://gamblersupdate.com/slots/', identifier: 'name', replacer: "-"}
     ], function(resultString) {
         sitemapString += resultString;
         fs.writeFile(__dirname + '/dist/sitemap.txt', sitemapString, function(err) {

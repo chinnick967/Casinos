@@ -38,7 +38,6 @@ angular
                 var name = ($element[0].attributes.name === undefined) ? $scope.$ctrl.data.casino.name : $element[0].attributes.name.value;
                 if ($scope.validateEntries()) {
                     $scope.addImages(function() {
-                        console.log($scope.$ctrl.form);
                         $.post("/update-data", {item: $scope.$ctrl.form, collection: $scope.$ctrl.collection, name: name}, function(res) {
                             if (res.status == true) {
                                 $scope.clearFields();

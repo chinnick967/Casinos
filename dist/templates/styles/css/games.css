@@ -160,7 +160,7 @@ games {
         display: inline-block; }
         games .filters .filter-buttons .filter-btn:hover {
           cursor: pointer;
-          background-color: #4ec65f; }
+          background-color: #444; }
         games .filters .filter-buttons .filter-btn.selected {
           background-color: #4ec65f; }
     games .filters .providers {

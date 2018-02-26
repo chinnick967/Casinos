@@ -27,9 +27,6 @@ angular
                         }
                     }
                 });
-                console.log("HIGHEST RATED");
-                console.log("Country: " + country);
-                console.log(highestRated);
                 return highestRated;
             }
 

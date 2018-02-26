@@ -31,8 +31,6 @@ angular
                         this.articles.push(articles[j]);
                     }
                 }
-                console.log("lol");
-                console.log(this.articles[2]);
             }.bind(this));
         },
         controllerAs: "$ctrl",

@@ -174,10 +174,8 @@ angular
                                     messageService.message(res.message);
                                     $scope.clearFields();
                                     $scope.changeDisplay();
-                                    $scope.$apply();
                                 } else {
                                     messageService.message(res.message);
-                                    $scope.$apply();
                                 }
                             });
                         });

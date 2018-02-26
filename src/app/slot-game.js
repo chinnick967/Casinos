@@ -68,7 +68,7 @@ angular
                     </div>
                 </div>
             <h2 style="color: white; font-weight: bold; text-transform: uppercase;" ng-if="$ctrl.slot.casinos.length > 0">Casinos That Offer This Game</h2>
-            <casino-listing class="col-sm-10" style="color: white; margin-left: auto; margin-right: auto; position: relative; display: block; float: none; padding-left: 0;" ng-repeat="casino in $ctrl.casinos"></casino-listing>  
+            <casino-listing class="col-sm-12" style="color: white; margin-left: auto; margin-right: auto; position: relative; display: block; float: none; padding-left: 0;" ng-repeat="casino in $ctrl.casinos"></casino-listing>  
             <admin-controls>
                 <edit style="" collection="slots" name="{{$ctrl.slot.name}}">
                     <h2>{{ $ctrl.slot.name }}</h2>

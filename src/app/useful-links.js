@@ -5,7 +5,13 @@ angular
             
         },
         controllerAs: "$ctrl",
-        template: `      
+        template: `
+            <div class="legend">
+                <span class="glyphicon glyphicon-globe"></span> 3+ Available Countries<br />
+                <span class="glyphicon glyphicon-fire"></span> Highly Rated<br />
+                <span class="glyphicon glyphicon-phone"></span> Mobile-friendly<br />
+            </div>
+        
             <ul aria-label="Top Lists">
                 <a href="/#!/toplists/casinos/ratings/all/any/10/1"><li><span class='glyphicon glyphicon-chevron-right'></span>Top 10 Casinos</li></a>
                 <a href="/#!/toplists/casinos/ratings/mobile/true/10/1"><li><span class='glyphicon glyphicon-chevron-right'></span>Top 10 Mobile Casinos</li></a>

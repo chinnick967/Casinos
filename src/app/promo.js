@@ -9,8 +9,6 @@ angular
                 for (var i = 0; i < this.data.slots.length; i++) {
                     this.data.slots[i].slug = this.data.slots[i].name.replace(/\s/g, '-');
                 }
-                console.log("THIS TEST");
-                console.log(this.data.html["sidebar-promo"]["promo-image"]);
             }.bind(this));
         },
         controllerAs: "$ctrl",

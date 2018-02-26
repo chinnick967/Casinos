@@ -607,7 +607,48 @@ home-summary {
     margin-top: 15px;
     width: 100%;
     transition: 250ms ease;
-
+    .glyphicon-phone {
+        position: absolute;
+        font-size: 16px;
+        color: #ffa500;
+        width: 25px;
+        height: 25px;
+        background: #222;
+        text-align: center;
+        line-height: 23px;
+        border-radius: 50px;
+        right: 5px;
+        top: 0px;
+        border: solid 1px #ffa500;
+    }
+    .glyphicon-fire {
+        position: absolute;
+        font-size: 16px;
+        color: #fd0000;
+        width: 25px;
+        height: 25px;
+        background: #222;
+        text-align: center;
+        line-height: 23px;
+        border-radius: 50px;
+        right: 33px;
+        top: 0px;
+        border: solid 1px #fd0000;
+    }
+    .glyphicon-globe {
+        position: absolute;
+        font-size: 16px;
+        color: #4ec65f;
+        width: 25px;
+        height: 25px;
+        background: #222;
+        text-align: center;
+        line-height: 23px;
+        border-radius: 50px;
+        right: 61px;
+        top: 0px;
+        border: solid 1px #4ec65f;
+    }
     &.casino {
         width: 100%;
     }
@@ -624,6 +665,7 @@ home-summary {
     .img-wrapper {
         height: 148px;
         padding: 0;
+        max-width: 250px;
         .ranking-first {
             width: 39.5px;
             height: 67.5px;
@@ -710,7 +752,7 @@ home-summary {
         .countries {
 
             margin-top: 2px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
 
             .country {
                 width: 27px;

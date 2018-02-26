@@ -21,16 +21,20 @@ angular
 
             this.ratingsArray = function(bool) {
                 var casino = this.findCasino($scope.$parent.bonus.casino);
-                var trustRating = parseInt(casino.trustRating) || 0;
-                var supportRating = parseInt(casino.supportRating) || 0;
-                var qualityRating = parseInt(casino.qualityRating) || 0;
-                var promoRating = parseInt(casino.promoRating) || 0;
-                var rating = (trustRating + supportRating + qualityRating + promoRating) / 4;
+                if (casino) {
+                    var trustRating = parseInt(casino.trustRating) || 0;
+                    var supportRating = parseInt(casino.supportRating) || 0;
+                    var qualityRating = parseInt(casino.qualityRating) || 0;
+                    var promoRating = parseInt(casino.promoRating) || 0;
+                    var rating = (trustRating + supportRating + qualityRating + promoRating) / 4;
 
-                if (bool) {
-                    return new Array(Math.round(rating / 10));
-                } else if (!bool) {
-                    return new Array(10 - (Math.round(rating / 10)));
+                    if (bool) {
+                        return new Array(Math.round(rating / 10));
+                    } else if (!bool) {
+                        return new Array(10 - (Math.round(rating / 10)));
+                    }
+                } else {
+                    return new Array(0);
                 }
             }
         },
@@ -43,6 +47,9 @@ angular
                         <img class="thumbnail casino-listing-thumb" src="{{ subctrl.findCasino($parent.bonus.casino).thumbnail }}" />
                     </div>
                     <div class="info col-sm-8">
+                        <span class="glyphicon glyphicon-fire" ng-if="subctrl.ratingsArray(true).length >= 8"></span>
+                        <span class="glyphicon glyphicon-phone" ng-if="subctrl.findCasino($parent.bonus.casino).mobile"></span>
+                        <span class="glyphicon glyphicon-globe" ng-if="subctrl.findCasino($parent.bonus.casino).countries && subctrl.findCasino($parent.bonus.casino).countries.length >= 3"></span>
                         <a href="#"><h3>{{ $parent.bonus.casino }} Bonus</h3></a>
                         <div class="stars"><span ng-repeat="i in subctrl.ratingsArray(true) track by $index" class="glyphicon glyphicon-star"></span><span ng-repeat="i in subctrl.ratingsArray(false) track by $index" class="glyphicon glyphicon-star" style="color: #444; text-shadow: none;"></span></div>
                         <p class="nobold">{{ $parent.bonus.type }} &mdash; {{ $parent.bonus.amount }}</p>

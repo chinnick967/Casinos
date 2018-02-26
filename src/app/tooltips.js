@@ -9,12 +9,10 @@ angular
 
                 this.hover = function() {
                     this.show = true;
-                    
-                    console.log("show");
                 }.bind(this);
 
                 this.hoverOut = function() {
-                    console.log("out");
+
                 }
             },
             transclude: true,

@@ -47,7 +47,7 @@ angular
                     $("#loading").addClass("hide-loading");
                     console.log(this);
                     this.loaded = true;
-                    $rootScope.$apply();
+                    //$rootScope.$apply();
                 }
             }.bind(self));
 

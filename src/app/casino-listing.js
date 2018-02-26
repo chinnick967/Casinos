@@ -33,8 +33,6 @@ angular
                     return new Array(10 - (Math.round(rating / 10)));
                 }
             }
-            console.log("PARENT");
-            console.log($scope.$parent);
         },
         controllerAs: "subctrl",
         scope: true,
@@ -46,6 +44,9 @@ angular
                         <div class="ranking" >{{$parent.$index + 1}}</div>
                     </div>
                     <div class="info col-sm-8">
+                        <span class="glyphicon glyphicon-fire" ng-if="subctrl.ratingsArray(true).length >= 8"></span>
+                        <span class="glyphicon glyphicon-phone" ng-if="$parent.casino.mobile"></span>
+                        <span class="glyphicon glyphicon-globe" ng-if="$parent.casino.countries && $parent.casino.countries.length >= 3"></span>
                         <a href="{{'/#!/casino/' + $parent.casino.prettylink}}"><h3>{{ $parent.casino.name }}</h3></a>
                         <div class="stars"><span ng-repeat="i in subctrl.ratingsArray(true) track by $index" class="glyphicon glyphicon-star"></span><span ng-repeat="i in subctrl.ratingsArray(false) track by $index" class="glyphicon glyphicon-star" style="color: #444; text-shadow: none;"></span></div>
                         <div class="countries">

@@ -451,6 +451,45 @@ home-summary {
   margin-top: 15px;
   width: 100%;
   transition: 250ms ease; }
+  .listing .glyphicon-phone {
+    position: absolute;
+    font-size: 16px;
+    color: #ffa500;
+    width: 25px;
+    height: 25px;
+    background: #222;
+    text-align: center;
+    line-height: 23px;
+    border-radius: 50px;
+    right: 5px;
+    top: 0px;
+    border: solid 1px #ffa500; }
+  .listing .glyphicon-fire {
+    position: absolute;
+    font-size: 16px;
+    color: #fd0000;
+    width: 25px;
+    height: 25px;
+    background: #222;
+    text-align: center;
+    line-height: 23px;
+    border-radius: 50px;
+    right: 33px;
+    top: 0px;
+    border: solid 1px #fd0000; }
+  .listing .glyphicon-globe {
+    position: absolute;
+    font-size: 16px;
+    color: #4ec65f;
+    width: 25px;
+    height: 25px;
+    background: #222;
+    text-align: center;
+    line-height: 23px;
+    border-radius: 50px;
+    right: 61px;
+    top: 0px;
+    border: solid 1px #4ec65f; }
   .listing.casino {
     width: 100%; }
   .listing h3 {
@@ -460,7 +499,8 @@ home-summary {
     transition: 250ms ease; }
   .listing .img-wrapper {
     height: 148px;
-    padding: 0; }
+    padding: 0;
+    max-width: 250px; }
     .listing .img-wrapper .ranking-first {
       width: 39.5px;
       height: 67.5px;
@@ -526,7 +566,7 @@ home-summary {
         color: #df0e14 !important; }
     .listing .info .countries {
       margin-top: 2px;
-      margin-bottom: 12px; }
+      margin-bottom: 10px; }
       .listing .info .countries .country {
         width: 27px;
         height: 18.86px;

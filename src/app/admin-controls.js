@@ -70,9 +70,11 @@ angular
 
             this.getLocalCss = function() {
                 var array = this.data["Page CSS"];
-                for (var i = 0; i < array.length; i++) {
-                    if (array[i].name == this.url) {
-                        return array[i].styles;
+                if (array) {
+                    for (var i = 0; i < array.length; i++) {
+                        if (array[i].name == this.url) {
+                            return array[i].styles;
+                        }
                     }
                 }
                 return "";

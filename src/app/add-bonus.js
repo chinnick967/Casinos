@@ -28,10 +28,8 @@ angular
                                 if (res.status == true) {
                                     $scope.clearFields();
                                     $scope.changeDisplay();
-                                    $scope.$apply();
                                 } else {
                                     messageService.message(res.message);
-                                    $scope.$apply();
                                 }
                             });
                         });

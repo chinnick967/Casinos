@@ -43,10 +43,55 @@ item-list {
 }
 
 useful-links {
+    .legend {
+        display: inline-block;
+        //border: dotted 2px #222;
+        padding: 15px;
+        margin: 0px 0;
+        margin-top: 20px;
+        line-height: 40px;
+        width: 100%;
+        background: #222;
+        color: white;
+        border: double 5px #df0e14;
+        .glyphicon-phone {
+            font-size: 16px;
+            color: #ffa500;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 23px;
+            border-radius: 50px;
+            border: solid 1px #ffa500;
+            margin-right: 10px;
+        }
+        .glyphicon-fire {
+            font-size: 16px;
+            color: #fd0000;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 23px;
+            border-radius: 50px;
+            border: solid 1px #fd0000;
+            margin-right: 10px;
+        }
+        .glyphicon-globe {
+            font-size: 16px;
+            color: #4ec65f;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 23px;
+            border-radius: 50px;
+            border: solid 1px #4ec65f;
+            margin-right: 10px;
+        }
+    }
     ul {
         padding: 7px;
         //padding-top: 50px;
-        background-color: #333;
+        background-color: #222;
         height: auto;
         width: 100%;
         margin: 20px 0;
@@ -154,7 +199,7 @@ casino-listing, bonus-listing {
         }
         .stars {
             font-size: 20px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
     }
     .more-info {
@@ -184,6 +229,10 @@ casino-listing, bonus-listing {
             .img-wrapper {
                 background: #111;
                 height: 200px;
+                max-width: 100%;
+            }
+            .info {
+                width: 100%;
             }
         }
         .more-info {
