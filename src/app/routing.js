@@ -34,6 +34,9 @@ angular
             .when("/review/:gamereview", {
                 templateUrl: "templates/gamereviews.html"
             })
+            .when("/supercoolpage", {
+                templateUrl: "templates/girl.html"
+            })
             .when("/pages/:title", {
                 templateUrl: "templates/info.html"
             });

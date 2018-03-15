@@ -53,6 +53,7 @@ require("./app/global-css.js");
 require("./app/custom-header.js");
 require("./app/game-review.js");
 require("./app/promo.js");
+require("./app/girl.js");
 
 // Services
 require("./app/services/app-data.js");

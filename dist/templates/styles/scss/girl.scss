@@ -1,0 +1,51 @@
+girl {
+    min-height: 350px;
+    display: block;
+    width: 100%;
+    .button {
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        margin: 10px auto;
+        position: relative;
+        text-align: center;
+        background: black;
+        padding: 20px;
+        margin-top: 40px;
+        color: white;
+        font-size: 20px;
+        &.no {
+            opacity: .6;
+        }
+        &.yes {
+            animation: colorchange 10s infinite; /* animation-name followed by duration in seconds*/
+            /* you could also use milliseconds (ms) or something like 2.5s */
+            -webkit-animation: colorchange 10s infinite; /* Chrome and Safari */
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    p {
+        text-align: center;
+        margin-top: 50px;
+    }
+}
+
+@keyframes colorchange
+{
+  0%   {background: red;}
+  25%  {background: yellow;}
+  50%  {background: blue;}
+  75%  {background: green;}
+  100% {background: red;}
+}
+
+@-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+{
+  0%   {background: red;}
+  25%  {background: yellow;}
+  50%  {background: blue;}
+  75%  {background: green;}
+  100% {background: red;}
+}

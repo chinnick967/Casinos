@@ -6,9 +6,6 @@ angular
             this.url = window.location.href;
             this.id = $routeParams['id'];
             this.article;
-            setTimeout(function() {
-                console.log(this.article);
-            }.bind(this), 3000)
             this.socials = document.getElementById("socials");
             this.scroll = $(window).scrollTop();
             this.socialsTop = this.socials.getBoundingClientRect().top
