@@ -37,12 +37,10 @@ angular
                                                 <div class="form-group">
                                                     <label class="sr-only" for="exampleInputPassword2">Password</label>
                                                     <input type="password" ng-model="ctrl.password" class="form-control" id="password" placeholder="Password" required>
-                                                    <div class="help-block text-right"><a href="">Forget your password?</a></div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button type="button" class="btn btn-primary btn-block" ng-click="ctrl.loginService.loginUser(ctrl.username, ctrl.password)">Sign in <!--<img src="/assets/loading.gif" height="20px" width="20px" />--></button>
-                                                    <button type="button" ng-click="ctrl.messageService.message('Currently unavailable, user accounts will be available in a later release')" id="create-account" class="btn btn-primary btn-block">Create Account <!--<img src="/assets/loading.gif" height="20px" width="20px" />--></button>
-                                                    <!--<button type="button" ng-click="ctrl.loginService.createAccount(ctrl.username, ctrl.password)" id="create-account" class="btn btn-primary btn-block">Create Account<img src="/assets/loading.gif" height="20px" width="20px" /></button>-->
+                                                    <button type="button" class="btn btn-primary btn-block" ng-click="ctrl.loginService.loginUser(ctrl.username, ctrl.password)">Sign in <!--<img src="/assets/loading.gif" height="20px" width="20px" />--></button>                                                   
+                                                    <button type="button" ng-click="ctrl.loginService.createAccount(ctrl.username, ctrl.password)" id="create-account" class="btn btn-primary btn-block">Create Account<img src="/assets/loading.gif" height="20px" width="20px" /></button>
                                                 </div>
                                             </form>
                                         </div>

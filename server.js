@@ -25,6 +25,10 @@ if (environment == "development") {
     environment = "production";
 }
 
+// Password Encryption
+var bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 var db;
 mongo.connect(url, function(err, mydb) {
     if (!err) {
@@ -215,19 +219,20 @@ app.post("/createAccount", function(req, res) {
             else {
                 console.log(docs.length);
                 if (docs.length == 0) {
-                    console.log("docs not equal to 0");
-                    db.collection("accounts").insertOne({
-                        username: req.body.username,
-                        password: req.body.password                  
-                    }, function(err, result) {
-                        console.log("Inserted");
-                        if (err) {
-                            console.log('Error');
-                            console.log(err);
-                            res.json({"status": false, "message": "Unable to create account: An error has occured please contact the site owner"});
-                        } else {
-                            res.json({"status": true, "message": "Your account has been created", "username": req.body.username, "password": req.body.password});
-                        }
+                    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+                        db.collection("accounts").insertOne({
+                            username: req.body.username,
+                            password: hash                 
+                        }, function(err, result) {
+                            console.log("Inserted");
+                            if (err) {
+                                console.log('Error');
+                                console.log(err);
+                                res.json({"status": false, "message": "Unable to create account: An error has occured please contact the site owner"});
+                            } else {
+                                res.json({"status": true, "message": "Your account has been created", "username": req.body.username, "password": req.body.password});
+                            }
+                        });
                     });
                 } else {
                     res.json({"status": false, "message": "Unable to create account: This username already exists"});
@@ -245,13 +250,16 @@ app.post("/validateAccount", function(req, res) {
         resultArray.push(doc);
     }, function() {
         if (resultArray.length > 0) {
-            if (resultArray[0].password == req.body.password) {
-                response.validation = true;
-                response.user = resultArray[0];
-            } else {
-                response.validation = false;
-                response.validationMessage = "The password you have entered is invalid.";
-            }
+            bcrypt.compare(req.body.password, resultArray[0].password, function(err, res) {
+                // res == true
+                if (res) {
+                    response.validation = true;
+                    response.user = resultArray[0];
+                } else {
+                    response.validation = false;
+                    response.validationMessage = "The password you have entered is invalid.";
+                }
+            });
         } else {
             response.validation = false;
             response.validationMessage = "The username you have entered does not exist.";
