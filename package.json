@@ -8,6 +8,7 @@
     "angular-animate": "^1.6.3",
     "angular-socialshare": "^2.3.11",
     "bcrypt": "^1.0.3",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
     "bootstrap": "^3.3.7",
     "express": "^4.15.2",

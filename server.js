@@ -26,7 +26,7 @@ if (environment == "development") {
 }
 
 // Password Encryption
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
 
 var db;
