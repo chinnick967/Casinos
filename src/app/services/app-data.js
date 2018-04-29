@@ -33,14 +33,16 @@ angular
             }.bind(this));
         }.bind(this);
         
-        this.getAllData = function(arr, counter) {
+        this.getAllData = function(counter) {
+            console.log("GET ALL DATA");
             var self = this;
             var counter = counter || 0;
+            var arr = ["casinos", "countries", "games", "software", "licenses", "support", "currency", "languages", "payment", "bonuses", "html", "slots", "game reviews", "articles", "Global CSS", "Page CSS", "Header", "comments", "bans"];
 
             this.getData(arr[counter], function() {
                 if (arr.length > counter + 1){
                     counter++;
-                    this.getAllData(arr, counter);
+                    this.getAllData(counter);
                 } else {
                     this.refreshCurrentCasino();
                     window.dispatchEvent(new Event('data-loaded'));
@@ -90,7 +92,7 @@ angular
 
         //////////////////////////////////////////////////
 
-        this.getAllData(["casinos", "countries", "games", "software", "licenses", "support", "currency", "languages", "payment", "bonuses", "html", "slots", "game reviews", "articles", "Global CSS", "Page CSS", "Header"]);
+        this.getAllData();
 
         this.load = function(callback) {
             if (this.loaded) {
@@ -130,6 +132,15 @@ angular
             } else {
                 return null;
             }
+        }
+
+        this.checkIfBanned = function(user) {
+            for (var i = 0; i < this.bans.length; i++) {
+                if (this.bans[i].name == user) {
+                    return true;
+                }
+            }
+            return false;
         }
 
     });

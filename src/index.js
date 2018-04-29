@@ -3,7 +3,7 @@ window.ProgressBar = window.$ = require("../node_modules/progressbar.js/dist/pro
 
 window.jQuery = window.$ = require("../node_modules/jquery/dist/jquery.min.js");
 var angular = require("../node_modules/angular/angular.min.js");
-require("../node_modules/angular-animate/angular-animate.js");
+require("../node_modules/angular-animate/angular-animate.min.js");
 require("./app/header.js");
 require("../node_modules/angular-route/angular-route.min.js");
 require("./app/routing.js");
@@ -53,7 +53,7 @@ require("./app/global-css.js");
 require("./app/custom-header.js");
 require("./app/game-review.js");
 require("./app/promo.js");
-require("./app/girl.js");
+require("./app/comments.js");
 
 // Services
 require("./app/services/app-data.js");
@@ -65,4 +65,4 @@ require("./app/services/user-service.js");
 require("./app/listsController.js");
 
 // Third Party Dependencies
-require('../node_modules/angular-socialshare/dist/angular-socialshare.js');
+require('../node_modules/angular-socialshare/dist/angular-socialshare.min.js');

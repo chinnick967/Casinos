@@ -1,7 +1,6 @@
 angular
     .module('app')
     .service('messageService', function ($rootScope) {
-
         this.msg = "";
         this.active = false;
         

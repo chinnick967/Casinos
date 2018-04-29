@@ -92,7 +92,7 @@ app.post("/remove-data", function(req, res) {
 });
 
 app.post("/post-data", function(req, res) {
-    var item = req.body.item;
+    var item = req.body;
     item.date = new Date();
     checkIfExists(item["collection"], "name", item["name"], function(result, message) {
         message = message || '';
@@ -207,27 +207,18 @@ function checkIfExists(collection, title, value, callback) {
 
 app.post("/createAccount", function(req, res) {
     req.body.role = "user";
-        //db.collection("accounts").insertOne({"username": req.body.username});
-        //db.collection("accounts").remove({username: req.body.username});
         db.collection("accounts").find({username: req.body.username}).toArray(function (err, docs) {
-            console.log(req.body);
             if (err) {
-                console.log('Error');
-                console.log(err);
                 res.json({"status": false, "message": "Unable to create account: This username already exists"});
             }
             else {
-                console.log(docs.length);
                 if (docs.length == 0) {
                     bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
                         db.collection("accounts").insertOne({
                             username: req.body.username,
                             password: hash                 
                         }, function(err, result) {
-                            console.log("Inserted");
                             if (err) {
-                                console.log('Error');
-                                console.log(err);
                                 res.json({"status": false, "message": "Unable to create account: An error has occured please contact the site owner"});
                             } else {
                                 res.json({"status": true, "message": "Your account has been created", "username": req.body.username, "password": req.body.password});
@@ -250,22 +241,32 @@ app.post("/validateAccount", function(req, res) {
         resultArray.push(doc);
     }, function() {
         if (resultArray.length > 0) {
-            bcrypt.compare(req.body.password, resultArray[0].password, function(err, res) {
-                // res == true
-                if (res) {
+            if (req.body.username != "Admin" && req.body.username != "admin") {
+                bcrypt.compare(req.body.password, resultArray[0].password, function(err, result) {
+                    if (result) {
+                        response.validation = true;
+                        response.user = resultArray[0];
+                    } else {
+                        response.validation = false;
+                        response.validationMessage = "The password you have entered is invalid.";
+                    }
+                    res.json(response);
+                });
+            } else {
+                if (req.body.password == resultArray[0].password) {
                     response.validation = true;
                     response.user = resultArray[0];
                 } else {
                     response.validation = false;
                     response.validationMessage = "The password you have entered is invalid.";
                 }
-            });
+                res.json(response);
+            }
         } else {
             response.validation = false;
             response.validationMessage = "The username you have entered does not exist.";
+            res.json(response);
         }
-
-        res.json(response);
     });
 });
 

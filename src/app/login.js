@@ -48,7 +48,7 @@ angular
                                 </li>
                             </ul>
                             <li ng-if="ctrl.loginService.user != null">
-                                <a href="#!/account" id="account-button"><b>My Account</b></a>
+                                <a href="/account" id="account-button"><b>My Account</b></a>
                             </li>
                         </li>
                     </ul>

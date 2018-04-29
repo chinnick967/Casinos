@@ -4,6 +4,7 @@ angular
         return {
             controller: function ($scope, $http, $routeParams, appData, loginService) {
                 this.data = appData;
+                $scope.data = appData;
                 this.login = loginService;
                 // Current page casino is this.data.casino;
                 //setTimeout(function(){console.log(this.data)}.bind(this), 3000);
@@ -23,7 +24,7 @@ angular
                     </div>
                 </div>
             `,
-            link: function($scope, $element, $attr, $ctrl, $transclude) {
+            link: function($scope, $element, $attr, $ctrl, $transclude, appData) {
                 $scope.$ctrl.container = $element[0].getElementsByClassName('transclude-container')[0];
                 $scope.$ctrl.collection = $element[0].attributes['collection'].value;
 
@@ -46,15 +47,15 @@ angular
                                     $scope.clearFields();
                                     $scope.changeDisplay();
                                     messageService.message("Updated");
-                                    $scope.$ctrl.data.getData($scope.$ctrl.collection, function() {
-                                        //$scope.$apply();
-                                    });
+                                    console.log(this);
+                                    $scope.data.getAllData();
+                                    $scope.$apply();
                                 } else {
                                     messageService.message(res.message);
                                     //$scope.$apply();
                                 }
-                            });
-                        });
+                            }.bind(this));
+                        }.bind(this));
                     } else {
                         
                     }

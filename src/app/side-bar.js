@@ -22,7 +22,7 @@ angular
             }
 
             this.sortList = function(array) {
-                return x = array.sort(function(a, b) {
+                return array.sort(function(a, b) {
                     a.trustRating = parseInt(a.trustRating) || 0;
                     a.supportRating = parseInt(a.supportRating) || 0;
                     a.qualityRating = parseInt(a.qualityRating) || 0;

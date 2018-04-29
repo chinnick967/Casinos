@@ -1,6 +1,7 @@
 var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   // context: __dirname,
@@ -18,17 +19,33 @@ module.exports = {
     {
       test: /\.(woff|woff2|eot|ttf|svg)$/, 
       loader: 'url-loader'
-    }]
+    },
+    {
+      test: /\.gz$/,
+      enforce: 'pre',
+      use: 'gzip-loader'
+    },
+    {
+      test: /\.js$/,
+      loader: 'babel-loader',
+      exclude: /node_modules/,
+      query: {
+          presets: ['es2015']
+      }
+  }]
   },
-  plugins: debug ? [] : [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false }, comments: false, minimize: false }),
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: false,
+      mangle: false
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
+    new BundleAnalyzerPlugin()
   ],
 };

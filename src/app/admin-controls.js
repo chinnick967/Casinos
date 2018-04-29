@@ -9,7 +9,11 @@ angular
             this.login = loginService;
             this.title = "";
             this.name = "";
-            this.user = this.login.user.username;
+            if (this.login.user) {
+                this.user = this.login.user.username;
+            } else {
+                this.user = null;
+            }
 
             this.panelState = function() {
                 var element = $element[0];
