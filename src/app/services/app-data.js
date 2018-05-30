@@ -34,10 +34,9 @@ angular
         }.bind(this);
         
         this.getAllData = function(counter) {
-            console.log("GET ALL DATA");
             var self = this;
             var counter = counter || 0;
-            var arr = ["casinos", "countries", "games", "software", "licenses", "support", "currency", "languages", "payment", "bonuses", "html", "slots", "game reviews", "articles", "Global CSS", "Page CSS", "Header", "comments", "bans"];
+            var arr = ["casinos", "countries", "games", "software", "licenses", "support", "currency", "languages", "payment", "bonuses", "html", "slots", "game reviews", "articles", "Global CSS", "Page CSS", "Header", "comments", "bans", "ips"];
 
             this.getData(arr[counter], function() {
                 if (arr.length > counter + 1){
@@ -45,6 +44,7 @@ angular
                     this.getAllData(counter);
                 } else {
                     this.refreshCurrentCasino();
+                    console.log("LOADED");
                     window.dispatchEvent(new Event('data-loaded'));
                     $("#loading").addClass("hide-loading");
                     console.log(this);

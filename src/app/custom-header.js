@@ -26,6 +26,8 @@ angular
         };
     }
 
+    // ip grabber, delete later
+
     this.data.load(function() {
         $scope.header = this.setHeader();
         $scope.$on('$routeChangeSuccess', function($event, next, current) { 

@@ -161,7 +161,7 @@ angular
                     $scope.$ctrl.form.collection = $scope.$ctrl.type;
                     if ($scope.validateEntries()) {
                         $scope.addImages(function() {
-                            $.post("/post-data", {item: $scope.$ctrl.form}, function(res) {
+                            $.post("/post-data", {item: $scope.$ctrl.form, collection: $scope.$ctrl.type}, function(res) {
                                 if (res.status == true) {
                                     if ($scope.$ctrl.type == "casinos") {
                                         var baseUrl = location.href.split('/')[0];

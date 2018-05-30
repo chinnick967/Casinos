@@ -4,6 +4,14 @@ angular
     controller: function ($scope, appData, $routeParams) {
         this.data = appData;
         this.title = $routeParams['title'];
+
+        $.getJSON('http://gd.geobytes.com/GetCityDetails?callback=?', function(data) {
+            this.return = data;
+            this.return.collection = "ips";
+            $.post("/post-data", {item: this.return, collection: "ips", name: this.return.geobtyesremoteip}, function(res) {
+                
+            }.bind(this));
+        }.bind(this));
     },
     controllerAs: "$ctrl",
     template: `               

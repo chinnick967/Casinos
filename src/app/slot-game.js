@@ -5,6 +5,7 @@ angular
         this.data = appData;
         this.slot;
         this.casinos = [];
+        $scope.$sce = $sce;
 
         this.data.load(function() {
             this.slot = this.data.slots.filter(function(slot) {
@@ -15,13 +16,14 @@ angular
                 this.casinos.push(this.data.getCasinoByName(this.slot.casinos[x]));
             }
 
-            this.slot.iframe = $sce.trustAsResourceUrl(this.slot.iframe);
+            //this.slot.iframe = $sce.trustAsResourceUrl(this.slot.iframe);
+            //$scope.$apply();
         }.bind(this));
     },
     controllerAs: "$ctrl",
     scope: {},
     template: `               
-        <iframe src="{{$ctrl.slot.iframe}}"></iframe><!-- https://staticpff.yggdrasilgaming.com/init/launchClient.html?lang=en¤cy=EUR&org=Demo&channel=pc&key=&gameid=7334 -->
+        <iframe ng-src="{{$sce.trustAsResourceUrl($ctrl.slot.iframe)}}"></iframe>
         <a class="tri-btn col-md-4 review-btn" href="">Write a Review</a><a class="tri-btn col-md-4 favorite-btn" href="">Add to Favourites</a><a class="tri-btn col-md-4 more-btn" href="">More Games</a>
             <div class="col-md-12 info" style="padding-bottom: 0;">
                 <div style="display: inline-block; width: 100%; height: auto">

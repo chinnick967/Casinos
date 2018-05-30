@@ -92,7 +92,8 @@ app.post("/remove-data", function(req, res) {
 });
 
 app.post("/post-data", function(req, res) {
-    var item = req.body;
+    var item = req.body.item;
+    console.log(item.name);
     item.date = new Date();
     checkIfExists(item["collection"], "name", item["name"], function(result, message) {
         message = message || '';
@@ -332,7 +333,9 @@ function createSitemapString(pages, callback) {
         var cursor = db.collection(object.collection).find();
         cursor.forEach(function(doc, err) {
             assert.equal(null, err);
-            resultString += object.baseurl + doc[object.identifier].toString().replace(/\s/g, object.replacer) + "\r\n";
+            if (doc[object.indentifier]) {
+                resultString += object.baseurl + doc[object.identifier].toString().replace(/\s/g, object.replacer) + "\r\n";
+            }
         }, function() {
             loaded++;
             if (loaded == pages.length) {

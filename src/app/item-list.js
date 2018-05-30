@@ -51,7 +51,7 @@ angular
 
                 this.filterItems = function(array) {
                     if (this.filter != "all") {
-                        return x = array.filter(function(casino) {
+                        return array.filter(function(casino) {
                             var item = casino[this.filter];
                             if (Array.isArray(item)) {
                                 for (var x = 0; x < item.length; x++) {
@@ -70,14 +70,14 @@ angular
                 }
 
                 this.addBonuses = function(casino) {
-                    return x = this.data.bonuses.filter(function(bonus) {
+                    return this.data.bonuses.filter(function(bonus) {
                         return bonus.casino == casino;
                     });
                 }
 
                 this.sortList = function(array) {
                     if (this.sort == "ratings") {
-                        return x = array.sort(function(a, b) {
+                        return array.sort(function(a, b) {
                             a.trustRating = parseInt(a.trustRating) || 0;
                             a.supportRating = parseInt(a.supportRating) || 0;
                             a.qualityRating = parseInt(a.qualityRating) || 0;
@@ -189,10 +189,12 @@ angular
                     this.getParams();
                     if (this.collection == "casinos") {
                         this.data.casinos.forEach(function(casino) {
-                            bonuses = this.addBonuses(casino.name);
+                            var bonuses = this.addBonuses(casino.name);
                             casino.bonuses = this.filterItems(bonuses);
                             this.casinos.push(casino);
                         }.bind(this));
+                        console.log("TEST");
+                        console.log(this.casinos);
                         this.casinos = this.sortList(this.casinos);
                         this.casinos = this.filterItems(this.casinos);
 
