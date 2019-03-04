@@ -50,7 +50,7 @@ angular
                             <li class="no-list"><a href="#"><img src="/assets/Logo-small.png" style="width: 150px;" /></a></li>
                         </ul>
                     </div>
-                    <span>All rights reserved © 2017-2017 GamblersUpdate.com</span>
+                    <span>All rights reserved © 2017-2019 GamblersUpdate.com</span>
                 </div>
             </footer>
         `

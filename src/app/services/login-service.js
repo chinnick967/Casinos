@@ -66,15 +66,16 @@ angular
         }
 
         this.createAccount = function(input_username, input_password) {
+            console.log("create");
             var self = this;
-            $http.get("https://ipinfo.io/").then(function (response) {
-                $.post( "/createAccount", { username: input_username, password: input_password, ip: response.data.ip}, function(res) {
+            //$http.get("https://ipinfo.io/").then(function (response) {
+                $.post( "/createAccount", { username: input_username, password: input_password}, function(res) {
                     messageService.message(res.message);
                     if (res.status == true) {
                         self.user = res.username;
                     }
                 }.bind(self));
-            }.bind(this));
+            //}.bind(this));
         }.bind(this);
 
         this.validateAccount = function(username, password, callback) {
@@ -108,9 +109,9 @@ angular
             this.createCookie(name,"",-1);
         }
 
-        $http.get("https://ipinfo.io/").then(function (response) {
+        /*$http.get("https://ipinfo.io/").then(function (response) {
             this.user.ip = response.data.ip;
-        }.bind(this));
+        }.bind(this));*/
 
         this.checkLoginStatus();
 

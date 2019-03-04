@@ -12,11 +12,8 @@ var countries = require('./setup/countries.js');
 var payment = require('./setup/payments.js');
 var urls = require('./setup/urls.js');
 var dot = require('mongo-dot-notation');
-var environment;
+var environment = process.env.NODE_ENV;
 // Launch variables
-process.argv.forEach((val, index) => {
-    environment = val;
-});
 
 if (environment == "development") {
     var url = "mongodb://localhost:27017/top-casinos"; // "mongodb://localhost:27017/top-casinos" for local, mongodb://admin:chinnick967@127.0.0.1:27017/top-casinos for server
@@ -27,7 +24,7 @@ if (environment == "development") {
 
 // Password Encryption
 var bcrypt = require('bcrypt-nodejs');
-const saltRounds = 10;
+const salt = "$2a$10$D3g1juFmenlzk4ItrVuBO.";
 
 var db;
 mongo.connect(url, function(err, mydb) {
@@ -207,6 +204,7 @@ function checkIfExists(collection, title, value, callback) {
 }
 
 app.post("/createAccount", function(req, res) {
+    console.log("Create");
     req.body.role = "user";
         db.collection("accounts").find({username: req.body.username}).toArray(function (err, docs) {
             if (err) {
@@ -214,7 +212,7 @@ app.post("/createAccount", function(req, res) {
             }
             else {
                 if (docs.length == 0) {
-                    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+                    bcrypt.hash(req.body.password, salt, null, function(err, hash) {
                         db.collection("accounts").insertOne({
                             username: req.body.username,
                             password: hash                 
@@ -236,33 +234,33 @@ app.post("/createAccount", function(req, res) {
 app.post("/validateAccount", function(req, res) {
     var resultArray = [];
     var response = {};
+    console.log(req.body.username);
     var cursor = db.collection("accounts").find({username: req.body.username});
     cursor.forEach(function(doc, err) {
         assert.equal(null, err);
         resultArray.push(doc);
     }, function() {
         if (resultArray.length > 0) {
-            if (req.body.username != "Admin" && req.body.username != "admin") {
-                bcrypt.compare(req.body.password, resultArray[0].password, function(err, result) {
-                    if (result) {
-                        response.validation = true;
-                        response.user = resultArray[0];
-                    } else {
-                        response.validation = false;
-                        response.validationMessage = "The password you have entered is invalid.";
-                    }
-                    res.json(response);
-                });
-            } else {
-                if (req.body.password == resultArray[0].password) {
+            bcrypt.compare(req.body.password, resultArray[0].password, function(err, result) {
+                if (result) {
                     response.validation = true;
                     response.user = resultArray[0];
                 } else {
-                    response.validation = false;
-                    response.validationMessage = "The password you have entered is invalid.";
+                    if (req.body.username == "Admin" || req.body.username == "admin") {
+                        if (req.body.password == resultArray[0].password) {
+                            response.validation = true;
+                            response.user = resultArray[0];
+                        } else {
+                            response.validation = false;
+                            response.validationMessage = "The password you have entered is invalid.";   
+                        }
+                    } else {
+                        response.validation = false;
+                        response.validationMessage = "The password you have entered is invalid.";   
+                    }
                 }
                 res.json(response);
-            }
+            });
         } else {
             response.validation = false;
             response.validationMessage = "The username you have entered does not exist.";
@@ -272,7 +270,7 @@ app.post("/validateAccount", function(req, res) {
 });
 
 function logEntry(message) {
-    fs.appendFile('log.txt', message + "\r\n");
+    fs.appendFile('log.txt', message + "\r\n", function() {});
 }
 
 function createFolder(dir) {
